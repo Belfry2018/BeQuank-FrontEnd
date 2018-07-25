@@ -1,0 +1,21 @@
+.normal {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  /*overflow: hidden;*/
+  position: relative;
+}
+
+.main {
+  padding: 0 0px;
+  flex: 1 0 auto;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+}
+

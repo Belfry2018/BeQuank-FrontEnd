@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:700");
+@import url("https://fonts.googleapis.com/css?family=Lora:400italic");
+@import url("https://fonts.googleapis.com/css?family=Rozha+One");
+
+
+html, body, :global(#root) {
+  height: 100%;
+  margin:0;
+  padding:0;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.ReactModalPortal{
+  z-index: 1;
+}
+
+.ant-list-split .ant-list-item{
+  border-bottom: 1px solid #1890ff1f;
+}
