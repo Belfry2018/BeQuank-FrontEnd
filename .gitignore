@@ -16,8 +16,6 @@
 .env.test.local
 .env.production.local
 
-# docz
-.docz
 
 # idea
 .idea
