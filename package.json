@@ -1,5 +1,5 @@
 {
-  "name": "fontend_default",
+  "name": "BeQuank",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,12 +13,14 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
-    "styleguide": "npx styleguidist server"
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.8.0",
+    "docz": "^0.7.1",
+    "docz-plugin-css": "^0.7.1",
     "react-app-rewire-less": "^2.1.2",
-    "react-app-rewired": "^1.5.2",
-    "react-styleguidist": "^7.1.1"
+    "react-app-rewired": "^1.5.2"
   }
 }
