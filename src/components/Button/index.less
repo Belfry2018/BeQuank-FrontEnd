@@ -5,12 +5,22 @@
   display: inline-block;
   padding: @button-normal-padding;
   cursor: pointer;
+
+}
+
+.button-cover{
+  transition: @default-translation;
+  background-color: transparent;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.14);
+  }
 }
 
 .button-type {
   &-default {
     padding: @button-normal-padding-top - @button-normal-border-weight @button-normal-padding-left - @button-normal-border-weight;
     border: @button-normal-border;
+
   }
   &-danger {
     background: @button-danger-background;

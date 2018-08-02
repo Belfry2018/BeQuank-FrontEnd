@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import styles from "./index.less";
+import {Icon} from "antd"
 
 const ButtonProps = {
     /** Define size of button */
@@ -9,6 +10,8 @@ const ButtonProps = {
     type: PropTypes.oneOf(["primary", "default", "danger", "dark", "none"]).isRequired,
     /** Define loading state */
     loading: PropTypes.bool,
+    /** icon of button */
+    icon: PropTypes.string,
     /** Content of button */
     children: PropTypes.element.isRequired,
 
@@ -23,11 +26,12 @@ const DefaultButtonProps = {
 
 class Button extends PureComponent {
     render() {
-        const {style, size, type, loading, children} = this.props;
+        const {style, size, type, loading, children,icon} = this.props;
         // return <div>{children}</div>;
         const classNames=`${styles["button-all"]} ${styles[`button-type-${type}`]}`;
+        const iconName=loading?"loading":icon;
         return (
-            <div className={classNames}>{children}</div>
+            <div className={classNames}>{iconName?<Icon style={{paddingRight:10,marginLeft:-15}} type={iconName}/>:""}{children}</div>
         );
     }
 }
