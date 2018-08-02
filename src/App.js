@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import "./App.css";
-import PageLoading from "./components/LoadingSpin/PageLoading";
+import RouteConfig from "./routes/index.route";
 
 class App extends Component {
   render() {
     return (
-        <PageLoading/>
+        <RouteConfig/>
     );
   }
 }
