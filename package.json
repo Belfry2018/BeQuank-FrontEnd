@@ -22,7 +22,7 @@
     "babel-plugin-import": "^1.8.0",
     "docz": "^0.7.1",
     "docz-plugin-css": "^0.7.1",
-    "react-app-rewire-less": "^2.1.2",
+    "react-app-rewire-less-with-modules": "^0.0.4",
     "react-app-rewired": "^1.5.2"
   }
 }

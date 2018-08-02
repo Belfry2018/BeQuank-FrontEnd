@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import * as size from "./data/size";
 import * as type from "./data/type";
 import { Button } from "antd";
-import styles from "./index.less";
+import styles from "./index.module.less";
 
 const ButtonProps = {
   /** Define size of button */

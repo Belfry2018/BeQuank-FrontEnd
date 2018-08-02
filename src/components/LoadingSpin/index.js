@@ -1,5 +1,5 @@
 import React from 'react';
-import Styles from './index.less'
+import Styles from './index.module.less'
 
 export default function ({background}) {
 
