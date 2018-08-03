@@ -22,6 +22,10 @@ export const setAuthorization = ({role, token}) => {
     return setRole(role) && setToken(token);
 };
 
+export const judgeLogin=()=>{
+    return !!getRole();
+};
+
 export const judgeAuthorization = (role) => {
     if (!role) return true;
 

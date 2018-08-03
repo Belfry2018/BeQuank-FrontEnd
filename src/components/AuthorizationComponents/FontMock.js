@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ({children}) {
     return (
-        <div style={{width:"100%",height:"100vh",backgroundColor:"rgba(41, 128, 185, 0.08)"}}>
+        <div style={{width:"100%",height:"200vh",backgroundColor:"rgba(41, 128, 185, 0.08)"}}>
             <div
                 style={{
                     position:"absolute",

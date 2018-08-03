@@ -2,7 +2,7 @@ import React from 'react';
 import {Redirect, Route} from "react-router-dom";
 import {judgeAuthorization} from "../../utils/authorization"
 
-const AuthorizationRoute = ({ component: Component, role, ...rest }) => (
+export default AuthorizationRoute = ({ component: Component, role, ...rest }) => (
     <Route
         {...rest}
         render={props =>judgeAuthorization(role)? (
