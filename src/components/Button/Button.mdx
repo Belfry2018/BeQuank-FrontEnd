@@ -1,0 +1,38 @@
+import { Playground, PropsTable } from 'docz'
+import Button from './index'
+
+# Button
+
+<PropsTable of={Button} />
+
+## Basic usage
+
+<Playground>
+  <Button type="primary">Primary</Button>
+  <Button>Default</Button>
+  <Button type="dark">Dark</Button>
+  <Button type="danger">Danger</Button>
+  <Button type="none">None</Button>
+</Playground>
+
+
+## Loading
+
+<Playground>
+  <Button loading={true} type="primary">Primary</Button>
+  <Button loading={true} >Default</Button>
+  <Button loading={true}  type="dark">Dark</Button>
+  <Button loading={true}  type="danger">Danger</Button>
+  <Button loading={true} type="none">None</Button>
+</Playground>
+
+
+## Icon
+
+<Playground>
+  <Button icon="smile" type="primary">Primary</Button>
+  <Button icon="book" >Default</Button>
+  <Button  icon="area-chart"  type="dark">Dark</Button>
+  <Button icon="exclamation-circle"  type="danger">Danger</Button>
+  <Button icon="caret-left" type="none">None</Button>
+</Playground>
