@@ -1,20 +1,23 @@
-import React from 'react';
-import {Redirect, Route} from "react-router-dom";
-import {judgeAuthorization} from "../../utils/authorization"
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import { judgeAuthorization } from "../../utils/authorization";
 
-export default AuthorizationRoute = ({ component: Component, role, ...rest }) => (
+export default function({ component: Component, role, ...rest }) {
+  return (
     <Route
-        {...rest}
-        render={props =>judgeAuthorization(role)? (
-                <Component {...props} />
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: "/login",
-                        state: { from: props.location }
-                    }}
-                />
-            )
-        }
+      {...rest}
+      render={props =>
+        judgeAuthorization(role) ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
     />
-);
+  );
+}
