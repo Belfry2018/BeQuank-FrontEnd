@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styles from "./index.module.less";
 import plus from "./twotone-add_circle-24px.svg";
 import notification from "./twotone-notifications-24px.svg";
+import { Link } from "react-router-dom";
+import Dropdown from "../../Dropdown";
 
 const UserSectionProps = {
   /** Define url of avatar */
@@ -18,14 +20,19 @@ class UserSection extends PureComponent {
     return (
       <div className={styles["user-section"]}>
         <div className={styles["avatar-section"]}>
-          <div className={`${styles["down-icon"]} ${styles["add-part"]}`}>
-            创建策略
-            <img src={plus} />
-          </div>
+          <Link to={"/strategy"}>
+            <div className={`${styles["down-icon"]} ${styles["add-part"]}`}>
+              创建策略
+              <img src={plus} />
+            </div>
+          </Link>
+
           <div className={styles["down-icon"]}>
             <img src={notification} />
           </div>
-          <div className={styles.avatar} />
+          <Dropdown>
+            <div className={styles.avatar} />
+          </Dropdown>
         </div>
       </div>
     );
