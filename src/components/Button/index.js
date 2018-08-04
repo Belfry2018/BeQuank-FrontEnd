@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import styles from "./index.less";
+import styles from "./index.module.less";
 import {Icon} from "antd"
 
 const ButtonProps = {
