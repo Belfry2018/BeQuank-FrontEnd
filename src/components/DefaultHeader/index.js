@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./index.module.less";
 import {Link, NavLink} from "react-router-dom";
 import Button from "../Button";
+import UserSection from "./UserSection";
 
 class DefaultHeader extends Component {
   componentDidMount() {
@@ -62,14 +63,17 @@ class DefaultHeader extends Component {
             </nav>
           </div>
           <div className={styles.user}>
-            <Link
-              className={styles["user-item"]}
-              to={"/login"}
-            >登陆</Link>
-            <Link
-              className={styles["user-item"]}
-              to={"/register"}
-            ><Button type={"primary"}>注册</Button></Link>
+            <div className={`${styles["user-item"]} ${styles.button}`}>
+              <UserSection avatarUrl={""} nickName={""} />
+            </div>
+            {/*<Link*/}
+              {/*className={styles["user-item"]}*/}
+              {/*to={"/login"}*/}
+            {/*>登陆</Link>*/}
+            {/*<Link*/}
+              {/*className={`${styles["user-item"]} ${styles.button}`}*/}
+              {/*to={"/register"}*/}
+            {/*><Button type={"primary"}>注册</Button></Link>*/}
           </div>
         </div>
       </div>
