@@ -1,29 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
-import * as size from "./data/size";
-import * as type from "./data/type";
 import picture from "./data/picture.png";
 import greenPoint from "./data/greenPoint.png";
 
 
 const PopularPartProps = {
-    /** Define size of PP */
-    size: PropTypes.oneOf([size.SMALL, size.DEFAULT, size.LARGE]).isRequired,
-    /** Define type of PP */
-    type: PropTypes.oneOf([type.DEFAULT]).isRequired,
-    /** Define loading state */
-    loading: PropTypes.bool,
-    /** Content of button */
-    children: PropTypes.element.isRequired,
 
-    style: PropTypes.object
 };
 
 const DefaultPopularPartProps = {
-    size: size.DEFAULT,
-    type: type.DEFAULT,
-    children: "type in something here"
+
 };
 
 class PopularPart extends Component {
@@ -37,7 +24,7 @@ class PopularPart extends Component {
     }
 
     render() {
-       const {imgSrc, top0, title0, content0, top1, title1, content1, top2, title2, content2, top3, title3, content3, } = this.props;
+       const {imgSrc, top0, title0, content0, top1, title1, content1, top2, title2, content2, top3, title3, content3 } = this.props;
 
         return <div
             className={styles["popular-part"]}>
