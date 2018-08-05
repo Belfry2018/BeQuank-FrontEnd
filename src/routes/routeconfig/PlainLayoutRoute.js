@@ -1,11 +1,11 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import PageLoadable from "../../components/Loadable/PageLoadable";
+import {LoginPageLoader} from "../../components/Loadable/PageLoadable";
+import LoginLayout from "../../layout/LoginLayout";
 
-const Login = PageLoadable(() => import("../user/login/index"));
-const Register = PageLoadable(() => import("../user/register/index"));
+const Login = LoginPageLoader(() => import("../user/login/index"));
+const Register = LoginPageLoader(() => import("../user/register/index"));
 
 export default [
-  <Route path="/login" exact component={Login} />,
-  <Route path="/Register" exact component={Register} />
+  <LoginLayout name={"Login"} path="/login" exact component={Login} />,
+  <LoginLayout name={"Register"} path="/Register" exact component={Register} />
 ];

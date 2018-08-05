@@ -1,0 +1,35 @@
+@import "../themes/default";
+
+.login-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0251CE;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  .login-logo{
+    position: absolute;
+    height: 170%;
+    z-index: 1;
+  }
+
+  .login-section{
+    min-width: 400px;
+    background-color: @white;
+    padding: 50px 30px 30px;
+    border-radius: 7px;
+    z-index: 2;
+    .login-login{
+      font-family: Lobster, serif;
+      font-size: 50px;
+      text-align: center;
+      color: @sky-blue;
+    }
+    .login-form{
+      padding: 30px 0 0;
+      margin: 0 auto;
+    }
+  }
+
+}

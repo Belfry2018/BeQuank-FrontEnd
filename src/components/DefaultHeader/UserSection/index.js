@@ -5,6 +5,53 @@ import plus from "./twotone-add_circle-24px.svg";
 import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
+import {
+  DropdownButton,
+  DropdownDivider
+} from "../../Dropdown/DefaultDropdownItems";
+import { Icon } from "antd";
+
+const linkList = [
+  {
+    iconType: "solution",
+    component: <Link to={"/login"}>我的策略</Link>
+  },
+  {
+    iconType: "user",
+    component: <Link to={"/login"}>个人信息</Link>
+  },
+  {
+    iconType: "setting",
+    component: <Link to={"/login"}>个人设置</Link>
+  },
+  {
+    isDivider: true
+  },
+  {
+    iconType: "logout",
+    component: <Link to={"/login"}>登出</Link>
+  }
+];
+
+const DropdownLink = ({ iconType, component: Component, isDivider }) => {
+  if (isDivider) {
+    return <DropdownDivider />;
+  }
+  return (
+    <DropdownButton>
+      {iconType ? (
+        <Icon style={{ marginRight: 20 }} type={iconType} />
+      ) : (
+        undefined
+      )}
+      {Component}
+    </DropdownButton>
+  );
+};
+
+const NickNameSpace=({children})=>{
+  return <div style={{padding:"5px 20px"}}>{children}</div>
+};
 
 const UserSectionProps = {
   /** Define url of avatar */
@@ -23,15 +70,21 @@ class UserSection extends PureComponent {
           <Link to={"/strategy"}>
             <div className={`${styles["down-icon"]} ${styles["add-part"]}`}>
               创建策略
-              <img src={plus} />
+              <img alt={""} src={plus} />
             </div>
           </Link>
 
           <div className={styles["down-icon"]}>
-            <img src={notification} />
+            <img alt={""} src={notification} />
           </div>
-          <Dropdown>
-            <div className={styles.avatar} />
+          <Dropdown
+            overlay={[
+              <NickNameSpace key={"nickname-space"} >{nickName}</NickNameSpace>,
+              <DropdownDivider key={"nickname-divider"} />,
+              ...linkList.map((listItem,index)=><DropdownLink key={`dropdown-links-${index}`} {...listItem} />)
+            ]}
+          >
+            <img alt={""} src={avatarUrl} className={styles.avatar} />
           </Dropdown>
         </div>
       </div>

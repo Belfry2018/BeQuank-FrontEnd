@@ -12,8 +12,6 @@ const ButtonProps = {
     loading: PropTypes.bool,
     /** icon of button */
     icon: PropTypes.string,
-    /** Content of button */
-    children: PropTypes.element.isRequired,
 
     style: PropTypes.object
 };
@@ -26,7 +24,7 @@ const DefaultButtonProps = {
 
 class Button extends PureComponent {
     render() {
-        const {style, size, type, loading, children,icon} = this.props;
+        const { type, loading, children,icon} = this.props;
         // return <div>{children}</div>;
         const classNames=`${styles["button-all"]} ${styles[`button-type-${type}`]}`;
         const iconName=loading?"loading":icon;

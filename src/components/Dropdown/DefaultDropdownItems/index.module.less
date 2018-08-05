@@ -1,0 +1,28 @@
+@import "../../../themes/default";
+
+.default-dropdown-button{
+  font-weight: normal;
+  color: gray;
+  padding: 6px 20px;
+  cursor: pointer;
+
+  a{
+    color: gray;
+    transition:none;
+  }
+
+  &:hover{
+    background-color: @default-dropdown-button-hover;
+    color: white;
+    a{
+      color: white;
+    }
+  }
+}
+
+.default-dropdown-divider{
+  height: 2px;
+  width: 100%;
+  margin: 5px 0;
+  background-color: rgba(104, 107, 109, 0.18);
+}
