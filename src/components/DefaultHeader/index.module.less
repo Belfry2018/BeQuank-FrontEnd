@@ -1,0 +1,85 @@
+@import "../../themes/default";
+
+.default-header{
+  transition: all 0.3s;
+
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .header-content{
+    max-width: @page-max-width;
+    padding: 0 @page-padding;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .left{
+      display: flex;
+    }
+
+    .logo{
+      height: 100%;
+      font-family: "Lobster", cursive;
+      display: flex;
+      align-items: center;
+      font-size: 40px;
+      color: @default-logo-color;
+    }
+
+    .nav{
+      height: 100%;
+      display: flex;
+      margin-left: 50px;
+      .nav-item{
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin: 0 20px;
+        font-size: 18px;
+        padding: 0 20px;
+        opacity: 0.4;
+        font-weight: bold;
+        text-decoration:none;
+        color: black;
+
+      }
+
+      .nav-active{
+        opacity: 0.8;
+      }
+    }
+
+    .user{
+      height: 100%;
+      display: flex;
+      justify-self: center;
+
+
+      .user-item{
+        align-items: center;
+        display: flex;
+        height: 100%;
+        text-decoration:none;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 0 40px;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .button{
+        padding: 0;
+      }
+    }
+  }
+}
+
+.default-header-active{
+  background-color: white;
+  box-shadow: @default-shadow;
+}
