@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Popover,
-  Progress,
-  Alert,
-} from "antd";
+import { Button, Form, Input, Popover, Progress, Alert, message } from "antd";
 import styles from "./index.module.less";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import FormInputButton from "../../../components/FormInputButton";
-import {sendIdentifyCode} from "../../../services/apiAuthorization";
+import { register, sendIdentifyCode } from "../../../services/apiAuthorization";
 
 const passwordStatusMap = {
   ok: <div className={styles.success}>强度：强</div>,
@@ -24,13 +17,21 @@ const passwordProgressMap = {
   poor: "exception"
 };
 
+const codeButtonMessage = {
+  normal: "发送验证码",
+  error: "s后重发"
+};
+
 class Register extends Component {
   state = {
     confirmDirty: false,
     visible: false,
     codeButtonLoading: false,
+    registerLoading: false,
     showError: false,
-    errorMessage:"",
+    codeButtonDisabled: false,
+    codeButtonMessage: codeButtonMessage.normal,
+    errorMessage: "",
     help: ""
   };
 
@@ -52,8 +53,29 @@ class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields({ force: true }, (err, values) => {
+    this.props.form.validateFields({ force: true }, async (err, values) => {
       if (!err) {
+        try {
+          this.setState({ registerLoading: true });
+          await register(values);
+          this.setState({ registerLoading: false });
+          message.success("注册成功，请登录");
+          this.props.history.push("/login");
+        } catch (e) {
+          let errorMessage = "";
+          if (e.name === 418) {
+            errorMessage = "验证码错";
+          } else if (e.name === 419) {
+            errorMessage = "邮箱已使用";
+          } else {
+            errorMessage = "错误的报错信息";
+          }
+          this.setState({
+            errorMessage,
+            showError: true,
+            registerLoading: false
+          });
+        }
       }
     });
   };
@@ -112,26 +134,63 @@ class Register extends Component {
     ) : null;
   };
 
-  handleCodeSend = async (email) => {
-    this.setState({codeButtonLoading:true});
+  handleCodeSend = async email => {
+    this.setState({ codeButtonLoading: true });
     try {
       await sendIdentifyCode(email);
-    }catch (e) {
-      this.setState({showError:true,
-        errorMessage:"验证码发送失败"
-      })
-    }finally {
-      this.setState({codeButtonLoading:false});
+      this.setState({ showError: false,codeButtonLoading: false });
+      let leftTime = 30;
+      this.setState({
+        codeButtonDisabled: true,
+        codeButtonMessage: leftTime + codeButtonMessage.error
+      });
+      const interval = setInterval(() => {
+        this.setState({
+          codeButtonDisabled: true,
+          codeButtonMessage: leftTime + codeButtonMessage.error
+        });
+        leftTime -= 1;
+      },1000);
+      setTimeout(() => {
+        clearInterval(interval);
+        this.setState({
+          codeButtonDisabled: false,
+          codeButtonMessage: codeButtonMessage.normal
+        });
+      },30000);
+    } catch (e) {
+      this.setState({
+        showError: true,
+        errorMessage: "验证码发送失败",
+        codeButtonLoading: false
+      });
+    } finally {
+      this.setState({ codeButtonLoading: false });
     }
   };
 
   render() {
-    const { form, submitting } = this.props;
+    const { form } = this.props;
     const { getFieldDecorator } = form;
-    const { codeButtonLoading,showError,errorMessage } = this.state;
+    const {
+      registerLoading,
+      codeButtonLoading,
+      showError,
+      errorMessage,
+      codeButtonMessage,
+      codeButtonDisabled
+    } = this.state;
     return (
       <div className={styles.main}>
-        {showError?<Alert message={errorMessage} type="error" />:undefined}
+        {showError ? (
+          <Alert
+            style={{ marginBottom: 24 }}
+            message={errorMessage}
+            type="error"
+          />
+        ) : (
+          undefined
+        )}
         <Form layout={"horizontal"} onSubmit={this.handleSubmit}>
           <Form.Item label={"昵称"}>
             {getFieldDecorator("nickname", {
@@ -157,7 +216,8 @@ class Register extends Component {
                 buttonEvent={this.handleCodeSend}
                 size="large"
                 placeholder="账户名"
-                buttonContent="发送验证码"
+                disabled={codeButtonDisabled}
+                buttonContent={codeButtonMessage}
               />
             )}
           </Form.Item>
@@ -220,7 +280,7 @@ class Register extends Component {
           <Form.Item>
             <Button
               size="large"
-              loading={submitting}
+              loading={registerLoading}
               className={styles.submit}
               type="primary"
               htmlType="submit"
@@ -237,4 +297,4 @@ class Register extends Component {
   }
 }
 
-export default Form.create()(Register);
+export default withRouter(Form.create()(Register));

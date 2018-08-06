@@ -21,6 +21,10 @@ export default class FormInputButton extends Component {
 
   handleValueChange = e => {
     this.setState({ content: e.target.value });
+    const onChange = this.props.onChange;
+    if(onChange){
+      onChange(e.target.value);
+    }
   };
 
   render() {

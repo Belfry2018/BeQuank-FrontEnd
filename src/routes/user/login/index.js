@@ -1,21 +1,50 @@
 import React from "react";
-import { Form, Icon, Input, Button} from "antd";
-import {Link} from "react-router-dom";
+import { Form, Icon, Input, Button, Alert,message } from "antd";
+import {Link, withRouter} from "react-router-dom";
+import { login } from "../../../services/apiAuthorization";
+import {setAuthorization} from "../../../utils/authorization";
 
 class NormalLoginForm extends React.Component {
+  state = {
+    showError: false,
+    errorMessage: "用户名或密码错",
+    loginLoading: false
+  };
+
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields(async (err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        try {
+          this.setState({ loginLoading: true });
+          const data = await login(values);
+          setAuthorization(data);
+          this.setState({ loginLoading: false });
+          this.props.history.push("/");
+          message.success("登陆成功");
+        } catch (e) {
+          let errorMessage = "";
+          if (e.name === 418) {
+            errorMessage = "用户名或密码错";
+          }
+          this.setState({
+            errorMessage,
+            showError: true,
+            registerLoading: false
+          });
+        }
       }
     });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { showError, errorMessage, loginLoading } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
+        {showError ? <Alert style={{marginBottom:24}} message={errorMessage} type="error" /> : undefined}
+
         <Form.Item>
           {getFieldDecorator("userName", {
             rules: [{ required: true, message: "Please input your username!" }]
@@ -54,7 +83,8 @@ class NormalLoginForm extends React.Component {
             size="large"
             type="primary"
             htmlType="submit"
-            style={{ width: "100%", marginBottom:5 }}
+            loading={loginLoading}
+            style={{ width: "100%", marginBottom: 5 }}
           >
             登 陆
           </Button>
@@ -65,4 +95,4 @@ class NormalLoginForm extends React.Component {
   }
 }
 
-export default Form.create()(NormalLoginForm);
+export default withRouter(Form.create()(NormalLoginForm));
