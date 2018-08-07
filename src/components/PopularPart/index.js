@@ -85,6 +85,7 @@ class PopularPart extends Component {
             </div>
         </div>;
     }
+}
 
 PopularPart.propTypes = PopularPartProps;
 
