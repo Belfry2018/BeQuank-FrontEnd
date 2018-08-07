@@ -1,0 +1,138 @@
+@import "../../themes/default";
+@total-width : @page-max-width - @page-padding;
+@total-height: @total-width/3;
+@background-color: rgba(235,235,235,0.73);
+@text-background-color: @page-primary-color;
+@picture-margin: 0px;
+@picture-width: @total-width/5*3 - @picture-margin;
+@picture-height: @total-height - @picture-margin;
+.popular-part{
+
+  display: grid;
+  width: @total-width;
+  height: @total-height;
+  background-color: @background-color;
+  border-radius: @card-radius;
+  grid-template-columns: 60% 40%;
+
+  .left-picture-part{
+    position: relative;
+    grid-column-start: 0;
+
+    .picture{
+        width: @picture-width;
+        height: @picture-height;
+        margin-left: @picture-margin;
+        margin-top: @picture-margin/2;
+        border-radius: 6px;
+    }
+    .hover-bottom{
+      z-index: 0;
+      grid-row-start: auto;
+
+      background-color: rgba(178,178,178,0.3);
+
+      margin-top: 1px;
+      display: grid;
+      grid-template-columns: 4% 96%;
+      grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+      position: absolute;
+      width: @picture-width;
+      height: @picture-height/3;
+      top: @picture-height/3*2;
+
+      .top{
+          grid-row-start: 3;
+          grid-column-start: 2;
+          font-family: "SimHei";
+          font-size: 10px;
+          color: rgba(255,255,255,0.4);
+          text-transform: uppercase;
+        }
+        .title{
+          font-family: "SimHei";
+          grid-row-start: 5;
+          grid-column-start: 2;
+          font-size: 19px;
+          font-weight: bold;
+          color: rgba(255,255,255,0.8);
+        }
+        .content{
+          font-family: "SimHei";
+          grid-row-start: 8;
+          grid-column-start: 2;
+          font-size: 10px;
+          color: rgba(255,255,255,0.5);
+        }
+    }
+  }
+
+
+  .right-text-part{
+    grid-column-start: 2;
+    display: grid;
+    grid-template-rows: 19% 27% 27% 27% ;
+    .title{
+      background-color: @text-background-color;
+      grid-row-start: 1;
+      display: grid;
+      grid-template-columns: 10% 10% 80%;
+      grid-template-rows: 33% 34% 33%;
+      margin-top: @picture-margin/2;
+
+      .title-picture{
+          height: @total-height/60;
+          width: @total-width/180;
+          grid-row-start: 2;
+          grid-column-start: 2;
+      }
+      .title-text{
+        font-family: "SimHei";
+        font-size: 22px;
+        grid-row-start: 2;
+        grid-column-start: 3;
+      }
+
+    }
+
+
+    .one-tip{
+      grid-row-start: auto;
+      background-color: @text-background-color;
+      margin-top: 1px;
+      display: grid;
+      grid-template-columns: 10% 90%;
+      grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+
+      .tip-top{
+        grid-row-start: 2;
+        grid-column-start: 2;
+        font-family: "SimHei";
+        font-size: 10px;
+        color: rgba(123,125,125,0.3);
+        text-transform: uppercase;
+      }
+      .tip-title{
+        font-family: "SimHei";
+        grid-row-start: 4;
+        grid-column-start: 2;
+        font-size: 17px;
+        font-weight: bold;
+      }
+      .tip-content{
+        font-family: "SimHei";
+        grid-row-start: 7;
+        grid-column-start: 2;
+        font-size: 10px;
+        color: rgba(100,100,100,0.7);
+      }
+    }
+
+    .one-tip:hover{
+      transition-delay: 0.1s;
+      box-shadow: 3px 2px 5px #888888;
+
+    }
+
+  }
+}
