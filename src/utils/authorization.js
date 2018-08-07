@@ -19,7 +19,9 @@ export const setToken = token => {
 };
 
 export const setAuthorization = ({ role, token }) => {
-  return setRole(role) && setToken(token);
+  setRole(role);
+  setToken(token);
+  return true;
 };
 
 export const judgeLogin = () => {

@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { judgeLogin } from "../../utils/authorization";
 
@@ -8,6 +8,8 @@ const AuthorizationProps = {
   type: PropTypes.oneOf(["login"])
 };
 
+
+//TODO: enhancement authorization
 const DefaultAuthorizationProps = {
   type: "login"
 };

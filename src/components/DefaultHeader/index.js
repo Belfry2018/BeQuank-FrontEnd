@@ -3,6 +3,7 @@ import styles from "./index.module.less";
 import {Link, NavLink} from "react-router-dom";
 import Button from "../Button";
 import UserSection from "./UserSection";
+import Authorization from "../AuthorizationComponents/Authorization";
 
 class DefaultHeader extends Component {
   componentDidMount() {
@@ -63,17 +64,25 @@ class DefaultHeader extends Component {
             </nav>
           </div>
           <div className={styles.user}>
-            <div className={`${styles["user-item"]} ${styles.button}`}>
-              <UserSection avatarUrl={""} nickName={""} />
-            </div>
-            {/*<Link*/}
-              {/*className={styles["user-item"]}*/}
-              {/*to={"/login"}*/}
-            {/*>登陆</Link>*/}
-            {/*<Link*/}
-              {/*className={`${styles["user-item"]} ${styles.button}`}*/}
-              {/*to={"/register"}*/}
-            {/*><Button type={"primary"}>注册</Button></Link>*/}
+            <Authorization beforeAuthorization={
+              <div className={styles.user}>
+                <Link
+                  className={styles["user-item"]}
+                  to={"/login"}
+                >登陆</Link>
+                <Link
+                  className={`${styles["user-item"]} ${styles.button}`}
+                  to={"/register"}
+                ><Button type={"primary"}>注册</Button></Link>
+              </div>
+
+            } afterAuthorization={
+              <div className={`${styles["user-item"]} ${styles.button}`}>
+                <UserSection avatarUrl={""} nickName={""} />
+              </div>
+            }/>
+            
+
           </div>
         </div>
       </div>

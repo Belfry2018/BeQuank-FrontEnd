@@ -1,7 +1,5 @@
-import { Redirect, Route } from "react-router-dom";
 import React from "react";
 import DefaultHeader from "../components/DefaultHeader";
-import { judgeAuthorization } from "../utils/authorization";
 import AuthorizationRoute from "../components/AuthorizationComponents/AuthorizationRoute";
 
 export const DefaultLayout = ({ component: Component, ...rest }) => {
