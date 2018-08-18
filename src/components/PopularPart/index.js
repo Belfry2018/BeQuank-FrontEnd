@@ -48,16 +48,6 @@ class PopularPart extends Component {
     } = this.props;
 
     return (
-      <div className={styles["popular-part"]}>
-        <div className={styles["left-picture-part"]}>
-          <div className={styles["picture"]}>
-            <img src={picture} />
-          </div>
-
-    render() {
-       const {imgSrc, top0, title0, content0, top1, title1, content1, top2, title2, content2, top3, title3, content3 } = this.props;
-
-        return(
             <div className={styles["popular-part"]}>
                     <div className={styles["left-picture-part"]}>
                          <div className={styles.picture}>
