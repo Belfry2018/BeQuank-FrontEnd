@@ -5,36 +5,54 @@ import picture from "./data/picture.png";
 import greenPoint from "./data/greenPoint.png";
 import TextCutter from "../TextCutter";
 
-
 const PopularPartProps = {
-    imgSrc: PropTypes.string.isRequired,
-    top0: PropTypes.string.isRequired,
-    title0: PropTypes.string.isRequired,
-    content0: PropTypes.string.isRequired,
-    top1: PropTypes.string.isRequired,
-    title1: PropTypes.string.isRequired,
-    content1: PropTypes.string.isRequired,
-    top2: PropTypes.string.isRequired,
-    title2: PropTypes.string.isRequired,
-    content2: PropTypes.string.isRequired,
-    top3: PropTypes.string.isRequired,
-    title3: PropTypes.string.isRequired,
-    content3: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  top0: PropTypes.string.isRequired,
+  title0: PropTypes.string.isRequired,
+  content0: PropTypes.string.isRequired,
+  top1: PropTypes.string.isRequired,
+  title1: PropTypes.string.isRequired,
+  content1: PropTypes.string.isRequired,
+  top2: PropTypes.string.isRequired,
+  title2: PropTypes.string.isRequired,
+  content2: PropTypes.string.isRequired,
+  top3: PropTypes.string.isRequired,
+  title3: PropTypes.string.isRequired,
+  content3: PropTypes.string.isRequired
 };
 
-const DefaultPopularPartProps = {
-
-};
+const DefaultPopularPartProps = {};
 
 class PopularPart extends Component {
+  state = {};
 
-    state = {
+  handleClick(i) {
+    alert(i);
+  }
 
-    };
+  render() {
+    const {
+      imgSrc,
+      top0,
+      title0,
+      content0,
+      top1,
+      title1,
+      content1,
+      top2,
+      title2,
+      content2,
+      top3,
+      title3,
+      content3
+    } = this.props;
 
-    handleClick(i){
-        alert(i);
-    }
+    return (
+      <div className={styles["popular-part"]}>
+        <div className={styles["left-picture-part"]}>
+          <div className={styles["picture"]}>
+            <img src={picture} />
+          </div>
 
     render() {
        const {imgSrc, top0, title0, content0, top1, title1, content1, top2, title2, content2, top3, title3, content3 } = this.props;
