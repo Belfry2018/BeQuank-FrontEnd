@@ -1,12 +1,13 @@
 import React, { PureComponent } from "react";
-import styles from "./index.module.less";
 
-import Title from "../../components/Article/Title";
-import Body from "../../components/Article/Body";
-import Profile from "../../components/Article/Profile"
+import Article from "../../components/Article";
 
-export default class Article extends PureComponent {
+export default class ArticleTest extends PureComponent {
     render() {
+        let titleContent = "TitleContent";
+        let date = "8012/02/01 12:25:32";
+        let authorName = "AuthorName";
+        let backgroundImgURL = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533405629879&di=f3312045ca0c4a929fea145509294aa0&imgtype=0&src=http%3A%2F%2Fzt.bjwmb.gov.cn%2F2014%2Fdczwhd%2Fimg%2Fbg3.jpg";
         let profilePictureURL = "http://5b0988e595225.cdn.sohucs.com/images/20171216/a72351d45dee4e6fa270985fb5394f1e.jpeg";
         let profileContent = {
             authorName: "Daumantas Banys",
@@ -42,16 +43,10 @@ export default class Article extends PureComponent {
             '进销存系统中客户端构件是放在客户端机器上，服务器端构件是放在服务器端机器上。在客户端节点上，还要部署RMIStub构件。由于Java RMI构件属于JDK的一部分。所以，在系统JDK环境已经设置好的情况下，不需要再独立部署。部署图如下图所示。';
 
         return (
-            <div className={styles.article}>
-                <Title TitleContent="TitleContent"
-                       Date="8012/1/2 11:45:14"
-                       AuthorName="AuthorName"
-                />
-                <Body articleContent={articleContent}/>
-                <Profile profilePictureURL={profilePictureURL}
-                         profileContent = {profileContent}
-                />
-            </div>
+            <Article titleContent={titleContent} date={date} authorName={authorName} backgroundImgURL={backgroundImgURL}
+                     articleContent={articleContent}
+                     profilePictureURL={profilePictureURL} profileContent={profileContent}
+            />
         );
     }
 }
