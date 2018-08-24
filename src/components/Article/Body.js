@@ -5,9 +5,9 @@ import styles from "./Body.module.less";
 import ReactMarkdown from "react-markdown";
 
 const BodyProps = {
-    articleContent: PropTypes.string,
+    articleContent: PropTypes.string.isRequired,
 
-    style: PropTypes.object,
+    style: PropTypes.object.isRequired,
 };
 
 const DefaultBodyProps = {

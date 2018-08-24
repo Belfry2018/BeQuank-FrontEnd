@@ -22,11 +22,10 @@ export const setUserProfile = params => {
 
 /**
  * 获取用户个人信息
- * @param userId 用户id
  * @return {Object}
  */
-export const getUserProfile = userId => {
-  return request(`${version}/user/profile?userId=${userId}`)
+export const getUserProfile = () => {
+  return request(`${version}/user/profile`)
 };
 
 

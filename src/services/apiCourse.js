@@ -1,12 +1,12 @@
-import { version } from "./apiOverview";
+import {version} from "./apiOverview";
 import request from "../utils/request";
 
 /**
  * 发布教程
  * @param params
- * @returns {Object}
+ * @return {Object}
  * @example
- * postTutorial({
+ * pushTutorial({
  *  authorNickname:"jack",
  *  authorId:"abc",
  *  title:"how to make money",
@@ -16,53 +16,55 @@ import request from "../utils/request";
  *  content:"money is very important",
  *  time:"2018-08-13"
  * })
- * @throws
+ * @throws 418
  */
-export const postTutorial = params => {
-    return request(`${version}/tutorial`, {
-        method: "POST",
-        body: params
-    });
+export const pushTutorial = params => {
+  return request(`${version}/tutorial`, {
+    method: "POST",
+    body: params
+  });
 };
 
 /**
  * 根据条件筛选教程
  * @param params
- * @returns {Object}
+ * @return {Object}
  * @example
- * findTutorials({
+ * getTutorials({
  *  authorId:"jack",
  *  publishTime:"2018-08-13",
  *  cover:"cover",
  *  abstract:"blabla",
- *  keyWords:{"money", "fortune"}
+ *  keyWords:{"money", "fortune"},
+ *  tutorialType:"BASIC"
  * })
  */
-export const findTutorials = params =>{
-    return request(`${version}/tutorials`, {
-        method: "POST",
-        body: params
-    });
-}
+export const getTutorials = params => {
+  return request(`${version}/tutorials`, {
+    method: "POST",
+    body: params
+  });
+};
+
 
 /**
- * 查看具体教程
- * @param id
- * @returns {Object}
+ * 修改密码
+ * @param tutorialId
+ * @return {Object}
+ * @example
+ * getTheTutorial(id)
+ * @throws 418
  */
-export const showTutorial = id => {
-    return request(`${version}/tutorial`, {
-        method: "GET",
-        body: { id }
-    });
-}
+export const getTheTutorial = tutorialId => {
+  return request(`${version}/tutorial?id=${tutorialId}`)
+};
 
 /**
  * 发表评论
  * @param params
- * @returns {Object}
+ * @return {Object}
  * @example
- * makeComment({
+ * postComment({
  *  tutorialId:"tutorialA",
  *  content:"lalalala",
  *  writerNickname:"tom",
@@ -70,17 +72,18 @@ export const showTutorial = id => {
  *  time:"2018-08-13"
  * })
  */
-export const makeComment = params => {
-    return request(`${version}/comment`, {
-        method: "POST",
-        body: params
-    });
-}
+export const postComment = params => {
+  return request(`${version}/tutorials`, {
+    method: "POST",
+    body: params
+  });
+};
+
 
 /**
  * 回复评论
  * @param params
- * @returns {Object}
+ * @return {Object}
  * @example
  * replyComment({
  *  commentId:"comment2",
@@ -91,42 +94,42 @@ export const makeComment = params => {
  * })
  */
 export const replyComment = params => {
-    return request(`${version}/reply`, {
-        method: "POST",
-        body: params
-    });
-}
+  return request(`${version}/reply`, {
+    method: "POST",
+    body: params
+  });
+};
 
 /**
  * 点赞教程（可取消）
  * @param params
- * @returns {Object}
+ * @return {Object}
  * @example
- * likeTutorial({
+ * likeComment({
  *  tutorialId:"tutorialA",
  *  likerId:"nancy"
  * })
  */
-export const likeTutorial = params => {
-    return request(`${version}/like/tutorial`, {
-        method: "POST",
-        body: params
-    });
-}
+export const likeComment = params =>{
+  return request(`${version}/like/tutorial`,{
+    method:"POST",
+    body:params
+  })
+};
+
 
 /**
  * 点赞评论（可取消）
  * @param params
- * @returns {Object}
- * @example
- * likeTutorial({
- *  commentId:"commentA",
+ * @return {Object}
+ * likeComment({
+ *  tutorialId:"tutorialA",
  *  likerId:"nancy"
  * })
  */
-export const likeComment = params => {
-    return request(`${version}/like/comment`, {
-        method: "POST",
-        body: params
-    });
-}
+export const likeReply = params =>{
+  return request(`${version}/like/comment`,{
+    method:"POST",
+    body:params
+  })
+};
