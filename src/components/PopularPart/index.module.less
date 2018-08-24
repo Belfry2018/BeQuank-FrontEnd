@@ -13,6 +13,7 @@
   border-radius: @default-radius;
   grid-template-columns: 60% 40%;
   box-shadow: @default-shadow;
+  overflow: hidden;
 
   .left-picture-part {
     position: relative;
@@ -32,6 +33,7 @@
         }
     }
     .hover-bottom {
+      cursor: pointer;
       z-index: 0;
       grid-row-start: auto;
 
@@ -99,6 +101,7 @@
     }
 
     .one-tip {
+      cursor: pointer;
       grid-row-start: auto;
       background-color: @text-background-color;
       margin-top: 1px;

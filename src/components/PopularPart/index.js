@@ -31,21 +31,21 @@ class PopularPart extends Component {
   }
 
   render() {
-    const {
-      imgSrc,
-      top0,
-      title0,
-      content0,
-      top1,
-      title1,
-      content1,
-      top2,
-      title2,
-      content2,
-      top3,
-      title3,
-      content3
-    } = this.props;
+
+    const { paramText } = this.props;
+    var imgSrc = paramText[0].imgSrc;
+    var top0 = paramText[0].top;
+    var title0 = paramText[0].title;
+    var content0 = paramText[0].content;
+    var top1 = paramText[1].top;
+    var title1 = paramText[1].title;
+    var content1 = paramText[1].content;
+    var top2 = paramText[2].top;
+    var title2 = paramText[2].title;
+    var content2 = paramText[2].content;
+    var top3 = paramText[3].top;
+    var title3 = paramText[3].title;
+    var content3 = paramText[3].content;
 
     return (
             <div className={styles["popular-part"]}>
