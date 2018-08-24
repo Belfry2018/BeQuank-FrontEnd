@@ -6,11 +6,13 @@ import PopularPart from './index'
 ## Basic usage
 
 <Playground>
-    <PopularPart imgSrc="./data/picture.png"
-    top0="you might like" title0="Six Nights in Namibia" content0="Few things get the world's travel press excited like allalallalalallalalalallalal"
-    top1="trip reviews" title1="The Andaman Islands" content1="Few things get the world's travel press excited like lalalallalalallalalallalalalla"
-    top2="travel guides" title2="Five reasons to visit Oman" content2="Few things get the world's travel press excited like lalalalallallallllallaallala"
-    top3="trip reviews" title3="A Desert Oasis in Jordan" content3="Few things get the world's travel press excited like lalalalalallalallalaallalal"></PopularPart>
+    <PopularPart
+    paramText={[{imgSrc: "./data/picture.png", top: "you might like", title: "xxxx", content: "Few things get the world's travel press excited like"},
+    {imgSrc: "./data/picture.png", top: "you might like", title: "xxxx", content: "Few things get the world's travel press excited like "},
+    {imgSrc: "./data/picture.png", top: "you might like", title: "xxxx", content: "Few things get the world's travel press excited like"},
+    {imgSrc: "./data/picture.png", top: "you might like", title: "xxxx", content: "Few things get the world's travel press excited like"}]}
+    ></PopularPart>
 
     注意 图片width/height = 9/5
+
 </Playground>
