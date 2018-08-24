@@ -29,8 +29,8 @@ class TrendChartOfPublicOpinion extends React.Component {
             }
         };
         return (
-            <div className={styles.trendChart}>
-                <Chart height={400} data={data} scale={cols} forceFit>
+            <div>
+                <Chart height={500} width={1500} data={data} scale={cols} placeholder className={styles.trendChart}>
                     <Axis name="date"/>
                     <Axis name="sentiment"/>
                     <Tooltip
