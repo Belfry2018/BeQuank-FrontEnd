@@ -1,3 +1,5 @@
+@import "../../themes/default";
+
 @max-component-width: 800px;
 
 .title {
@@ -6,28 +8,41 @@
 }
 
 .articleType {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: @article-title-article-type-font-size;
+  font-weight: @article-title-article-type-font-weight;
+  color: @article-title-article-type-font-color;
   opacity: 0.5;
 
   margin: 50px 0 5px 0;
 }
 
 .titleContent {
-  font-size: 30px;
-  font-weight: bold;
-  //color: #ffffff;
+  font-size: @article-title-content-font-size;
+  font-weight: @article-title-content-font-weight;
+  color: @article-title-content-font-color;
 
   margin: 5px 0 5px 0;
 }
 
-.articleDateAndAuthorName {
-  display: inline-block;
+.dateAndAuthorNameContainer {
+  p {
+    margin: 5px 50px 50px 50px;
+    display: inline-block;
+    text-align: center;
+  }
+}
 
-  margin: 5px 50px 50px 50px;
+.date {
+  font-size: @article-title-date-font-size;
+  font-weight: @article-title-date-font-weight;
+  color: @article-title-date-font-color;
+  opacity: 0.7;
+}
 
-  text-align: center;
-
+.authorName {
+  font-size: @article-title-author-name-font-size;
+  font-weight: @article-title-author-name-font-weight;
+  color: @article-title-author-name-font-color;
   opacity: 0.7;
 }
 
