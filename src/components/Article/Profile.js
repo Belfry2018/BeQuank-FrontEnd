@@ -9,23 +9,13 @@ import Contact from "./Profile/Contact";
 const AuthorDetailProps = {
     profilePictureURL: PropTypes.string,
     profileContent: PropTypes.object,
-    contactURL: PropTypes.object,
+    contactURLs: PropTypes.object,
 
     style: PropTypes.object,
 };
 
 const DefaultAuthorDetailProps = {
-    profilePictureURL: "",
-    profileContent: {
-        authorName: "",
-        introduction: ""
-    },
-    contactURLs: {
-        facebookURL: "#",
-        twitterURL: "#",
-        weiboURL: "#",
-        myWebsiteURL: "#",
-    }
+
 };
 
 class Profile extends PureComponent {
