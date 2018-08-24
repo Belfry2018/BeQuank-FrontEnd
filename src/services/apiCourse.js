@@ -10,6 +10,7 @@ import request from "../utils/request";
  *  authorNickname:"jack",
  *  authorId:"abc",
  *  title:"how to make money",
+ *  cover:"cover",
  *  abstract:"blabla",
  *  keyWords:{"money", "fortune"},
  *  content:"money is very important",
@@ -32,6 +33,7 @@ export const postTutorial = params => {
  * findTutorials({
  *  authorId:"jack",
  *  publishTime:"2018-08-13",
+ *  cover:"cover",
  *  abstract:"blabla",
  *  keyWords:{"money", "fortune"}
  * })

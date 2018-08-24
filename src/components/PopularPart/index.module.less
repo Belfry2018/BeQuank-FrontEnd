@@ -1,19 +1,18 @@
 @import "../../themes/default";
 @total-width : @page-max-width - @page-padding;
 @total-height: @total-width / 3;
-@background-color: rgba(235,235,235,0.73);
 @text-background-color: @page-primary-color;
 @picture-margin: 0px;
 @picture-width: @total-width / 5 * 3 - @picture-margin;
 @picture-height: @total-height - @picture-margin;
-@my-font: "SimHei";
 .popular-part {
   display: grid;
   max-width: @total-width;
   height: @total-height;
-  background-color: @background-color;
-  border-radius: @card-radius;
+  background-color: @pp-background-color;
+  border-radius: @default-radius;
   grid-template-columns: 60% 40%;
+  box-shadow: @default-shadow;
 
   .left-picture-part {
     position: relative;
@@ -50,25 +49,25 @@
       .top {
           grid-row-start: 3;
           grid-column-start: 2;
-          font-family: @my-font;
-          font-size: 10px;
-          color: rgba(255, 255, 255, 0.4);
+          font-family: @pp-font;
+          font-size: @pp-bottom-top-font-size;
+          color: @pp-bottom-hover-color;
           text-transform: uppercase;
         }
         .title {
-          font-family: @my-font;
+          font-family: @pp-font;
           grid-row-start: 5;
           grid-column-start: 2;
-          font-size: 19px;
+          font-size: @pp-bottom-title-font-size;
           font-weight: bold;
-          color: rgba(255, 255, 255, 0.8);
+          color: @pp-bottom-title-color;
         }
         .content {
-          font-family: @my-font;
+          font-family: @pp-font;
           grid-row-start: 8;
           grid-column-start: 2;
-          font-size: 10px;
-          color: rgba(255, 255, 255, 0.5);
+          font-size: @pp-bottom-content-font-size;
+          color: @pp-bottom-content-color;
         }
     }
   }
@@ -92,7 +91,7 @@
           grid-column-start: 2;
       }
       .title-text {
-        font-family: @my-font;
+        font-family: @pp-font;
         font-size: 22px;
         grid-row-start: 2;
         grid-column-start: 3;
@@ -110,30 +109,30 @@
       .tip-top {
         grid-row-start: 2;
         grid-column-start: 2;
-        font-family: @my-font;
-        font-size: 10px;
-        color: rgba(123, 125, 125, 0.3);
+        font-family: @pp-font;
+        font-size: @pp-tip-top-font-size;
+        color: @pp-tip-top-color;
         text-transform: uppercase;
       }
       .tip-title {
-        font-family: @my-font;
+        font-family: @pp-font;
         grid-row-start: 4;
         grid-column-start: 2;
-        font-size: 17px;
+        font-size: @pp-tip-title-font-size;
         font-weight: bold;
       }
       .tip-content {
-        font-family: @my-font;
+        font-family: @pp-font;
         grid-row-start: 7;
         grid-column-start: 2;
-        font-size: 10px;
-        color: rgba(100, 100, 100, 0.7);
+        font-size: @pp-tip-content-font-size;
+        color: @pp-tip-content-color;
       }
     }
 
     .one-tip:hover {
       transition-delay: 0.1s;
-      box-shadow: 3px 2px 5px #888888;
+      background-color: @pp-tip-hover-color;
     }
   }
 }
