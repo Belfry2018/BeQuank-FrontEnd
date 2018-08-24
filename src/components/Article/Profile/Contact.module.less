@@ -1,3 +1,5 @@
+@import "../../../themes/default";
+
 @font-face {
   font-family: 'iconfont';
   src: url('../../../fonts/icons/iconfont.eot');
@@ -12,7 +14,9 @@
 }
 
 .componentTitle {
-  font-size: 20px;
+  font-size: @article-profile-contact-component-title-font-size;
+  font-weight: @article-profile-contact-component-title-font-weight;
+  color: @article-profile-contact-component-title-font-color;
 
   margin: 0 0 5px 0;
 }
@@ -23,8 +27,9 @@
 
 .iconFont{
   font-family: "iconfont", serif !important;
-  font-size:30px;
+  font-size:@article-profile-contact-icon-font-size;
   font-style:normal;
+  color: @article-profile-contact-icon-font-color;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;

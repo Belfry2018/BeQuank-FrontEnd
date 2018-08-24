@@ -27,9 +27,9 @@ class Title extends PureComponent {
                 <div>
                     <p className={styles.titleContent}>{titleContent}</p>
                 </div>
-                <div>
-                    <p className={styles.articleDateAndAuthorName}>{date}</p>
-                    <p className={styles.articleDateAndAuthorName}>Written by {authorName}</p>
+                <div className={styles.dateAndAuthorNameContainer}>
+                    <p className={styles.date}>{date}</p>
+                    <p className={styles.authorName}>Written by {authorName}</p>
                 </div>
                 <img className={styles.image}
                      src={backgroundImgURL}
