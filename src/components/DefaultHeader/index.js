@@ -9,7 +9,7 @@ import {getUserProfile} from "../../services/apiUser";
 
 class DefaultHeader extends PureComponent {
   async componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
     await this.getUser();
   }
   
@@ -23,7 +23,7 @@ class DefaultHeader extends PureComponent {
   };
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   }
 
   state = {
@@ -44,7 +44,7 @@ class DefaultHeader extends PureComponent {
     return (
       <div
         className={`${styles["default-header"]} ${
-          isTop ? "" : styles["default-header-active"]
+          (isTop&&false) ? "" : styles["default-header-active"]
         }`}
       >
         <div className={styles["header-content"]}>

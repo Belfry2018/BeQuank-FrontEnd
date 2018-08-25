@@ -1,16 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "./index.module.less";
-class SmallPoint extends Component {
 
-    state = {
-        isTop: true
-    };
-
-
-    render() {
-
-        return ;
-    }
+export default function SmallPoint() {
+  return <div className={styles.point} />;
 }
-
-export default SmallPoint;
