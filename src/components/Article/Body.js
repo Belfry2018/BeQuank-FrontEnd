@@ -19,7 +19,7 @@ class Body extends PureComponent {
         const {style, articleContent} = this.props;
         return (
             <div className={styles.articleBody}>
-                <ReactMarkdown source={articleContent} />
+                <ReactMarkdown className={styles.typo} source={articleContent} />
             </div>
         );
     }

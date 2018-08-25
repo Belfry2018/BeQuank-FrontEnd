@@ -4,7 +4,14 @@
 
 .title {
   text-align: center;
-  margin: 50px 10px 50px 10px;
+  position: relative;
+  .titleSection{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8313725490196079), rgba(134, 171, 231, 0));
+  }
 }
 
 .articleType {
@@ -47,11 +54,5 @@
 }
 
 img.image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-
-  width: @max-component-width;
-  height: 200px;
+  width:100%;
 }

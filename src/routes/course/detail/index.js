@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import FontMock from "../../../components/AuthorizationComponents/FontMock";
 import { getTheTutorial } from "../../../services/apiCourse";
 import Article from "../../../components/Article";
+import Styles from "../index.module.less";
 
 export default class CourseDetail extends PureComponent {
   state = {
@@ -17,7 +18,6 @@ export default class CourseDetail extends PureComponent {
   }
 
   render() {
-    
     const {
       title,
       cover,
@@ -25,17 +25,21 @@ export default class CourseDetail extends PureComponent {
       content,
       authorNickname,
       authorId,
-      time
+      time,
+      tutorialType
     } = this.state.tutorial;
     return (
-      <div>
-        <Article
-          titleContent={title}
-          date={time}
-          authorName={authorNickname}
-          backgroundImgURL={cover}
-          articleContent={content}
-        />
+      <div className={Styles.bodySection}>
+        <div className={Styles.bodyItem}>
+          <Article
+            titleContent={title}
+            date={time}
+            authorName={authorNickname}
+            backgroundImgURL={cover}
+            articleContent={content}
+            tutorialType={tutorialType}
+          />
+        </div>
       </div>
     );
   }
