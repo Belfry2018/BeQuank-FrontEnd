@@ -38,9 +38,6 @@ Shape.registerShape('point', 'pointer', {
     },
 });
 
-const data = [
-    { value: 2 },//指针位置
-];
 const cols = {
     value: {
         min: 0,
@@ -52,6 +49,15 @@ const cols = {
 
 class SentimentDashBoard extends React.Component {
     render() {
+
+        let { sentiment, word } = this.props;
+
+        const data = [
+            { value: sentiment,
+              word: word },//指针位置
+        ];
+
+
         return (
             <Chart height={window.innerHeight} data={data} scale={cols} padding={[0, 0, 200, 0]} forceFit>
                 <Coord type="polar" startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.75} />
@@ -73,7 +79,7 @@ class SentimentDashBoard extends React.Component {
                         },
                         textStyle: {
                             fontSize: 20,//仪表盘下字体大小
-                            fill: 'rgba(120, 0, 0, 0.65)',//仪表盘下字体颜色
+                            fill: 'rgba(0, 0, 0, 0.65)',//仪表盘下字体颜色
                             textAlign: 'center',
                         },
                     }}
@@ -81,30 +87,30 @@ class SentimentDashBoard extends React.Component {
                 <Axis name="1" visible={false} />
                 <Guide>
                     <Line
-                        start={[3, 0.905]}
+                        start={[3, 0.9]}
                         end={[3.0035, 0.85]}
                         lineStyle={{
-                            stroke: '#fa775a', // 刻度线线的颜色
+                            stroke: '#fa5607', // 刻度线线的颜色
                             lineDash: null, // 虚线的设置
-                            lineWidth: 3,
+                            lineWidth: 5,
                         }}
                     />
                     <Line
-                        start={[4.5, 0.905]}
+                        start={[4.5, 0.9]}
                         end={[4.5, 0.85]}
                         lineStyle={{
-                            stroke: '#19AFFA', // 线的颜色
+                            stroke: '#faf331', // 线的颜色
                             lineDash: null, // 虚线的设置
-                            lineWidth: 3,
+                            lineWidth: 5,
                         }}
                     />
                     <Line
-                        start={[6, 0.905]}
+                        start={[6, 0.9]}
                         end={[6.0035, 0.85]}
                         lineStyle={{
-                            stroke: '#19AFFA', // 线的颜色
+                            stroke: '#1afa12', // 线的颜色
                             lineDash: null, // 虚线的设置
-                            lineWidth: 3,
+                            lineWidth: 5,
                         }}
                     />
                     <Arc
@@ -112,7 +118,7 @@ class SentimentDashBoard extends React.Component {
                         start={[0, 0.965]}
                         end={[9, 0.965]}
                         style={{ // 底灰色
-                            stroke: '#3a50ff',
+                            stroke: '#464848',
                             lineWidth: 30,
                             opacity: 0.09,
                         }}
@@ -127,8 +133,8 @@ class SentimentDashBoard extends React.Component {
                         }}
                     />
                     <Html
-                        position={['50%', '95%']}//百分数的位置
-                        html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">合格率</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value * 10}%</p></div>`)}
+                        position={['50%', '80%']}//百分数的位置
+                        html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.75em; color: rgba(0,0,0,0.43);margin: 0;">${data[0].word}</p><p style="font-size: 3em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].value}</p></div>`)}
                     />
                 </Guide>
                 <Geom
@@ -136,8 +142,8 @@ class SentimentDashBoard extends React.Component {
                     position="value*1"
                     shape="pointer"
                     color="#1890FF"
-                    active={false}
-                    style={{ stroke: '#f19bff', lineWidth: 10 }}
+                    active={true}
+                    style={{ stroke: '#f19bff', lineWidth: 1 }}
                 />
             </Chart>
         );
