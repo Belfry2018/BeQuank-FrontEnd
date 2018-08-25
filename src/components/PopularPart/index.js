@@ -4,57 +4,48 @@ import styles from "./index.module.less";
 import picture from "./data/picture.png";
 import greenPoint from "./data/greenPoint.png";
 import TextCutter from "../TextCutter";
-
-const PopularPartProps = {
-  imgSrc: PropTypes.string.isRequired,
-  top0: PropTypes.string.isRequired,
-  title0: PropTypes.string.isRequired,
-  content0: PropTypes.string.isRequired,
-  top1: PropTypes.string.isRequired,
-  title1: PropTypes.string.isRequired,
-  content1: PropTypes.string.isRequired,
-  top2: PropTypes.string.isRequired,
-  title2: PropTypes.string.isRequired,
-  content2: PropTypes.string.isRequired,
-  top3: PropTypes.string.isRequired,
-  title3: PropTypes.string.isRequired,
-  content3: PropTypes.string.isRequired
-};
-
-const DefaultPopularPartProps = {};
+import SmallPoint from "../SmallPoint";
 
 class PopularPart extends Component {
-  state = {};
 
-  handleClick(i) {
-    alert(i);
+  handleClick(tutorialId) {
+    alert(tutorialId);
   }
 
   render() {
 
     const { paramText } = this.props;
-    var imgSrc = paramText[0].imgSrc;
+    let imgSrc = paramText[0].imgSrc;
     var top0 = paramText[0].top;
     var title0 = paramText[0].title;
     var content0 = paramText[0].content;
+    let id0 = paramText[0].ttId;
+    
     var top1 = paramText[1].top;
     var title1 = paramText[1].title;
     var content1 = paramText[1].content;
+    let id1 = paramText[1].ttId;
+
     var top2 = paramText[2].top;
     var title2 = paramText[2].title;
     var content2 = paramText[2].content;
+    let id2 = paramText[2].ttId;
+
     var top3 = paramText[3].top;
     var title3 = paramText[3].title;
     var content3 = paramText[3].content;
+    let id3 = paramText[3].ttId;
+
 
     return (
             <div className={styles["popular-part"]}>
                     <div className={styles["left-picture-part"]}>
                          <div className={styles.picture}>
-                             <img src={picture} />
+                             <img src={imgSrc} />
                          </div>
 
-                     <div className={styles["hover-bottom"]}>
+                     <div className={styles["hover-bottom"]}
+                          onClick={() => this.handleClick(id0)}>
                        <div className={styles.top}>{top0}</div>
                        <div className={styles.title}>{title0}</div>
                        <div className={styles.content}>
@@ -65,12 +56,12 @@ class PopularPart extends Component {
 
             <div className={styles["right-text-part"]}>
                 <div className={styles["title"]}>
-                    <img className={styles["title-picture"]} src={greenPoint}></img>
+                    <div className={styles["title-picture"]}><SmallPoint /></div>
                     <div className={styles["title-text"]}>What you might like</div>
                 </div>
 
                 <div className={styles["one-tip"]}
-                     onClick={() => this.handleClick(1)}
+                     onClick={() => this.handleClick(id1)}
                 >
                     <div className={styles["tip-top"]}>{top1}</div>
                     <div className={styles["tip-title"]}>{title1}</div>
@@ -79,7 +70,7 @@ class PopularPart extends Component {
                     </div>
                 </div>
                 <div className={styles["one-tip"]}
-                     onClick={() => this.handleClick(2)}>
+                     onClick={() => this.handleClick(id2)}>
                     <div className={styles["tip-top"]}>{top2}</div>
                     <div className={styles["tip-title"]}>{title2}</div>
                     <div className={styles["tip-content"]}>
@@ -87,7 +78,7 @@ class PopularPart extends Component {
                     </div>
                 </div>
                 <div className={styles["one-tip"]}
-                     onClick={() => this.handleClick(3)}>
+                     onClick={() => this.handleClick(id3)}>
                     <div className={styles["tip-top"]}>{top3}</div>
                     <div className={styles["tip-title"]}>{title3}</div>
                     <div className={styles["tip-content"]}>
@@ -100,8 +91,8 @@ class PopularPart extends Component {
     }
 }
 
-PopularPart.propTypes = PopularPartProps;
+PopularPart.propTypes = {
+    paramText: PropTypes.objectOf(PropTypes.object)
 
-PopularPart.defaultProps = DefaultPopularPartProps;
-
+}
 export default PopularPart;
