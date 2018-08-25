@@ -1,16 +1,19 @@
 import React from "react";
 import DefaultHeader from "../components/DefaultHeader";
 import AuthorizationRoute from "../components/AuthorizationComponents/AuthorizationRoute";
+import styles from "./DefaultLayout.module.less"
 
 export const DefaultLayout = ({ component: Component, ...rest }) => {
   return (
     <AuthorizationRoute
       component={function({ ...props }) {
         return (
-          <div>
+          <div className={styles.wholeBody}>
             <DefaultHeader />
-            <Component {...props} />
-            <div className="Footer">Footer</div>
+            <div className={styles.BodyContent}>
+              <Component {...props} />
+            </div>
+            <div className={styles.TmpFooter}>@Belfry</div>
           </div>
         );
       }}
