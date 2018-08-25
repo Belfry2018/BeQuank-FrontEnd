@@ -1,0 +1,51 @@
+@import "../../../../themes/default";
+
+.wholeFilter{
+  height: 50px;
+  width: 100%;
+  border-radius: @default-radius;
+  background: @page-primary-color;
+  box-shadow: @default-shadow;
+  overflow: hidden;
+  font: @default-font;
+  display: flex;
+  justify-content: space-between;
+  .leftPart{
+    height: 100%;
+    display: flex;
+    margin-left: 20px;
+    .leftItem{
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0 10px;
+      font-size: @header-font-size;
+      padding: 0 15px;
+      opacity: 0.4;
+      font-weight: bold;
+      text-decoration:none;
+      color: black;
+
+    }
+  }
+
+  .rightPart {
+    display: flex;
+    height: 100%;
+
+    .rightItem {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0 10px;
+      font-size: @header-font-size;
+      padding: 0 15px;
+      opacity: 0.8;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
