@@ -3,7 +3,7 @@ import Styles from "./index.module.less";
 import { getTutorials } from "../../services/apiCourse";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
-import Card from "../../components/Card"
+import Card from "../../components/Card";
 import { Col, Row } from "antd";
 
 export default class Course extends PureComponent {
@@ -43,11 +43,11 @@ export default class Course extends PureComponent {
         </div>
         <div className={Styles.bodyItem}>
           <Row gutter={40}>
-            {tutorials.map(e => {
-              <Col md={6}>
-                <Card />
-              </Col>;
-            })}
+            {tutorials.map((e, index )=> (
+              <Col key={`tutorial${index}`} style={{ marginBottom: 40 }} md={8}>
+                <Card context={e.abstract} header={e.title} src={e.cover} />
+              </Col>
+            ))}
           </Row>
         </div>
       </div>
