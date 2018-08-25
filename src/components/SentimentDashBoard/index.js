@@ -25,7 +25,7 @@ Shape.registerShape('point', 'pointer', {
                 lineCap: 'round',
             },
         });
-        return group.addShape('circle', {
+        return group.addShape('circle', {//指针根部小圆圈
             attrs: {
                 x: center.x,
                 y: center.y,
