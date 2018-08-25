@@ -4,6 +4,7 @@ import styles from "./index.module.less";
 import picture from "./data/picture.png";
 import greenPoint from "./data/greenPoint.png";
 import TextCutter from "../TextCutter";
+import SmallPoint from "../SmallPoint";
 
 class PopularPart extends Component {
 
@@ -40,7 +41,7 @@ class PopularPart extends Component {
             <div className={styles["popular-part"]}>
                     <div className={styles["left-picture-part"]}>
                          <div className={styles.picture}>
-                             <img src={picture} />
+                             <img src={imgSrc} />
                          </div>
 
                      <div className={styles["hover-bottom"]}
@@ -55,7 +56,7 @@ class PopularPart extends Component {
 
             <div className={styles["right-text-part"]}>
                 <div className={styles["title"]}>
-                    <img className={styles["title-picture"]} src={greenPoint}></img>
+                    <div className={styles["title-picture"]}><SmallPoint /></div>
                     <div className={styles["title-text"]}>What you might like</div>
                 </div>
 
