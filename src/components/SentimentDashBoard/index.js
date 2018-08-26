@@ -54,15 +54,21 @@ const cols = {
 class SentimentDashBoard extends React.Component {
 
     sentimentScore(senti) {
-        if(senti > 0 ){
-            return 4.5 + Math.log( senti + 1 ) / 1.9;
-        }
-        else if(senti < 0){
-            return 4.5 - Math.log( - senti + 1 ) / 1.9;
-        }
-        else {
-            return 4.5;
-        }
+       if(senti > 1000) {
+           return 9.0;
+       }
+       else if (senti < -1000) {
+           return 0.0;
+       }
+       else if (senti > 5.0) {
+           return 0.5 * Math.log(senti + 1) + 5.5;
+       }
+       else if (senti < -5.0) {
+           return -0.5 * Math.log(-senti + 1) + 3.5;
+       }
+       else {
+           return senti /10.0 + 4.5;
+       }
     }
 
     render() {
