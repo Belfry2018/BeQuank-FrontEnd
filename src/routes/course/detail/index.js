@@ -3,6 +3,7 @@ import FontMock from "../../../components/AuthorizationComponents/FontMock";
 import { getTheTutorial } from "../../../services/apiCourse";
 import Article from "../../../components/Article";
 import Styles from "../index.module.less";
+import Comment from "../components/Comment";
 
 export default class CourseDetail extends PureComponent {
   state = {
@@ -10,21 +11,29 @@ export default class CourseDetail extends PureComponent {
   };
 
   async componentDidMount() {
+    await this.getTutorial();
+  }
+
+  commentSuccessEvent = async () => {
+    await this.getTutorial();
+  };
+
+  getTutorial = async () => {
     const { tutorialId } = this.props.match.params;
     if (tutorialId) {
       const tutorial = await getTheTutorial(tutorialId);
       this.setState({ tutorial });
     }
-  }
+  };
 
   render() {
+    const { tutorialId } = this.props.match.params;
     const {
       title,
       cover,
-      abstract,
+      comments,
       content,
-      authorNickname,
-      authorId,
+      author = {},
       time,
       tutorialType
     } = this.state.tutorial;
@@ -34,11 +43,14 @@ export default class CourseDetail extends PureComponent {
           <Article
             titleContent={title}
             date={time}
-            authorName={authorNickname}
+            author={author}
             backgroundImgURL={cover}
             articleContent={content}
             tutorialType={tutorialType}
           />
+        </div>
+        <div className={Styles.bodyItem}>
+          <Comment commentSuccessEvent={this.commentSuccessEvent} tutorialId={tutorialId} comments={comments} />
         </div>
       </div>
     );
