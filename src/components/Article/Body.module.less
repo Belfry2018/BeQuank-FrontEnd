@@ -6,6 +6,73 @@
   margin: 50px 50px 50px 50px;
   font-size: @article-body-overall-font-size;
 
+  /* 块/段落引用 */
+  blockquote {
+    position: relative;
+    color: #999;
+    font-weight: 400;
+    border-left: 1px solid #1abc9c;
+    padding-left: 1em;
+    margin: 1em 3em 1em 2em;
+  }
+
+  @media only screen and ( max-width: 640px ) {
+    blockquote {
+      margin: 1em 0;
+    }
+  }
+
+  acronym, abbr {
+    border-bottom: 1px dotted;
+    font-variant: normal;
+  }
+
+  /* 一致的 del 样式 */
+  del {
+    text-decoration: line-through;
+  }
+
+  /* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
+  ul, ol {
+    list-style: none;
+  }
+
+  /* 对齐是排版最重要的因素, 别让什么都居中 */
+  caption, th {
+    text-align: left;
+  }
+
+  q:before, q:after {
+    content: '';
+  }
+
+  /* 统一上标和下标 */
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+  }
+
+  :root sub, :root sup {
+    vertical-align: baseline; /* for ie9 and other modern browsers */
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  /* 让链接在 hover 状态下显示下划线 */
+  a {
+    color: #1abc9c;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 
   /* 保证块/段落之间的空白隔行 */
   .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
@@ -15,7 +82,6 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-    font-weight: 100;
     color: #000;
     line-height: 1.35;
   }
@@ -117,5 +183,6 @@
   /* Responsive images */
   .typo img {
     max-width: 100%;
+    border-radius: @default-radius;
   }
 }

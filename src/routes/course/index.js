@@ -41,6 +41,7 @@ class Course extends PureComponent {
                   ttId: e.tutorialId
                 };
               })}
+              handleCourseClicked={this.handleCourseClick}
             />
           </div>
         )}
