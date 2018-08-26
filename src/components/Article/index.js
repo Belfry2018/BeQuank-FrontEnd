@@ -46,7 +46,7 @@ class Article extends PureComponent {
     render() {
         const {style,
             titleContent, date, authorName, backgroundImgURL,
-            articleContent,
+            articleContent,tutorialType,
             profilePictureURL, profileContent, contactURLs
         } = this.props;
 
@@ -56,12 +56,13 @@ class Article extends PureComponent {
                        date={date}
                        authorName={authorName}
                        backgroundImgURL = {backgroundImgURL}
+                       tutorialType={tutorialType}
                 />
                 <Body articleContent={articleContent}/>
-                <Profile profilePictureURL={profilePictureURL}
-                         profileContent = {profileContent}
-                         contactURLs = {contactURLs}
-                />
+                {/*<Profile profilePictureURL={profilePictureURL}*/}
+                         {/*profileContent = {profileContent}*/}
+                         {/*contactURLs = {contactURLs}*/}
+                {/*/>*/}
             </div>
         );
     }

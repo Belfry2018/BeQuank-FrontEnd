@@ -5,16 +5,19 @@
   height: 100%;
   //box-shadow: rgba(157, 155, 160, 0.43) 0px 0px 15px 8px;
   box-shadow: @card-shadow;
-  border-width: 1px 1px 1px 1px;
   border-radius: @default-radius;
   overflow: hidden;
   background: @card-primary-color;
+  position: relative;
+  transition: 0.5s all;
+  cursor: pointer;
 }
 
 .card:hover{
-  border-width: 5px 5px 5px 5px;
-  border-color: #69c0ff;
+  box-shadow: @default-shadow-active;
 }
+
+
 
 .imgbox{
   width: 100%;
@@ -28,19 +31,18 @@
   border-radius: @card-radius @card-radius 0px 0px;
 }
 
-.button{
+.top{
   position: absolute;
-  left: 290px;
-  top: 70px;
-  z-index: 1;
-  zoom: 70%;
+  right: 20px;
+  top: 15px;
+  color: grey;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 1px 20px;
+  border-radius: 999px;
 }
 
 .textbox{
-  height: 50%;
-  margin-top: 28px;
-  margin-left: 35px;
-  margin-right: 35px;
+  margin: 28px;
 }
 
 .textbox h3{
@@ -53,12 +55,12 @@
   font-weight: 300;
   line-height: 16px;
   font-size: @card-text-size;
-  color: rgba(46, 46, 46, 0.6);
+  color: rgba(46, 46, 46, 0.73);
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .time {
-  font-size: 70%;
-  color: rgba(46, 46, 46, 0.23);
+  font-size: 14px;
+  color: rgba(46, 46, 46, 0.4);
 }

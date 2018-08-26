@@ -43,10 +43,21 @@ export default class ArticleTest extends PureComponent {
             '进销存系统中客户端构件是放在客户端机器上，服务器端构件是放在服务器端机器上。在客户端节点上，还要部署RMIStub构件。由于Java RMI构件属于JDK的一部分。所以，在系统JDK环境已经设置好的情况下，不需要再独立部署。部署图如下图所示。';
 
         return (
-            <Article titleContent={titleContent} date={date} authorName={authorName} backgroundImgURL={backgroundImgURL}
-                     articleContent={articleContent}
-                     profilePictureURL={profilePictureURL} profileContent={profileContent}
-            />
+            <div
+                style={{
+                    position: "absolute",
+                    left: "20%",
+                    top: "20%",
+                    width: "800px",
+                }}
+            >
+                <Article
+                    titleContent={titleContent} date={date} authorName={authorName} backgroundImgURL={backgroundImgURL}
+                    articleContent={articleContent}
+                    profilePictureURL={profilePictureURL} profileContent={profileContent}
+                />
+            </div>
+
         );
     }
 }

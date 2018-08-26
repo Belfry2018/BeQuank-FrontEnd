@@ -9,7 +9,8 @@ import SmallPoint from "../SmallPoint";
 class PopularPart extends Component {
 
   handleClick(tutorialId) {
-    alert(tutorialId);
+    const {handleCourseClicked}=this.props;
+    handleCourseClicked(tutorialId);
   }
 
   render() {
