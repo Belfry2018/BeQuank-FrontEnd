@@ -5,6 +5,7 @@ import plus from "./twotone-add_circle-24px.svg";
 import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
+import LoadingSpin from '../../LoadingSpin';
 import {
   DropdownButton,
   DropdownDivider
@@ -49,15 +50,15 @@ const DropdownLink = ({ iconType, component: Component, isDivider }) => {
   );
 };
 
-const NickNameSpace=({children})=>{
-  return <div style={{padding:"5px 20px"}}>{children}</div>
+const NickNameSpace = ({ children }) => {
+  return <div style={{ padding: "5px 20px" }}>{children}</div>;
 };
 
 const UserSectionProps = {
   /** Define url of avatar */
-  avatarUrl: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
   /** Define type of button */
-  nickName: PropTypes.string.isRequired
+  nickName: PropTypes.string
 };
 
 class UserSection extends PureComponent {
@@ -79,12 +80,18 @@ class UserSection extends PureComponent {
           </div>
           <Dropdown
             overlay={[
-              <NickNameSpace key={"nickname-space"} >{nickName}</NickNameSpace>,
+              <NickNameSpace key={"nickname-space"}>{nickName}</NickNameSpace>,
               <DropdownDivider key={"nickname-divider"} />,
-              ...linkList.map((listItem,index)=><DropdownLink key={`dropdown-links-${index}`} {...listItem} />)
+              ...linkList.map((listItem, index) => (
+                <DropdownLink key={`dropdown-links-${index}`} {...listItem} />
+              ))
             ]}
           >
-            <img alt={""} src={avatarUrl} className={styles.avatar} />
+            {avatarUrl ? (
+              <img alt={""} src={avatarUrl} className={styles.avatar} />
+            ) : (
+              <LoadingSpin background="#2980B9">Primary</LoadingSpin>
+            )}
           </Dropdown>
         </div>
       </div>

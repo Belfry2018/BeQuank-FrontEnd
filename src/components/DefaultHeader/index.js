@@ -1,17 +1,29 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./index.module.less";
 import {Link, NavLink} from "react-router-dom";
 import Button from "../Button";
 import UserSection from "./UserSection";
 import Authorization from "../AuthorizationComponents/Authorization";
+import {judgeLogin} from "../../utils/authorization";
+import {getUserProfile} from "../../services/apiUser";
 
-class DefaultHeader extends Component {
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+class DefaultHeader extends PureComponent {
+  async componentDidMount() {
+    // window.addEventListener("scroll", this.handleScroll);
+    await this.getUser();
   }
+  
+  getUser = async () =>{
+    if(judgeLogin()){
+      let userInfo = await getUserProfile();
+      this.setState((prevState) => {
+        return {...prevState,...userInfo};
+      });
+    }
+  };
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   }
 
   state = {
@@ -27,12 +39,12 @@ class DefaultHeader extends Component {
   };
 
   render() {
-    const { isTop } = this.state;
-
+    const { isTop, nickname, avatar } = this.state;
+    
     return (
       <div
         className={`${styles["default-header"]} ${
-          isTop ? "" : styles["default-header-active"]
+          (isTop&&false) ? "" : styles["default-header-active"]
         }`}
       >
         <div className={styles["header-content"]}>
@@ -78,7 +90,7 @@ class DefaultHeader extends Component {
 
             } afterAuthorization={
               <div className={`${styles["user-item"]} ${styles.button}`}>
-                <UserSection avatarUrl={""} nickName={""} />
+                <UserSection avatarUrl={avatar} nickName={nickname} />
               </div>
             }/>
             

@@ -1,17 +1,21 @@
 import React from "react";
 import PageLoadable from "../../components/Loadable/PageLoadable";
-import {DefaultLayout} from "../../layout/DefaultLayout";
-import {ALL_ROLE_TYPE} from "../../utils/authorization";
-
+import { DefaultLayout } from "../../layout/DefaultLayout";
+import { ALL_ROLE_TYPE } from "../../utils/authorization";
 
 const Home = PageLoadable(() => import("../home/index"));
 const Course = PageLoadable(() => import("../course/index"));
+const CourseDetail = PageLoadable(() => import("../course/detail/index"));
 const Insight = PageLoadable(() => import("../insight/index"));
 const Strategy = PageLoadable(() => import("../strategy/index"));
 
+const article = PageLoadable(() => import("../articleTest/index"));
+
 export default [
   <DefaultLayout path="/" exact component={Home} />,
-  <DefaultLayout path="/course" component={Course} />,
+  <DefaultLayout path="/course" exact component={Course} />,
+  <DefaultLayout path="/course/:tutorialId" component={CourseDetail} />,
   <DefaultLayout path="/insight" component={Insight} />,
-  <DefaultLayout path="/strategy" component={Strategy} role={ALL_ROLE_TYPE} />
+  <DefaultLayout path="/strategy" component={Strategy} role={ALL_ROLE_TYPE} />,
+  <DefaultLayout path="/articleTest" component={article} />
 ];

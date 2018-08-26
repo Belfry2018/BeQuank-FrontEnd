@@ -1,0 +1,58 @@
+@import "../../themes/default";
+
+@max-component-width: 800px;
+
+.title {
+  text-align: center;
+  position: relative;
+  .titleSection{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8313725490196079), rgba(134, 171, 231, 0));
+  }
+}
+
+.articleType {
+  font-size: @article-title-article-type-font-size;
+  font-weight: @article-title-article-type-font-weight;
+  color: @article-title-article-type-font-color;
+  opacity: 0.5;
+
+  margin: 50px 0 5px 0;
+}
+
+.titleContent {
+  font-size: @article-title-content-font-size;
+  font-weight: @article-title-content-font-weight;
+  color: @article-title-content-font-color;
+
+  margin: 5px 0 5px 0;
+}
+
+.dateAndAuthorNameContainer {
+  p {
+    margin: 5px 50px 50px 50px;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.date {
+  font-size: @article-title-date-font-size;
+  font-weight: @article-title-date-font-weight;
+  color: @article-title-date-font-color;
+  opacity: 0.7;
+}
+
+.authorName {
+  font-size: @article-title-author-name-font-size;
+  font-weight: @article-title-author-name-font-weight;
+  color: @article-title-author-name-font-color;
+  opacity: 0.7;
+}
+
+img.image {
+  width:100%;
+}
