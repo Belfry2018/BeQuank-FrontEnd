@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import FontMock from "../../../components/AuthorizationComponents/FontMock";
+import { message } from "antd";
 import { getTheTutorial } from "../../../services/apiCourse";
 import Article from "../../../components/Article";
 import Styles from "../index.module.less";
@@ -16,6 +16,7 @@ export default class CourseDetail extends PureComponent {
 
   commentSuccessEvent = async () => {
     await this.getTutorial();
+    message.success("评论成功");
   };
 
   getTutorial = async () => {
@@ -50,7 +51,11 @@ export default class CourseDetail extends PureComponent {
           />
         </div>
         <div className={Styles.bodyItem}>
-          <Comment commentSuccessEvent={this.commentSuccessEvent} tutorialId={tutorialId} comments={comments} />
+          <Comment
+            commentSuccessEvent={this.commentSuccessEvent}
+            tutorialId={tutorialId}
+            comments={comments}
+          />
         </div>
       </div>
     );
