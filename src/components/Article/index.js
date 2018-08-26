@@ -5,6 +5,7 @@ import styles from "./index.module.less";
 import Title from "./Title";
 import Body from "./Body";
 import Profile from "./Profile";
+import LikeButton from "./LikeButton"
 
 const ArticleProps = {
   titleContent: PropTypes.string,
@@ -59,14 +60,34 @@ class Article extends PureComponent {
 
     const { username, nickname, avatar, bio } = author;
 
-    return <div className={styles.article}>
-        <Title titleContent={titleContent} date={date} authorName={nickname} backgroundImgURL={backgroundImgURL} tutorialType={tutorialType} />
-        <Body articleContent={articleContent} />
-        <Profile profilePictureURL={avatar} profileContent={{
-          authorName: nickname,
-          introduction: bio
-        }} />
-      </div>;
+    return (
+      <div>
+        <div className={styles.article}>
+          <Title
+            titleContent={titleContent}
+            date={date}
+            authorName={nickname}
+            backgroundImgURL={backgroundImgURL}
+            tutorialType={tutorialType}
+          />
+          <Body articleContent={articleContent} />
+        </div>
+        <div className={styles.bottomSection}>
+          <div className={styles.profileSection}>
+            <Profile
+              profilePictureURL={avatar}
+              profileContent={{
+                authorName: nickname,
+                introduction: bio
+              }}
+            />
+          </div>
+          <div className={styles.likeSection}>
+            <LikeButton />
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
