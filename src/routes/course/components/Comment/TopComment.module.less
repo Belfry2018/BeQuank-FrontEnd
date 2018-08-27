@@ -47,14 +47,17 @@
         margin-right: 10px;
         color: grey;
         font-size: 15px;
-        cursor: pointer;
-        &:hover{
-          color: black;
+        display: flex;
+        .topRightItems{
+          cursor: pointer;
+          .commentIcon{
+            padding-right: 3px;
+          }
+          &:hover{
+            color: black;
+          }
         }
 
-        .replyIcon{
-          padding-right: 3px;
-        }
       }
 
     }

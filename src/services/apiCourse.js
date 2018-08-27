@@ -1,4 +1,4 @@
-import {version} from "./apiOverview";
+import { version } from "./apiOverview";
 import request from "../utils/request";
 
 /**
@@ -46,7 +46,6 @@ export const getTutorials = params => {
   });
 };
 
-
 /**
  * 修改密码
  * @param tutorialId
@@ -56,7 +55,7 @@ export const getTutorials = params => {
  * @throws 418
  */
 export const getTheTutorial = tutorialId => {
-  return request(`${version}/tutorial?id=${tutorialId}`)
+  return request(`${version}/tutorial?id=${tutorialId}`);
 };
 
 /**
@@ -78,7 +77,6 @@ export const postComment = params => {
     body: params
   });
 };
-
 
 /**
  * 回复评论
@@ -102,34 +100,24 @@ export const replyComment = params => {
 
 /**
  * 点赞教程（可取消）
- * @param params
  * @return {Object}
- * @example
- * likeComment({
- *  tutorialId:"tutorialA",
- *  likerId:"nancy"
- * })
+ * @param tutorialId tutorial编号
  */
-export const likeComment = params =>{
-  return request(`${version}/like/tutorial`,{
-    method:"POST",
-    body:params
-  })
+export const likeTutorial = tutorialId => {
+  return request(`${version}/like/tutorial`, {
+    method: "POST",
+    body: { tutorialId }
+  });
 };
-
 
 /**
  * 点赞评论（可取消）
- * @param params
  * @return {Object}
- * likeComment({
- *  tutorialId:"tutorialA",
- *  likerId:"nancy"
- * })
+ * @param commentId comment编号
  */
-export const likeReply = params =>{
-  return request(`${version}/like/comment`,{
-    method:"POST",
-    body:params
-  })
+export const likeComment = commentId => {
+  return request(`${version}/like/comment`, {
+    method: "POST",
+    body: {commentId}
+  });
 };

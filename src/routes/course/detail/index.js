@@ -18,6 +18,11 @@ export default class CourseDetail extends PureComponent {
     await this.getTutorial();
     message.success("评论成功");
   };
+  
+  likeEvent=async()=>{
+    await this.getTutorial();
+    message.success("操作成功");
+  };
 
   getTutorial = async () => {
     const { tutorialId } = this.props.match.params;
@@ -36,7 +41,9 @@ export default class CourseDetail extends PureComponent {
       content,
       author = {},
       time,
-      tutorialType
+      tutorialType,
+      likeCount,
+      alreadyLike
     } = this.state.tutorial;
     return (
       <div className={Styles.bodySection}>
@@ -48,10 +55,15 @@ export default class CourseDetail extends PureComponent {
             backgroundImgURL={cover}
             articleContent={content}
             tutorialType={tutorialType}
+            likeCount={likeCount}
+            alreadyLike={alreadyLike}
+            likeEvent={this.likeEvent}
+            tutorialId={tutorialId}
           />
         </div>
         <div className={Styles.bodyItem}>
           <Comment
+            onLikeCommentEvent={this.likeEvent}
             commentSuccessEvent={this.commentSuccessEvent}
             tutorialId={tutorialId}
             comments={comments}
