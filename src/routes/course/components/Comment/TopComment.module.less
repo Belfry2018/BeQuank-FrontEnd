@@ -1,0 +1,72 @@
+
+.subUser{
+  display: flex;
+  align-items: self-start;
+  .icon{
+    transform: rotate(180deg);
+    padding-right: 60px;
+    padding-bottom: 55px;
+    .wholePart{
+      padding: 25px 40px;
+    }
+  }
+}
+
+.wholePart {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 30px;
+  }
+
+  .rightPart {
+    width: 100%;
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .topLeft {
+        display: flex;
+        align-items: center;
+        .nickname {
+          font-size: 20px;
+          font-weight: bold;
+          padding-right: 30px;
+        }
+
+        .time {
+          font-size: 15px;
+          color: grey;
+        }
+      }
+      .topRight {
+        margin-right: 10px;
+        color: grey;
+        font-size: 15px;
+        cursor: pointer;
+        &:hover{
+          color: black;
+        }
+
+        .replyIcon{
+          padding-right: 3px;
+        }
+      }
+
+    }
+
+    .content {
+      font-size: 16px;
+      margin-top: 4px;
+      color: grey;
+    }
+  }
+}
+
+.topComment {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) ;
+}

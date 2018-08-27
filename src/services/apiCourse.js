@@ -73,7 +73,7 @@ export const getTheTutorial = tutorialId => {
  * })
  */
 export const postComment = params => {
-  return request(`${version}/tutorials`, {
+  return request(`${version}/comment`, {
     method: "POST",
     body: params
   });
