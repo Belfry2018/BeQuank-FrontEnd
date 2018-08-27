@@ -81,6 +81,7 @@ class DefaultHeader extends PureComponent {
                 <Link
                   className={styles["user-item"]}
                   to={"/login"}
+                  style={{marginRight:40}}
                 >登陆</Link>
                 <Link
                   className={`${styles["user-item"]} ${styles.button}`}

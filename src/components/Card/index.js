@@ -1,5 +1,4 @@
 import React, { PureComponent } from "react";
-import Button from "../Button/index";
 import styles from "./index.module.less";
 
 class MyCard extends PureComponent {

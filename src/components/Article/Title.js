@@ -1,18 +1,6 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import styles from "./Title.module.less";
-import { Icon } from "antd";
 
-const TitleProps = {
-  titleContent: PropTypes.string,
-  date: PropTypes.string,
-  authorName: PropTypes.string,
-  backgroundImgURL: PropTypes.string,
-
-  style: PropTypes.object
-};
-
-const DefaultTitleProps = {};
 
 class Title extends PureComponent {
   render() {
@@ -39,9 +27,5 @@ class Title extends PureComponent {
     );
   }
 }
-
-Title.propTypes = TitleProps;
-
-Title.defaultProps = DefaultTitleProps;
 
 export default Title;

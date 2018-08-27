@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import { judgeAuthorization } from "../../utils/authorization";
-import ScrollToTopOnMount from "../ScrollToTopOnMount";
 
 export default function({ component: Component, role, ...rest }) {
   return (

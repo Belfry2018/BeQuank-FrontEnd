@@ -1,31 +1,74 @@
 import React, { PureComponent } from "react";
 import Styles from "./TopComment.module.less";
 import { Icon } from "antd";
-import {judgeLogin} from "../../../../utils/authorization";
+import { judgeLogin } from "../../../../utils/authorization";
+import { likeComment } from "../../../../services/apiCourse";
 
-function User({ author = {}, time, content, replyEvent}) {
-  const { username, nickname, avatar, bio } = author;
-  return (
-    <div className={Styles.wholePart}>
-      <img className={Styles.avatar} src={avatar} alt={""} />
-      <div className={Styles.rightPart}>
-        <div className={Styles.top}>
-          <div className={Styles.topLeft}>
-            <div className={Styles.nickname}>{nickname}</div>
-            <div className={Styles.time}>{time}</div>
-          </div>
-          {replyEvent&&judgeLogin() ? (
-            <div onClick={() => replyEvent(author)} className={Styles.topRight}>
-              <Icon className={Styles.replyIcon} type="form" />回复
+class User extends PureComponent {
+  state = {
+    likeLoading: false
+  };
+
+  onLikeEvent = async () => {
+    const { onLikeCommentEvent = () => {}, commentId } = this.props;
+    this.setState({ likeLoading: true });
+    likeComment(commentId);
+    await onLikeCommentEvent();
+    this.setState({ likeLoading: false });
+  };
+
+  render() {
+    const {
+      author = {},
+      time,
+      content,
+      replyEvent,
+      alreadyLike = false
+    } = this.props;
+    const { nickname, avatar  } = author;
+    const { likeLoading } = this.state;
+    const likeIcon = likeLoading
+      ? "loading"
+      : alreadyLike
+        ? "heart"
+        : "heart-o";
+    const likeText = alreadyLike ? "已喜欢" : "喜欢";
+    return (
+      <div className={Styles.wholePart}>
+        <img className={Styles.avatar} src={avatar} alt={""} />
+        <div className={Styles.rightPart}>
+          <div className={Styles.top}>
+            <div className={Styles.topLeft}>
+              <div className={Styles.nickname}>{nickname}</div>
+              <div className={Styles.time}>{time}</div>
             </div>
-          ) : (
-            undefined
-          )}
+            {replyEvent && judgeLogin() ? (
+              <div className={Styles.topRight}>
+                <div
+                  onClick={this.onLikeEvent}
+                  className={Styles.topRightItems}
+                  style={{ marginRight: 25 }}
+                >
+                  <Icon className={Styles.commentIcon} type={likeIcon} />
+                  {likeText}
+                </div>
+                <div
+                  onClick={() => replyEvent(author)}
+                  className={Styles.topRightItems}
+                >
+                  <Icon className={Styles.commentIcon} type="form" />
+                  回复
+                </div>
+              </div>
+            ) : (
+              undefined
+            )}
+          </div>
+          <div className={Styles.content}>{content}</div>
         </div>
-        <div className={Styles.content}>{content}</div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 function SubUser({ author = {}, time, content }) {
@@ -39,14 +82,17 @@ function SubUser({ author = {}, time, content }) {
 
 export default class TopComment extends PureComponent {
   render() {
-    const { comments = [], replyEvent } = this.props;
+    const { comments = [], replyEvent, onLikeCommentEvent } = this.props;
     let list = comments.map((e, index) => (
       <div key={`TopComment${index}`}>
         <User
+          commentId={e.commentId}
           author={e.writer}
           time={e.time}
           content={e.content}
           replyEvent={replyEvent}
+          alreadyLike={e.alreadyLike}
+          onLikeCommentEvent={onLikeCommentEvent}
         />
         <div className={Styles.topComment} />
         {e.childrenComments && e.childrenComments.length > 0
