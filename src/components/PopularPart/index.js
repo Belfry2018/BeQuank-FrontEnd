@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
-import picture from "./data/picture.png";
-import greenPoint from "./data/greenPoint.png";
 import TextCutter from "../TextCutter";
 import SmallPoint from "../SmallPoint";
 
@@ -93,7 +91,7 @@ class PopularPart extends Component {
 }
 
 PopularPart.propTypes = {
-    paramText: PropTypes.objectOf(PropTypes.object)
+    paramText: PropTypes.array,
 
-}
+};
 export default PopularPart;
