@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@antv/data-set": "^0.9.3",
     "antd": "^3.7.2",
     "bizcharts": "^3.2.2",
     "prop-types": "^15.6.2",
