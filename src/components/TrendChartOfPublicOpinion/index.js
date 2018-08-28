@@ -2,7 +2,10 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
 
-import {G2, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, Util} from "bizcharts";
+// import {G2, Chart, Geom, Axis, Tooltip, Coord, Label, Legend, View, Guide, Shape, Facet, Util} from "bizcharts";
+import Chart from 'bizcharts/lib/components/Chart';
+import Axis from 'bizcharts/lib/components/Axis';
+import Tooltip from 'bizcharts/lib/components/Tooltip'
 import Line from 'bizcharts/lib/components/TypedGeom/Line';
 import Point from 'bizcharts/lib/components/TypedGeom/Point';
 // import DataSet from "@antv/data-set";
@@ -30,7 +33,14 @@ class TrendChartOfPublicOpinion extends React.Component {
         };
         return (
             <div>
-                <Chart height={500} width={1500} data={data} scale={cols} placeholder className={styles.trendChart}>
+                <Chart
+                    height={window.innerHeight}
+                    width={window.innerWidth}
+                    data={data}
+                    scale={cols}
+                    placeholder
+                    className={styles.trendChart}
+                >
                     <Axis name="date"/>
                     <Axis name="sentiment"/>
                     <Tooltip
