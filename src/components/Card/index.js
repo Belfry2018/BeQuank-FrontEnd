@@ -11,6 +11,8 @@ const MyCardProps = {
   src: PropTypes.string.isRequired,
   /** Define top of button */
   top: PropTypes.string.isRequired,
+  /** Define time of button */
+  time: PropTypes.string.isRequired,
 };
 
 class MyCard extends PureComponent {
