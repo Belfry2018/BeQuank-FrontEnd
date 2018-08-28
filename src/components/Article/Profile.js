@@ -1,18 +1,8 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import styles from "./Profile.module.less";
 
 import ProfilePicture from "./Profile/ProfilePicture";
 import ProfileContent from "./Profile/ProfileContent";
-
-const AuthorDetailProps = {
-  profilePictureURL: PropTypes.string,
-  profileContent: PropTypes.object,
-
-  style: PropTypes.object
-};
-
-const DefaultAuthorDetailProps = {};
 
 class Profile extends PureComponent {
   render() {
@@ -33,8 +23,5 @@ class Profile extends PureComponent {
   }
 }
 
-Profile.propTypes = AuthorDetailProps;
-
-Profile.defaultProps = DefaultAuthorDetailProps;
 
 export default Profile;

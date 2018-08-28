@@ -1,61 +1,32 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import styles from "./index.module.less";
 
 import Title from "./Title";
 import Body from "./Body";
 import Profile from "./Profile";
-import LikeButton from "./LikeButton"
+import LikeButton from "./LikeButton";
+import {likeTutorial} from "../../services/apiCourse";
 
-const ArticleProps = {
-  titleContent: PropTypes.string,
-  date: PropTypes.string,
-  authorName: PropTypes.string,
-  backgroundImgURL: PropTypes.string,
 
-  articleContent: PropTypes.string,
-
-  profilePictureURL: PropTypes.string,
-  profileContent: PropTypes.object,
-  contactURLs: PropTypes.object,
-
-  style: PropTypes.object
-};
-
-const DefaultArticleProps = {
-  titleContent: "",
-  date: "",
-  author: "",
-  backgroundImgURL: "",
-
-  articleContent: "",
-
-  profilePictureURL: "",
-  profileContent: {
-    authorName: "",
-    introduction: ""
-  },
-  contactURLs: {
-    facebookURL: "#",
-    twitterURL: "#",
-    weiboURL: "#",
-    myWebsiteURL: "#"
-  }
-};
 
 class Article extends PureComponent {
+  
+  likeArticleEvent=async()=>{
+    const {tutorialId, likeEvent=()=>{}} = this.props;
+    await likeTutorial(tutorialId);
+    await likeEvent();
+  };
+  
   render() {
     const {
-      style,
       titleContent,
       date,
       author = {},
       backgroundImgURL,
       articleContent,
       tutorialType,
-      profilePictureURL,
-      profileContent,
-      contactURLs
+      likeCount,
+      alreadyLike,
     } = this.props;
 
     const { username, nickname, avatar, bio } = author;
@@ -83,16 +54,11 @@ class Article extends PureComponent {
             />
           </div>
           <div className={styles.likeSection}>
-            <LikeButton />
+            <LikeButton likeEvent={this.likeArticleEvent} likeCount={likeCount} alreadyLike={alreadyLike} />
           </div>
         </div>
       </div>
     );
   }
 }
-
-Article.propTypes = ArticleProps;
-
-Article.defaultProps = DefaultArticleProps;
-
 export default Article;

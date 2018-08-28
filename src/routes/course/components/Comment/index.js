@@ -45,7 +45,7 @@ export default class Comment extends PureComponent {
 
   render() {
     const { isReply, commenter,loading } = this.state;
-    const { comments = [] } = this.props;
+    const { comments = [],onLikeCommentEvent } = this.props;
     return (
       <div className={Styles.wholeComment}>
         <div className={Styles.title}>
@@ -59,7 +59,7 @@ export default class Comment extends PureComponent {
           loading={loading}
         />
 
-        <TopComment replyEvent={this.replyEvent} comments={comments} />
+        <TopComment replyEvent={this.replyEvent} comments={comments} onLikeCommentEvent={onLikeCommentEvent} />
       </div>
     );
   }

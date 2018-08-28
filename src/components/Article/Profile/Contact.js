@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import styles from "./Contact.module.less";
-import Article from "../../../routes/articleTest";
 
 const ContactProps = {
     facebookURL: PropTypes.string,
