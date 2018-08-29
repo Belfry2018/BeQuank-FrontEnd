@@ -91,7 +91,7 @@ class PopularPart extends Component {
 }
 
 PopularPart.propTypes = {
-    paramText: PropTypes.objectOf(PropTypes.object)
+    paramText: PropTypes.array,
 
-}
+};
 export default PopularPart;
