@@ -1,35 +1,10 @@
 import React from "react";
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input, DatePicker, Select, Divider, Button } from 'antd';
 import styles from "./index.module.less"
 
 const FormItem = Form.Item;
+const MonthPicker = DatePicker.MonthPicker;
 const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
-
-const residences = [{
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [{
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [{
-            value: 'xihu',
-            label: 'West Lake',
-        }],
-    }],
-}, {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [{
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [{
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-        }],
-    }],
-}];
-
 
 class InfoForm extends React.Component {
     state = {
@@ -48,58 +23,66 @@ class InfoForm extends React.Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { autoCompleteResult } = this.state;
-
-        const formItemLayout = {
-            labelCol: {
-                xs: { span: 24 },
-                sm: { span: 8 },
-            },
-            wrapperCol: {
-                xs: { span: 24 },
-                sm: { span: 16 },
-            },
+        const config = {
+            rules: [{ type: 'object', required: true, message: 'Please select time!' }],
         };
-        const tailFormItemLayout = {
-            wrapperCol: {
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 8,
-                },
-            },
-        };
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-        })(
-            <Select style={{ width: 70 }}>
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>
-        );
 
         return (
-            <Form onSubmit={this.handleSubmit}>
-                <FormItem
-                    {...formItemLayout}
-                    label="昵称"
+            <div className={styles["main"]}>
+                <div className={styles.title}>个人信息</div>
+                <Divider/>
+                <Form layout={"vertical"}
+                      className={styles.form}
                 >
-                    {getFieldDecorator('nickName', {
-                        rules: [{
-                            required: true, message: '请输入您的昵称',
-                        }],
-                    })(
-                        <Input.TextArea />
-                    )}
-                </FormItem>
+                    <FormItem
+                        label="昵称"
+                    >
+                        {getFieldDecorator('input', {
+                            rules: [
+                                { required: true, message: '请输入昵称' },
+                            ],
+                        })(
+                           <Input placeholder={"请输入昵称"}/>
+                        )}
+                    </FormItem>
 
-                <FormItem {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">修改信息</Button>
-                </FormItem>
-            </Form>
+                    <FormItem
+                        label="性别"
+                    >
+                        {getFieldDecorator('select', {
+                            rules: [
+                                { required: false, message: '请选择性别' },
+                            ],
+                        })(
+                            <Select placeholder="请选择性别">
+                                <Option value="male">男</Option>
+                                <Option value="female">女</Option>
+                                <Option value="secret">保密</Option>
+                            </Select>
+                        )}
+                    </FormItem>
+
+                    <FormItem
+                        label="出生年月"
+                    >
+                        {getFieldDecorator('month-picker', config)(
+                            <MonthPicker />
+                        )}
+                    </FormItem>
+
+                    <FormItem
+                        label="注册时间"
+                    >
+                        {getFieldDecorator('date-picker', config)(
+                            <DatePicker disabled={"true"}/>
+                        )}
+                    </FormItem>
+
+                    <FormItem >
+                        <Button type="primary">更新信息</Button>
+                    </FormItem>
+                </Form>
+            </div>
         );
     }
 

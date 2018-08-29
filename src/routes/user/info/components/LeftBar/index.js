@@ -5,7 +5,8 @@ import styles from "./index.module.less"
 class LeftBar extends React.Component {
 
     state = {
-        keys: this.props.keys
+        keys: this.props.keys,
+        currentKey: this.props.keys[0]
     }
 
     handleClick = (e) => {
