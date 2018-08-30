@@ -6,13 +6,25 @@ class LeftBar extends React.Component {
 
     state = {
         keys: this.props.keys,
-        currentKey: this.props.keys[0]
+        currentPageNumber: 0,
     }
 
     handleClick = (e) => {
+        let number = this.getPageNumber(e.key);
         this.setState({
-            currentKey: e.key,
+            currentPageNumber: number,
         });
+        const{ setCurrentPage } = this.props;
+        setCurrentPage(number);
+    }
+
+    getPageNumber = (key) => {
+        for(let i=0; i<this.state.keys.length; i++){
+            if (this.state.keys[i] === key){
+                return i;
+            }
+        }
+        return 0;
     }
 
     render() {
@@ -20,7 +32,7 @@ class LeftBar extends React.Component {
         return (
             <Menu
                 mode="inline"
-                selectedKeys={this.state.currentKey}
+                selectedKeys={this.state.keys[this.state.currentPageNumber]}
                 className={styles["main"]}
                 onClick={this.handleClick}
             >
