@@ -54,7 +54,21 @@ const cols = {
 class SentimentDashBoard extends React.Component {
 
     sentimentScore(senti) {
-        return senti/10;
+       if(senti > 1000) {
+           return 9.0;
+       }
+       else if (senti < -1000) {
+           return 0.0;
+       }
+       else if (senti > 5.0) {
+           return 0.5 * Math.log(senti + 1) + 5.5;
+       }
+       else if (senti < -5.0) {
+           return -0.5 * Math.log(-senti + 1) + 3.5;
+       }
+       else {
+           return senti /10.0 + 4.5;
+       }
     }
 
     render() {
@@ -70,7 +84,7 @@ class SentimentDashBoard extends React.Component {
         ];
 
         return (
-            <Chart height={window.innerHeight} data={data} scale={cols} padding={[0, 0, 200, 0]} forceFit>
+            <Chart height={500} data={data} scale={cols} padding={[0, 0, 200, 0]} forceFit>
                 <Coord type="polar" startAngle={-9 / 8 * Math.PI} endAngle={1 / 8 * Math.PI} radius={0.6} />
                 <Axis
                     name="value"
@@ -147,7 +161,7 @@ class SentimentDashBoard extends React.Component {
                     />
                     <Html
                         position={['50%', '89%']}//百分数的位置
-                        html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 2.1em; color: rgba(0,0,0,0.5);margin: 0;">${data[0].word}</p><p style="font-size: 5em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].sentiment}</p></div>`)}
+                        html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.1em; color: rgba(0,0,0,0.5);margin: 0;">${data[0].word}</p><p style="font-size: 2em;color: rgba(0,0,0,0.85);margin: 0;">${data[0].sentiment}</p></div>`)}
                     />
                 </Guide>
                 <Geom

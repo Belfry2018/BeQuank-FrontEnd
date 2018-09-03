@@ -11,11 +11,14 @@ const Strategy = PageLoadable(() => import("../strategy/index"));
 
 const article = PageLoadable(() => import("../articleTest/index"));
 
+const UserInfo = PageLoadable(() => import("../user/info/index"));
+
 export default [
   <DefaultLayout path="/" exact component={Home} />,
   <DefaultLayout path="/course" exact component={Course} />,
   <DefaultLayout path="/course/:tutorialId" component={CourseDetail} />,
   <DefaultLayout path="/insight" component={Insight} />,
   <DefaultLayout path="/strategy" component={Strategy} role={ALL_ROLE_TYPE} />,
-  <DefaultLayout path="/articleTest" component={article} />
+  <DefaultLayout path="/articleTest" component={article} />,
+    <DefaultLayout path="/userInfo" component={UserInfo}/>
 ];
