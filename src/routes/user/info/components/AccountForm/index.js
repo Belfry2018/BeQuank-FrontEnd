@@ -1,8 +1,9 @@
 import React from "react";
 import { Form, Input, DatePicker, Modal, Divider, Button, message} from 'antd';
-import styles from "./index.module.less";
+import styles from "../form.module.less";
 import moment from 'moment';
 import { setUserProfile, changePassword } from "../../../../../services/apiUser";
+import SmallPoint from "../../../../../components/SmallPoint";
 
 const FormItem = Form.Item;
 
@@ -105,8 +106,7 @@ class AccountForm extends React.Component {
 
         return (
             <div className={styles["main"]}>
-                <div className={styles.title}>账户管理</div>
-                <Divider/>
+                <SmallPoint title={"账户管理"}/>
                 <Form layout={"vertical"}
                       className={styles.form}
                       onSubmit={this.handleSubmit}

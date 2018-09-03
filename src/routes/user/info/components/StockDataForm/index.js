@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Input, DatePicker, Select, Divider, Button, message, Slider } from 'antd';
-import styles from "./index.module.less"
-import moment from 'moment';
+import styles from "../form.module.less"
 import { setUserProfile } from "../../../../../services/apiUser";
+import SmallPoint from "../../../../../components/SmallPoint";
 
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -80,8 +80,8 @@ class StockDataForm extends React.Component {
 
         return (
             <div className={styles["main"]}>
-                <div className={styles.title}>选股数据</div>
-                <Divider/>
+                <SmallPoint title={"选股数据"}/>
+    
                 <Form layout={"vertical"}
                       className={styles.form}
                       onSubmit={this.handleSubmit}

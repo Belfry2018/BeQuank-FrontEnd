@@ -1,6 +1,5 @@
 import React from "react";
 import { Menu } from "antd";
-import styles from "./index.module.less"
 
 class LeftBar extends React.Component {
 
@@ -33,7 +32,6 @@ class LeftBar extends React.Component {
             <Menu
                 mode="inline"
                 selectedKeys={this.state.keys[this.state.currentPageNumber]}
-                className={styles["main"]}
                 onClick={this.handleClick}
             >
                 <Menu.Item key={this.state.keys[0]}>{this.state.keys[0]}</Menu.Item>

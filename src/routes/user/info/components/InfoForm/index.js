@@ -1,8 +1,9 @@
 import React from "react";
 import { Form, Input, DatePicker, Select, Divider, Button, message } from 'antd';
-import styles from "./index.module.less"
+import styles from "../form.module.less"
 import moment from 'moment';
 import { setUserProfile } from "../../../../../services/apiUser";
+import SmallPoint from "../../../../../components/SmallPoint";
 
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -42,8 +43,7 @@ class InfoForm extends React.Component {
 
         return (
             <div className={styles["main"]}>
-                <div className={styles.title}>个人信息</div>
-                <Divider/>
+                <SmallPoint title={"个人信息"}/>
                 <Form layout={"vertical"}
                       className={styles.form}
                       onSubmit={this.handleSubmit}
