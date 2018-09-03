@@ -20,7 +20,7 @@ const DefaultTrendChartOfPublicOpinionProps = {
     data: []
 };
 
-class TrendChartOfPublicOpinion extends React.Component {
+class TrendChartOfPublicOpinion extends PureComponent {
     render(){
         const {style, data} = this.props;
         const cols = {
@@ -34,7 +34,7 @@ class TrendChartOfPublicOpinion extends React.Component {
         return (
             <div>
                 <Chart
-                    height={window.innerHeight}
+                    height={window.innerHeight*0.5}
                     width={window.innerWidth}
                     data={data}
                     scale={cols}
