@@ -19,7 +19,7 @@ const linkList = [
   },
   {
     iconType: "user",
-    component: <Link to={"/login"}>个人信息</Link>
+    component: <Link to={"/userInfo"}>个人信息</Link>
   },
   {
     iconType: "setting",

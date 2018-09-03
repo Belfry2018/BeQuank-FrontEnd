@@ -1,0 +1,26 @@
+@import "../../../themes/default";
+@total-width : @page-max-width - @page-padding;
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: @header-height @page-padding @page-gutter;
+
+  .left-bar {
+    transition: all 0.3s;
+    width: 300px;
+    max-width: @total-width / 5;
+    flex-shrink: 2;
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+  }
+  .form {
+    width: 900px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
