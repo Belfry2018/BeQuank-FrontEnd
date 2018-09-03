@@ -12,7 +12,7 @@ export default class FormInputButton extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Should be a controlled component.
+    // Should be a controlled components.
     if ("value" in nextProps) {
       const value = nextProps.value;
       this.setState({ content: value });

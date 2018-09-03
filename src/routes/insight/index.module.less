@@ -1,0 +1,74 @@
+@import "../../themes/default";
+
+.bodySection {
+  padding: @header-height 0 0;
+  margin: 0 auto;
+
+  .bodyItem {
+    max-width: @page-max-width;
+    padding: @page-gutter @page-gutter 0;
+    margin: 0 auto;
+
+    .bodySearch{
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .bodyWidthItem {
+    width: 100%;
+    overflow: hidden;
+    .trend{
+      border-radius: 20px 20px 0 0;
+      margin-top: 40px;
+      padding-top: 40px;
+      background-color: @page-primary-color;
+      box-shadow: @default-shadow;
+      min-height: 300px;
+    }
+  }
+
+  .bodyBlackMask{
+    width: 100%;
+    background-color: rgb(44, 44, 44);
+  }
+
+  .hotSpotSection{
+    background-color: @page-background-color;
+    border-radius: 20px 20px 0 0;
+
+
+    .mainSection{
+      max-width: @page-max-width;
+      padding: @page-gutter;
+      margin: 0 auto;
+    }
+  }
+
+  .wordCloud {
+    background: linear-gradient(
+        to bottom,
+        #323232 0%,
+        #3f3f3f 40%,
+        #1c1c1c 150%
+      ),
+      linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(0, 0, 0, 0.25) 200%
+      );
+
+    min-height: 50vh;
+    padding: 50px 0 30px;
+  }
+
+  .cardStyle{
+    background: @page-primary-color;
+    border-radius: @default-radius;
+    height: 380px;
+    overflow: hidden;
+    box-shadow: @default-shadow;
+    margin-top: 40px;
+  }
+}
