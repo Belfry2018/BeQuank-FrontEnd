@@ -133,10 +133,7 @@ export const deleteRecord = params => {
  ]
  */
 export const allRecords = () => {
-    return request(`${version}/strategy/records`, {
-        method: "GET",
-        body: params
-    });
+    return request(`${version}/strategy/records`);
 }
 
 /**
