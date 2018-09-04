@@ -9,7 +9,7 @@ class StockList extends PureComponent {
   };
   
   render() {
-    const { list = [] } = this.props;
+    const { list = [], recommend } = this.props;
 
     const ProductName = ({ name, id }) => (
       <div className={Styles.productName}>
@@ -35,8 +35,7 @@ class StockList extends PureComponent {
       <div>
         <table className={Styles.table}>
             <thead className={Styles.tableHeader}>
-            <tr>
-              <th>推荐比例</th>
+            <tr>{recommend?<th>推荐比例</th>:undefined}
               <th>产品名称</th>
               <th className={Styles.alignRight}>最新价</th>
               <th className={Styles.alignRight}>涨跌幅</th>
@@ -48,9 +47,9 @@ class StockList extends PureComponent {
           <tbody>
             {list.map((e, index) => (
               <tr onClick={()=>this.onRowClicked(e.stockId)} key={`tableList${index}`}>
-                <td>
+                {recommend?<td>
                   <div className={Styles.buyRate}>{`${e.buyRate}%`}</div>
-                </td>
+                </td>:undefined}
                 <td>
                   <ProductName name={e.stockName} id={e.stockId} />
                 </td>

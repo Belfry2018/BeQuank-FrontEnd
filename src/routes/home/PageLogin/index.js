@@ -27,7 +27,7 @@ class PageLogin extends PureComponent {
             <div className={Styles.leftSection}>
               {recommendStocks ? (
                 recommendStocks.stocks && recommendStocks.stocks.length > 0 ? (
-                  <StockList list={recommendStocks.stocks} />
+                  <StockList recommend list={recommendStocks.stocks} />
                 ) : (
                   <div>没有数据</div>
                 )
