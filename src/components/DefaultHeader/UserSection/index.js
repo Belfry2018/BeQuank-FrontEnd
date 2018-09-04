@@ -15,7 +15,7 @@ import { Icon } from "antd";
 const linkList = [
   {
     iconType: "solution",
-    component: <Link to={"/login"}>我的策略</Link>
+    component: <Link to={"/groupList"}>我的策略</Link>
   },
   {
     iconType: "user",
