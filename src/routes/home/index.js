@@ -1,8 +1,10 @@
 import React, { PureComponent } from "react";
-import FontMock from "../../components/AuthorizationComponents/FontMock";
+import PageLogin from "./PageLogin";
 
 export default class Home extends PureComponent {
   render() {
-    return <FontMock>Home</FontMock>;
+    return <div>
+      <PageLogin />
+    </div>;
   }
 }

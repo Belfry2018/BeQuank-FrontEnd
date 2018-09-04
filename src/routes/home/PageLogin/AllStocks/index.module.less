@@ -1,0 +1,25 @@
+@import "../../../../themes/default";
+
+.wholePage{
+  margin: 0 auto;
+  max-width: @page-max-width*0.7;
+  padding: @page-gutter+@header-height @page-padding @page-gutter;
+
+  .item{
+    margin-top: @page-gutter;
+    background-color: @page-primary-color;
+    box-shadow: @default-shadow;
+    border-radius: @default-radius;
+    padding-bottom: 20px;
+    .loadMore{
+      margin: 20px auto 0;
+      max-width: 300px;
+      background-color: @sky-blue;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 3px;
+    }
+  }
+}
