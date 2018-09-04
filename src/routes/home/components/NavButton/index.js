@@ -4,7 +4,7 @@ import Styles from "./index.module.less";
 
 export default () => (
   <div className={Styles.wholePart}>
-    <NavLink className={Styles.item} to="/" activeClassName={Styles.activeItem}>
+    <NavLink exact className={Styles.item} to="/" activeClassName={Styles.activeItem}>
       推荐股票
     </NavLink>
     <NavLink

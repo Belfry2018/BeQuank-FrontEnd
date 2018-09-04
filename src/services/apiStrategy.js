@@ -29,7 +29,7 @@ export const makeAnswer = params => {
     todayBenefit:5.6,//百分之
     yearBenefit:5.7,//百分之
     risk:3.3,//百分之
-    stocks:[
+    stock:[
         {
             buyRate:22.2//推荐购买比例，百分之
             stockId:"xxx",
@@ -146,7 +146,7 @@ export const allRecords = () => {
     todayBenefit:5.6,//百分之
     yearBenefit:5.7,//百分之
     risk:3.3,//百分之
-    stocks:[
+    stock:[
         {
             buyRate:22.2//推荐购买比例，百分之
             stockId:"xxx",

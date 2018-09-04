@@ -1,7 +1,12 @@
 import React, { PureComponent } from "react";
 import Styles from "./index.module.less";
+import {withRouter} from "react-router-dom";
 
 class StockList extends PureComponent {
+  
+  onRowClicked=(id)=>{
+    this.props.history.push(`/stocks/${id}`);
+  };
   
   render() {
     const { list = [] } = this.props;
@@ -42,7 +47,7 @@ class StockList extends PureComponent {
           
           <tbody>
             {list.map((e, index) => (
-              <tr key={`tableList${index}`}>
+              <tr onClick={()=>this.onRowClicked(e.stockId)} key={`tableList${index}`}>
                 <td>
                   <div className={Styles.buyRate}>{`${e.buyRate}%`}</div>
                 </td>
@@ -67,4 +72,4 @@ class StockList extends PureComponent {
   }
 }
 
-export default StockList;
+export default withRouter(StockList);
