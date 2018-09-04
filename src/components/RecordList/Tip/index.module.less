@@ -3,19 +3,16 @@
 @my-height: @my-width/6.5;
 
 .main {
-  width: @my-width;
-  height: @my-height;
   background-color: @record-list-color;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-bottom: rgba(134,134,134,0.2) 1px solid;
   cursor: pointer;
+  padding: 5px 10px;
+  border-radius: @default-radius;
+  margin: 0 20px;
   .top-part {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 20px 10px 20px;
+    margin: 10px 20px 3px 20px;
     .title {
       font-family: @record-list-font;
       font-size: @record-list-title-font-size;
@@ -27,7 +24,7 @@
     }
   }
   .bottom-part {
-    margin: 10px 20px 10px 20px;
+    margin: 0 20px 10px 20px;
     .rooter {
       font-family: @record-list-font;
       font-size: @record-list-rooter-font-size;
