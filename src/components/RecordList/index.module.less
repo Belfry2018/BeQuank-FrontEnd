@@ -1,0 +1,45 @@
+@import "../../themes/default";
+@my-width: @page-max-width/2.2;
+@my-height: @my-width * 2;
+@title-height: 100px;
+@tip-width: @page-max-width/5*2;
+@margin-l-r: ( @my-width - @tip-width ) / 2;
+@margin-u-b: 20px;
+.main {
+  border-radius: @default-radius;
+  border-radius: @default-radius;
+  width: @my-width;
+  height: @my-height;
+  background-color: @record-list-bg-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .title {
+    height: @title-height;
+    width: @my-width;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .pp {
+      margin-left: @margin-l-r+10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      .point {
+        margin-top: 20px;
+      }
+      .text {
+        margin-left: 20px;
+        font-size: 32px;
+      }
+    }
+  }
+  .tip-content {
+    overflow:scroll;
+    background-color: @record-list-color;
+    width: @tip-width;
+    height: @my-height - @title-height - @margin-u-b;
+    margin-bottom: 20px;
+    margin-left: @margin-l-r;
+  }
+}
