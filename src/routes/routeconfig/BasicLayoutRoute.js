@@ -14,6 +14,7 @@ const Strategy = PageLoadable(() => import("../strategy/index"));
 const article = PageLoadable(() => import("../articleTest/index"));
 
 const UserInfo = PageLoadable(() => import("../user/info/index"));
+const GroupList = PageLoadable(() => import("../stockGroup/groupList/index"));
 
 export default [
   <DefaultLayout path="/" exact component={Home} />,
@@ -24,5 +25,6 @@ export default [
   <DefaultLayout path="/insight" component={Insight} />,
   <DefaultLayout path="/strategy" component={Strategy} role={ALL_ROLE_TYPE} />,
   <DefaultLayout path="/articleTest" component={article} />,
-    <DefaultLayout path="/userInfo" component={UserInfo}/>
+    <DefaultLayout path="/userInfo" component={UserInfo}/>,
+    <DefaultLayout path="/groupList" component={GroupList}/>
 ];
