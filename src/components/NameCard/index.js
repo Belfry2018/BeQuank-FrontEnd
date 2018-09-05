@@ -32,7 +32,7 @@ class NameCard extends Component {
                     <div className={styles.left}></div>
                     <div className={styles.ali}>
                         <div className={styles.intro}>{bio}</div>
-                        <Button type={"dashed"} className={styles.button}>编辑个人信息</Button>
+                        <Button type={"dashed"} href={"/userInfo"} className={styles.button}>编辑个人信息</Button>
                     </div>
                     <div className={styles.right}></div>
                 </div>
