@@ -70,10 +70,9 @@ export const getRecommend = () => {
             ...
  ]
  */
-export const allStocks = params => {
-    return request(`${version}/strategy/stocks`, {
-        method: "POST",
-        body: params
+export const allStocks = page => {
+    return request(`${version}/stocks/${page}`, {
+        method: "GET",
     });
 }
 
@@ -98,7 +97,7 @@ export const allStocks = params => {
 }
  */
 export const addRecord = params => {
-    return request(`${version}/strategy/record/add`, {
+    return request(`${version}/strategy/record`, {
         method: "POST",
         body: params
     });
@@ -111,10 +110,9 @@ export const addRecord = params => {
     recordId:"xxx"
 }
  */
-export const deleteRecord = params => {
-    return request(`${version}/strategy/record`, {
+export const deleteRecord = recordId => {
+    return request(`${version}/strategy/record/${recordId}`, {
         method: "DELETE",
-        body: params
     });
 }
 
@@ -133,7 +131,9 @@ export const deleteRecord = params => {
  ]
  */
 export const allRecords = () => {
-    return request(`${version}/strategy/records`);
+    return request(`${version}/strategy/records`, {
+        method: "GET"
+    });
 }
 
 /**
@@ -162,10 +162,9 @@ export const allRecords = () => {
     ]
 }
  */
-export const recordDetail = params => {
-    return request(`${version}/strategy/records`, {
-        method: "POST",
-        body: params
+export const recordDetail = recordId => {
+    return request(`${version}/strategy/record/${recordId}`, {
+        method: "GET",
     });
 }
 
