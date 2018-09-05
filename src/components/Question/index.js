@@ -1,14 +1,13 @@
+import React from "react";
 import {
-  Form, Select, InputNumber, Switch, Radio,
-  Slider, Button, Upload, Icon, Rate,
+  Form, Radio,Divider
 } from 'antd';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
+import styles from "./index.module.less";
 
-class Demo extends React.Component {
+class Question extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -16,15 +15,7 @@ class Demo extends React.Component {
         console.log('Received values of form: ', values);
       }
     });
-  }
-
-  normFile = (e) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e && e.fileList;
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -36,9 +27,9 @@ class Demo extends React.Component {
       <Form onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('1、您曾经有没有投资您部分或全部资金的经历？')(
+          <div className={styles["question"]}>1. 您曾经有没有投资您部分或全部资金的经历？</div>
+          {getFieldDecorator("1")(
             <RadioGroup>
               <Radio value="a">没有，我不希望承担任何的投资风险</Radio>
               <Radio value="b">我从未投资过，但我希望我将来能够投资</Radio>
@@ -48,11 +39,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('2、您能够承受的最低的回报率？')(
+          <div className={styles["question"]}>2. 您能够承受的最低的回报率？</div>
+          {getFieldDecorator("2")(
             <RadioGroup>
               <Radio value="a">没我不能承受任何的负回报率</Radio>
               <Radio value="b">-10%</Radio>
@@ -62,11 +54,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('3、对于一个波动较大，但长期看来具有升值潜力的投资机会。你会怎么看？')(
+          <div className={styles["question"]}>3. 对于一个波动较大，但长期看来具有升值潜力的投资机会。你会怎么看？</div>
+          {getFieldDecorator("3")(
             <RadioGroup>
               <Radio value="a">十分诱人</Radio>
               <Radio value="b">还可以</Radio>
@@ -75,11 +68,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('4、您对投资和相关产品有何了解？')(
+          <div className={styles["question"]}>4. 您对投资和相关产品有何了解？</div>
+          {getFieldDecorator("4")(
             <RadioGroup>
               <Radio value="a">我对投资和相关产品一无所知</Radio>
               <Radio value="b">我对投资和相关产品了解的很少</Radio>
@@ -88,11 +82,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('5、下面哪一个更好地描述了您对于投资的立场？')(
+          <div className={styles["question"]}>5. 下面哪一个更好地描述了您对于投资的立场？</div>
+          {getFieldDecorator("5")(
             <RadioGroup>
               <Radio value="a">我不希望我的财富有任何的投资风险，即使这会减少我获得回报的机会</Radio>
               <Radio value="b">如果投资能够表现得很好，我可以考虑承受一些投资风险</Radio>
@@ -101,11 +96,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('6、如果您的投资出现了较大波动或负面的回报，您会做出如下哪一个决策？')(
+          <div className={styles["question"]}>6. 如果您的投资出现了较大波动或负面的回报，您会做出如下哪一个决策？</div>
+          {getFieldDecorator("6")(
             <RadioGroup>
               <Radio value="a">我会马上售卖掉所有的投资</Radio>
               <Radio value="b">我会将我的投资转为波动更小的投资类别</Radio>
@@ -114,11 +110,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('7、根据您的投资偏好，您希望一个五年期的投资正常可以获得多少的年收益？')(
+          <div className={styles["question"]}>7. 根据您的投资偏好，您希望一个五年期的投资正常可以获得多少的年收益？</div>
+          {getFieldDecorator("7")(
             <RadioGroup>
               <Radio value="a">低于10%</Radio>
               <Radio value="b">10%-20%</Radio>
@@ -127,11 +124,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('8、您的投资动机是？')(
+          <div className={styles["question"]}>8. 您的投资动机是？</div>
+          {getFieldDecorator("8")(
             <RadioGroup>
               <Radio value="a">防止资产因为通货膨胀而贬值</Radio>
               <Radio value="b">作为收入来源</Radio>
@@ -140,11 +138,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('9、您最能够接受的投资期限是？')(
+          <div className={styles["question"]}>9. 您最能够接受的投资期限是？</div>
+          {getFieldDecorator("9")(
             <RadioGroup>
               <Radio value="a">6-12月</Radio>
               <Radio value="b">1-2年</Radio>
@@ -153,11 +152,12 @@ class Demo extends React.Component {
             </RadioGroup>
           )}
         </FormItem>
+        <Divider/>
         <FormItem
           {...formItemLayout}
-          label="Radio.Group"
         >
-          {getFieldDecorator('10、在未来十二个月，您是否有资金必须要提取出来使用？（例如偿还贷款）')(
+          <div className={styles["question"]}>10. 在未来十二个月，您是否有资金必须要提取出来使用？（例如偿还贷款）</div>
+          {getFieldDecorator("10")(
             <RadioGroup>
               <Radio value="a">有，并且这部分资金超过80%</Radio>
               <Radio value="b">有，并且这部分资金占了将近一半</Radio>
@@ -171,4 +171,4 @@ class Demo extends React.Component {
   }
 }
 
-export default Form.create()(Demo);
+export default Form.create()(Question);
