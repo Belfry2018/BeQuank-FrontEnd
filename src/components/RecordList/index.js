@@ -8,9 +8,11 @@ class RecordList extends Component {
 
     return (
       <div className={styles["tip-content"]}>
-        {params.map((item, index) => {
-          return <Tip title={item.recordName} time={item.recordTime} />;
-        })}
+        <div>
+            {params.map((item, index) => {
+                return <Tip title={item.title} time={item.recordTime} />;
+            })}
+        </div>
       </div>
     );
   }
