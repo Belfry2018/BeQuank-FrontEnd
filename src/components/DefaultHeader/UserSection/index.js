@@ -5,7 +5,7 @@ import plus from "./twotone-add_circle-24px.svg";
 import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
-import LoadingSpin from '../../LoadingSpin';
+import LoadingSpin from "../../LoadingSpin";
 import {
   DropdownButton,
   DropdownDivider
@@ -15,38 +15,44 @@ import { Icon } from "antd";
 const linkList = [
   {
     iconType: "solution",
-    component: <Link to={"/groupList"}>我的策略</Link>
+    to: "/groupList",
+    content: "我的策略"
   },
   {
     iconType: "user",
-    component: <Link to={"/userInfo"}>个人信息</Link>
+    to: "/userInfo",
+    content: "个人信息"
   },
   {
     iconType: "setting",
-    component: <Link to={"/login"}>个人设置</Link>
+    to: "/login",
+    content: "个人设置"
   },
   {
     isDivider: true
   },
   {
     iconType: "logout",
-    component: <Link to={"/login"}>登出</Link>
+    to: "/login",
+    content: "登出"
   }
 ];
 
-const DropdownLink = ({ iconType, component: Component, isDivider }) => {
+const DropdownLink = ({ iconType, to, content, isDivider }) => {
   if (isDivider) {
     return <DropdownDivider />;
   }
   return (
-    <DropdownButton>
-      {iconType ? (
-        <Icon style={{ marginRight: 20 }} type={iconType} />
-      ) : (
-        undefined
-      )}
-      {Component}
-    </DropdownButton>
+    <Link to={to}>
+      <DropdownButton>
+        {iconType ? (
+          <Icon style={{ marginRight: 20 }} type={iconType} />
+        ) : (
+          undefined
+        )}
+        {content}
+      </DropdownButton>
+    </Link>
   );
 };
 
