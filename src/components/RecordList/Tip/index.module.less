@@ -2,36 +2,46 @@
 @my-width: @page-max-width/5 * 2;
 @my-height: @my-width/6.5;
 
-.main {
-  background-color: @record-list-color;
-  cursor: pointer;
-  padding: 5px 10px;
-  border-radius: @default-radius;
-  margin: 0 20px;
-  .top-part {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 10px 20px 3px 20px;
-    .title {
-      font-family: @record-list-font;
-      font-size: @record-list-title-font-size;
-      color: @record-list-title-font-color;
+.wholePart{
+  position: relative;
+
+  .button {
+    position: absolute;
+    z-index: 10;
+    right: 35px;
+    top:15px;
+  }
+  .main {
+    position: relative;
+    background-color: @record-list-color;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: @default-radius;
+    margin: 0 20px;
+    .top-part {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 10px 20px 3px 20px;
+      .title {
+        font-family: @record-list-font;
+        font-size: @record-list-title-font-size;
+        color: @record-list-title-font-color;
+
+      }
 
     }
-    .button {
+    .bottom-part {
+      margin: 0 20px 10px 20px;
+      .rooter {
+        font-family: @record-list-font;
+        font-size: @record-list-rooter-font-size;
+        color: @record-list-rooter-font-color;
+      }
+    }
 
-    }
   }
-  .bottom-part {
-    margin: 0 20px 10px 20px;
-    .rooter {
-      font-family: @record-list-font;
-      font-size: @record-list-rooter-font-size;
-      color: @record-list-rooter-font-color;
-    }
+  .main:hover {
+    background-color: @record-list-hover-color;
   }
-}
-.main:hover {
-  background-color: @record-list-hover-color;
 }
