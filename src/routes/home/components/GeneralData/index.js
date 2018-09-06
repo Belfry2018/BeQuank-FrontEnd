@@ -1,6 +1,5 @@
 import React from "react";
-import Styles from "./index.module.less"
-
+import Styles from "./index.module.less";
 
 export default function({ todayBenefit, yearBenefit, risk }) {
   const Item = ({ children, title }) => (
@@ -13,9 +12,9 @@ export default function({ todayBenefit, yearBenefit, risk }) {
   return (
     <div className={Styles.wholePart}>
       <Item title={"今日收益"}>{todayBenefit}</Item>
-      <div className={Styles.divider}></div>
+      <div className={Styles.divider} />
       <Item title={"年化收益"}>{yearBenefit}</Item>
-      <div className={Styles.divider}></div>
+      <div className={Styles.divider} />
       <Item title={"最大回馈"}>{risk}</Item>
     </div>
   );
