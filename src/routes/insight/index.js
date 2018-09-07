@@ -112,9 +112,6 @@ export default class Insight extends PureComponent {
             )}
           </div>
         </div>
-          <div className={Styles.bodyWidthItem}>
-              <GovernmentPassage params={gvnPassage}/>
-          </div>
       </div>
     );
   }
