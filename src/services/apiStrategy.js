@@ -45,8 +45,12 @@ export const makeAnswer = params => {
     ]
   }
  */
-export const getRecommend = () => {
-  return request(`${version}/strategy/recommend`);
+export const getRecommendByProfit = () => {
+  return request(`${version}/strategy/recommend/profit`);
+};
+
+export const getRecommendByRisk = () => {
+    return request(`${version}/strategy/recommend/risk`);
 };
 
 /**

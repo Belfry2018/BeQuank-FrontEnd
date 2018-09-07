@@ -67,7 +67,7 @@ class GovernmentWords extends Component {
         return (
             <div>
                 <Chart
-                    height={window.innerHeight}
+                    height={window.innerHeight*0.7}
                     width={window.innerWidth*0.5}
                     data={data}
                     padding={[20, 20, 90]}
@@ -99,7 +99,7 @@ class GovernmentWords extends Component {
                             offset={-18}
                             textStyle={{
                                 fill: '#2e2e2e', // 文本的颜色
-                                fontSize: '18', // 文本大小
+                                fontSize: '24', // 文本大小
                                 fontWeight: 'bold', // 文本粗细
                             }}
                         />
