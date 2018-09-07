@@ -7,30 +7,43 @@ import {
   getGovernmentPassage,
   getGovernmentWords
 } from "../../../services/apiNews";
+import { Pagination } from "antd";
+import LoadingSpin from "../../../components/LoadingSpin";
+import GovernmentWords from "../../../components/GovernmentWords";
 
 const firstPage = 1;
 
 export default class GovernmentInsight extends PureComponent {
   state = {
     governmentPassage: {},
+    governmentPassageLoading: true,
     governmentWords: [],
+    governmentWordsLoading: true,
     page: firstPage
   };
 
   async componentDidMount() {
     const governmentPassage = await getGovernmentPassage(firstPage);
-    this.setState({governmentPassage});
+    this.setState({ governmentPassage, governmentPassageLoading: false });
     const governmentWords = await getGovernmentWords();
-    this.setState({governmentWords});
+    this.setState({ governmentWords, governmentWordsLoading: false });
   }
+
+  onPaginationChange = async page => {
+    this.setState({ governmentPassageLoading: true });
+    const governmentPassage = await getGovernmentPassage(page);
+    this.setState({ governmentPassage, governmentPassageLoading: false });
+  };
 
   render() {
     const {
-      governmentPassage: { totalPage=1, currentPage=1, data=[] },
+      governmentPassageLoading,
+      governmentWordsLoading,
+      governmentPassage: { totalPage = 1, currentPage = 1, data = [] },
       governmentWords,
       page
     } = this.state;
-    
+
     return (
       <div className={Styles.bodySection}>
         <NavBar />
@@ -39,11 +52,30 @@ export default class GovernmentInsight extends PureComponent {
             <div className={Styles.title}>
               <SmallPoint title={"政府文章"} />
             </div>
-            <GovernmentPassage params={data}/>
+            {governmentPassageLoading ? (
+              <LoadingSpin background={"blue"} />
+            ) : (
+              <GovernmentPassage params={data} />
+            )}
+            <div className={Styles.pagination}>
+              <Pagination
+                onChange={this.onPaginationChange}
+                defaultCurrent={firstPage}
+                total={totalPage}
+              />
+            </div>
           </div>
-
-          <div>
+          <div className={Styles.content}>
+            <div className={Styles.title}>
+              <SmallPoint title={"政府热点词汇"} />
+            </div>
+            {governmentWordsLoading ? (
+              <LoadingSpin background={"blue"} />
+            ) : (
+              <GovernmentWords data={governmentWords} />
+            )}
           </div>
+          <div />
         </div>
       </div>
     );
