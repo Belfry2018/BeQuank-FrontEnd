@@ -49,6 +49,7 @@ class NormalInfoForm extends React.Component {
                       bio={this.state.userProfile.bio}
                       gender={this.state.userProfile.gender}
                       birthday={this.state.userProfile.birthday}
+                      avatar={this.state.userProfile.avatar}
                     />
                   ),
                   1: (
