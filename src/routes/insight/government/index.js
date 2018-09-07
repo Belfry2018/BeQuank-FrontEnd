@@ -35,11 +35,14 @@ export default class GovernmentInsight extends PureComponent {
       <div className={Styles.bodySection}>
         <NavBar />
         <div className={Styles.government}>
-          <div className={Styles.title}>
-            <SmallPoint title={"政府文章"} />
-          </div>
-          <div>
+          <div className={Styles.content}>
+            <div className={Styles.title}>
+              <SmallPoint title={"政府文章"} />
+            </div>
             <GovernmentPassage params={data}/>
+          </div>
+
+          <div>
           </div>
         </div>
       </div>
