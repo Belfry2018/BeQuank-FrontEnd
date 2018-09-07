@@ -9,10 +9,11 @@ class Tip extends Component {
 
         if( odd === 1 ) {
             return (
+                <a href={link} target="_blank">
                 <div className={styles.main}>
                     <div className={styles.align}>
                         <div className={styles.part1}>
-                            <div className={styles.title}><a href={link} target="_blank">{title}</a></div>
+                            <div className={styles.title}>{title}</div>
                             <div className={styles.pos}>{pos}</div>
                         </div>
                         <div className={styles.part2}>
@@ -21,14 +22,16 @@ class Tip extends Component {
                         </div>
                     </div>
                 </div>
+                </a>
             );
         }
         else {
             return (
+                <a href={link} target="_blank">
                 <div  className={`${styles.main} ${styles.odd}` }>
                     <div className={styles.align}>
                         <div className={styles.part1}>
-                            <div className={styles.title}><a href={link} target="_blank">{title}</a></div>
+                            <div className={styles.title}>{title}</div>
                             <div className={styles.pos}>{pos}</div>
                         </div>
                         <div className={styles.part2}>
@@ -37,6 +40,7 @@ class Tip extends Component {
                         </div>
                     </div>
                 </div>
+                </a>
             );
         }
     }
