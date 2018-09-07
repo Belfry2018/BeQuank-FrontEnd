@@ -13,7 +13,6 @@ export default class GovernmentInsight extends PureComponent {
             <SmallPoint title={"政府文章"} />
           </div>
           <div>
-            <
           </div>
         </div>
       </div>
