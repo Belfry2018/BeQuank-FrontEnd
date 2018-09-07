@@ -4,6 +4,33 @@
   max-width: @page-max-width;
   margin: 0 auto;
 
+  .text{
+    margin-bottom: 40px;
+  }
+
+  .recommendSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .recommendDesc{
+      font-weight: bold;
+      font-size: 30px;
+      padding: 2px;
+      color: grey;
+    }
+    .recommendSelect{
+      display: flex;
+      align-items: center;
+      background-color: @page-primary-color;
+      border-radius: @default-radius;
+      box-shadow: @default-shadow;
+      height: 50px;
+      font-size: 16px;
+      padding: 0 20px;
+    }
+  }
+
+
   .leftSection{
     background-color: @page-primary-color;
     border-radius: @default-radius;
@@ -16,5 +43,15 @@
     border-radius: @default-radius;
     box-shadow: @default-shadow;
     margin-top: @page-gutter;
+  }
+
+  .emptySection{
+    padding: 40px;
+    text-align: center;
+    .emptyText{
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 20px;
+    }
   }
 }
