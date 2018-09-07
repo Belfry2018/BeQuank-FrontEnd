@@ -16,11 +16,11 @@ import request from "../utils/request";
 }
  */
 export const makeAnswer = params => {
-    return request(`${version}/strategy/answer`, {
-        method: "POST",
-        body: params
-    });
-}
+  return request(`${version}/strategy/answer`, {
+    method: "POST",
+    body: params
+  });
+};
 
 /**
  * 获得推荐结果
@@ -46,9 +46,8 @@ export const makeAnswer = params => {
   }
  */
 export const getRecommend = () => {
-    return request(`${version}/strategy/recommend`);
-}
-
+  return request(`${version}/strategy/recommend`);
+};
 
 /**
  * 按页数获得股票的信息
@@ -70,11 +69,9 @@ export const getRecommend = () => {
             ...
  ]
  */
-export const allStocks = page => {
-    return request(`${version}/stocks/${page}`, {
-        method: "GET",
-    });
-}
+export const allStocks = ({ page = 1 }) => {
+  return request(`${version}/stocks/${page}`);
+};
 
 /**
  * 添加自选股
@@ -96,29 +93,28 @@ export const allStocks = page => {
     addTime:"2018-08-27 13:39"//添加时间
 }
  */
-export const addRecord = params => {
-    return request(`${version}/strategy/record`, {
-        method: "POST",
-        body: params
-    });
-}
+export const addRecord = ({ recordName = "未命名", data = [] }) => {
+  return request(`${version}/strategy/record`, {
+    method: "POST",
+    body: {
+      recordName,
+      data
+    }
+  });
+};
 
 /**
- *
- * @param params
- * {
-    recordId:"xxx"
-}
+ * 删除一组自选股
+ * @param recordId
  */
-export const deleteRecord = recordId => {
-    return request(`${version}/strategy/record/${recordId}`, {
-        method: "DELETE",
-    });
-}
+export const deleteRecord = (recordId = null) => {
+  return request(`${version}/strategy/record/${recordId}`, {
+    method: "DELETE"
+  });
+};
 
 /**
  * 查看所有记录简要信息
- * @param params
  * @returns
  * [
  {
@@ -131,14 +127,11 @@ export const deleteRecord = recordId => {
  ]
  */
 export const allRecords = () => {
-    return request(`${version}/strategy/records`, {
-        method: "GET"
-    });
-}
+  return request(`${version}/strategy/records`);
+};
 
 /**
  * 查看一组自选股的详细详细
- * @param params
  * @returns
  * {
     recordName:"xxx",
@@ -161,10 +154,10 @@ export const allRecords = () => {
         ...
     ]
 }
+ * @param recordId
  */
-export const recordDetail = recordId => {
-    return request(`${version}/strategy/record/${recordId}`, {
-        method: "GET",
-    });
-}
-
+export const recordDetail = (recordId = null) => {
+  return request(`${version}/strategy/record/${recordId}`, {
+    method: "GET"
+  });
+};

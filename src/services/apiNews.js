@@ -24,7 +24,7 @@ export const getSentiment = () => {
   return request(`${version}/sentiment`);
 };
 
-export const getSentimentTrend = word => {
+export const getSentimentTrend = (word = "微博") => {
   return request(`${version}/sentiment/trend`, {
     method: "POST",
     body: { word }
