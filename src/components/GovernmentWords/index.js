@@ -99,7 +99,7 @@ class GovernmentWords extends Component {
                             offset={-18}
                             textStyle={{
                                 fill: '#2e2e2e', // 文本的颜色
-                                fontSize: '18, // 文本大小
+                                fontSize: '18', // 文本大小
                                 fontWeight: 'bold', // 文本粗细
                             }}
                         />
