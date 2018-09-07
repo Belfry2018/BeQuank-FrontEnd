@@ -18,7 +18,7 @@ import request from "../utils/request";
  * })
  * @throws 418
  */
-export const pushTutorial = params => {
+export const pushTutorial = (params = {}) => {
   return request(`${version}/tutorial`, {
     method: "POST",
     body: params
@@ -39,10 +39,13 @@ export const pushTutorial = params => {
  *  tutorialType:"BASIC"
  * })
  */
-export const getTutorials = params => {
+export const getTutorials = ({ keywords = "", tutorialType = "" }) => {
   return request(`${version}/tutorials`, {
     method: "POST",
-    body: params
+    body: {
+      keywords,
+      tutorialType
+    }
   });
 };
 
@@ -66,15 +69,17 @@ export const getTheTutorial = tutorialId => {
  * postComment({
  *  tutorialId:"tutorialA",
  *  content:"lalalala",
- *  writerNickname:"tom",
- *  writerId:"id1",
  *  time:"2018-08-13"
  * })
  */
-export const postComment = params => {
+export const postComment = ({ tutorialId = "", content = "", time = "" }) => {
   return request(`${version}/comment`, {
     method: "POST",
-    body: params
+    body: {
+      tutorialId,
+      content,
+      time
+    }
   });
 };
 
@@ -86,15 +91,17 @@ export const postComment = params => {
  * replyComment({
  *  commentId:"comment2",
  *  content:"lalalala",
- *  writerNickname:"tom",
- *  writerId:"id1",
  *  time:"2018-08-13"
  * })
  */
-export const replyComment = params => {
+export const replyComment = ({ commentId = "", content = "", time = "" }) => {
   return request(`${version}/reply`, {
     method: "POST",
-    body: params
+    body: {
+      commentId,
+      content,
+      time
+    }
   });
 };
 
@@ -103,7 +110,7 @@ export const replyComment = params => {
  * @return {Object}
  * @param tutorialId tutorial编号
  */
-export const likeTutorial = tutorialId => {
+export const likeTutorial = (tutorialId = "") => {
   return request(`${version}/like/tutorial`, {
     method: "POST",
     body: { tutorialId }
@@ -115,9 +122,9 @@ export const likeTutorial = tutorialId => {
  * @return {Object}
  * @param commentId comment编号
  */
-export const likeComment = commentId => {
+export const likeComment = (commentId = "") => {
   return request(`${version}/like/comment`, {
     method: "POST",
-    body: {commentId}
+    body: { commentId }
   });
 };

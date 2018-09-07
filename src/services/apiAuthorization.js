@@ -7,7 +7,7 @@ import request from "../utils/request";
  * @return {Object}
  * @throws 418
  */
-export const sendIdentifyCode = email => {
+export const sendIdentifyCode = (email = "" ) => {
   return request(`${version}/identify`, {
     method: "POST",
     body: { email }
