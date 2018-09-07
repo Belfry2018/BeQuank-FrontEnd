@@ -7,7 +7,7 @@ import {
   getGovernmentPassage,
   getGovernmentWords
 } from "../../../services/apiNews";
-import { Pagination } from "antd";
+import {Pagination, Skeleton} from "antd";
 import LoadingSpin from "../../../components/LoadingSpin";
 import GovernmentWords from "../../../components/GovernmentWords";
 
@@ -52,11 +52,9 @@ export default class GovernmentInsight extends PureComponent {
             <div className={Styles.title}>
               <SmallPoint title={"政府文章"} />
             </div>
-            {governmentPassageLoading ? (
-              <LoadingSpin background={"blue"} />
-            ) : (
+            <Skeleton active loading={governmentPassageLoading}>
               <GovernmentPassage params={data} />
-            )}
+            </Skeleton>
             <div className={Styles.pagination}>
               <Pagination
                 onChange={this.onPaginationChange}
