@@ -5,7 +5,8 @@ import {
   getCloudKeywords,
   getHotspot,
   getSentiment,
-  getSentimentTrend
+  getSentimentTrend,
+    getGovernmentPassage
 } from "../../services/apiNews";
 import LoadingSpin from "../../components/LoadingSpin";
 import HotSpot from "./components/HotSpot";
@@ -21,7 +22,8 @@ export default class Insight extends PureComponent {
     cloud: undefined,
     hotspot: undefined,
     sentiment: undefined,
-    sentimentTrend: undefined
+    sentimentTrend: undefined,
+      gvnPassage:undefined
   };
 
   async componentDidMount() {
@@ -33,10 +35,12 @@ export default class Insight extends PureComponent {
     this.setState({ sentiment });
     const sentimentTrend = await getSentimentTrend("美团");
     this.setState({ sentimentTrend });
+    const gvnPassage = await getGovernmentPassage(1);
+    this.setState({ gvnPassage });
   }
 
   render() {
-    const { cloud, hotspot, sentiment = [], sentimentTrend } = this.state;
+    const { cloud, hotspot, sentiment = [], sentimentTrend, gvnPassage=[] } = this.state;
     return (
       <div className={Styles.bodySection}>
         <NavBar />
