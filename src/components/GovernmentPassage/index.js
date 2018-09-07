@@ -6,6 +6,8 @@ import Tip from "./Tip/index";
 
 class GovernmentPassage extends Component {
 
+
+
     render() {
         const { params } = this.props;
 
@@ -13,11 +15,16 @@ class GovernmentPassage extends Component {
             <div className={styles.main}>
                 <div className={styles.content}>
                     {params.map((item, index) => {
-                        return (<Tip title={item.title} pos={item.pos} date={item.date}></Tip>);
+                        console.log(index);
+                        if(index % 2 === 0) {
+                            console.log("a");
+                            return (<Tip title={item.title} pos={item.pos} date={item.date} link={item.link} odd={0}></Tip>);
+                        }
+                        else {
+                            console.log("b");
+                            return (<Tip title={item.title} pos={item.pos} date={item.date} link={item.link} odd={1}></Tip>);
+                        }
                     })}
-                </div>
-                <div className={styles.pagination}>
-                    <Pagination defaultCurrent={6} total={500} />
                 </div>
             </div>
         );
