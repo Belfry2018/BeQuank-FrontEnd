@@ -36,3 +36,13 @@ export const getGovernmentPassage = page => {
         method: "GET",
     });
 };
+
+/**
+ * 政府热点词，返回值可以直接传给GovernmentWords组件显示
+ * @returns {Object}
+ */
+export const getGovernmentWords = () => {
+    return request(`${version}/gvn/words`, {
+        method: "GET",
+    });
+};
