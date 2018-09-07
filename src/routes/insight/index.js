@@ -13,6 +13,7 @@ import SmallPoint from "../../components/SmallPoint";
 import SentimentDashBoard from "../../components/SentimentDashBoard";
 import { Col, Row, Input } from "antd";
 import TrendChartOfPublicOpinion from "../../components/TrendChartOfPublicOpinion";
+import NavBar from "./components/NavBar"
 const Search = Input.Search;
 
 export default class Insight extends PureComponent {
@@ -38,6 +39,7 @@ export default class Insight extends PureComponent {
     const { cloud, hotspot, sentiment = [], sentimentTrend } = this.state;
     return (
       <div className={Styles.bodySection}>
+        <NavBar />
         <div className={Styles.bodyWidthItem}>
           <div className={Styles.wordCloud}>
             {cloud ? (

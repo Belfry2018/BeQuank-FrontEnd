@@ -1,22 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  G2,
-  Chart,
-  Geom,
-  Axis,
-  Tooltip,
-  Coord,
-  Label,
-  Legend,
-  View,
-  Guide,
-  Shape,
-  Facet,
-  setTheme,
-} from "bizcharts";
 import DataSet from "@antv/data-set";
 import assign from "lodash.assign"
+import Chart from 'bizcharts/lib/components/Chart';
+import Coord from 'bizcharts/lib/components/Coord';
+import Geom from 'bizcharts/lib/components/Geom';
+import Tooltip from 'bizcharts/lib/components/Tooltip';
+import * as bizUtil from 'bizcharts/lib/core';
+const { Shape } = bizUtil;
 
 const WordCloudProps = {
   data: PropTypes.array.isRequired,
@@ -26,12 +17,12 @@ const WordCloudProps = {
 
 class WordCloud extends React.Component {
   render() {
-    const {style, data} = this.props;
+    const {data} = this.props;
     const newData=data.map(e=>{return {
       x:e.word,
       value:e.count,
       category:e.count
-    }})
+    }});
     
     
     function getTextAttrs(cfg) {
