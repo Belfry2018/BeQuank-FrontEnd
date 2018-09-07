@@ -30,3 +30,9 @@ export const getSentimentTrend = word => {
     body: { word }
   });
 };
+
+export const getGovernmentPassage = page => {
+    return request(`${version}/gvn/passage/{page}`, {
+        method: "GET",
+    });
+};

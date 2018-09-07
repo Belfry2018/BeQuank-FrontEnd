@@ -1,15 +1,16 @@
 @import "../../../themes/default";
 @my-width: @page-max-width * 0.5;
-@my-height: @my-width * 0.13;
+@my-height: @my-width * 0.11;
 @my-margin: 22px;
 .main {
   width: @my-width;
   height: @my-height;
   background-color: @gp-tip-background-color;
+  border-radius: @default-radius;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: @card-shadow;
+  box-shadow: @default-shadow;
   .align {
     display: flex;
     lex-direction: row;
@@ -20,6 +21,7 @@
       lex-direction: row;
       justify-content: flex-start;
       .title {
+        cursor: pointer;
         font-size: @gp-tip-title-font-size;
         color: @gp-tip-title-font-color;
       }
@@ -43,4 +45,7 @@
       }
     }
   }
+}
+.main:hover {
+  background-color: @gp-tip-background-color-active;
 }

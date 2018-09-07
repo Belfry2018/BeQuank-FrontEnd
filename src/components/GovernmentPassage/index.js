@@ -16,6 +16,9 @@ class GovernmentPassage extends Component {
                         return (<Tip title={item.title} pos={item.pos} date={item.date}></Tip>);
                     })}
                 </div>
+                <div className={styles.pagination}>
+                    <Pagination defaultCurrent={6} total={500} />
+                </div>
             </div>
         );
     }

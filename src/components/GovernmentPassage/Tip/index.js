@@ -15,7 +15,7 @@ class Tip extends Component {
                         <div className={styles.pos}>{pos}</div>
                     </div>
                     <div className={styles.part2}>
-                        <Icon className={styles.icon} type={"home"}/>
+                        <Icon className={styles.icon} type="clock-circle" theme="outlined" style={{color: 'black', opacity: 0.3  }}/>
                         <div className={styles.date}>{date}</div>
                     </div>
                 </div>
