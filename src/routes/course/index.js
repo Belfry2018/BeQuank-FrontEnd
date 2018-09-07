@@ -13,7 +13,7 @@ class Course extends PureComponent {
   };
 
   async componentDidMount() {
-    const tutorials = await getTutorials();
+    const tutorials = await getTutorials({});
     this.setState({
       tutorials
     });

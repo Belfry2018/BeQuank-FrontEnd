@@ -9,6 +9,7 @@ const Stock = PageLoadable(() => import("../stock"));
 const Course = PageLoadable(() => import("../course/index"));
 const CourseDetail = PageLoadable(() => import("../course/detail/index"));
 const Insight = PageLoadable(() => import("../insight/index"));
+const GovernmentInsight = PageLoadable(() => import("../insight/government/index"));
 const Strategy = PageLoadable(() => import("../strategy/index"));
 const StrategyResult = PageLoadable(() => import("../strategy/result/index"));
 const article = PageLoadable(() => import("../articleTest/index"));
@@ -22,7 +23,8 @@ export default [
   <DefaultLayout path="/stocks/:stockId" exact component={Stock} />,
   <DefaultLayout path="/course" exact component={Course} />,
   <DefaultLayout path="/course/:tutorialId" component={CourseDetail} />,
-  <DefaultLayout path="/insight" component={Insight} />,
+  <DefaultLayout path="/insight" exact component={Insight} />,
+  <DefaultLayout path="/insight/government" component={GovernmentInsight} />,
   <DefaultLayout path="/strategy" exact component={Strategy} role={ALL_ROLE_TYPE}/>,
   <DefaultLayout path="/strategy/result" component={StrategyResult} role={ALL_ROLE_TYPE}/>,
   <DefaultLayout path="/articleTest" component={article} />,
