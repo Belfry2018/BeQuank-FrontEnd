@@ -3,23 +3,21 @@
 @my-height: @my-width * 0.11;
 @my-margin: 22px;
 .main {
-  width: @my-width;
+  cursor: pointer;
+  position: relative;
   height: @my-height;
   background-color: @gp-tip-background-color;
   border-radius: @default-radius;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: @default-shadow;
   margin: 2px;
   .align {
     display: flex;
-    lex-direction: row;
     justify-content: space-between;
     .part1 {
       margin-left: @my-margin;
       display: flex;
-      lex-direction: row;
       justify-content: flex-start;
       .title {
         cursor: pointer;
@@ -34,8 +32,8 @@
     }
     .part2 {
       display: flex;
-      lex-direction: row;
       justify-content: flex-end;
+      align-items: center;
       .icon {
         margin-right: 10px;
       }
@@ -48,8 +46,10 @@
   }
 }
 .main:hover {
+  z-index: 5;
   box-shadow: @default-shadow-active;
+
 }
 .odd {
-  background-color: rgba(130, 190, 250, 0.04);
+  background-color: #F7F8FD;
 }

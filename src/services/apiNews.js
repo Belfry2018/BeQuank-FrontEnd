@@ -31,10 +31,10 @@ export const getSentimentTrend = (word = "微博") => {
   });
 };
 
-export const getGovernmentPassage = page => {
-    return request(`${version}/gvn/passage/{page}`, {
-        method: "GET",
-    });
+export const getGovernmentPassage = (page = 1) => {
+  return request(`${version}/gvn/passage/{page}`, {
+    method: "GET"
+  });
 };
 
 /**
@@ -42,7 +42,7 @@ export const getGovernmentPassage = page => {
  * @returns {Object}
  */
 export const getGovernmentWords = () => {
-    return request(`${version}/gvn/words`, {
-        method: "GET",
-    });
+  return request(`${version}/gvn/words`, {
+    method: "GET"
+  });
 };
