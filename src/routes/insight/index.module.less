@@ -7,17 +7,27 @@
   .government{
     max-width: @page-max-width;
     margin: 0 auto;
-    padding: 0 @page-padding;
-    .title{
-      padding:40px 0 20px;
-    }
+    padding: 0 @page-padding 40px;
+
 
 
 
     .content{
+      margin-top: 40px;
       box-shadow: @default-shadow;
       background: @page-primary-color;
       border-radius: @default-radius;
+      padding: 20px 30px 30px;
+      .title{
+        padding:0 0 20px;
+      }
+
+      .pagination{
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+
     }
   }
 
