@@ -21,6 +21,7 @@ class InfoForm extends React.Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                values.birthday=values.birthday.format('YYYY-MM');
                 try {
                     setUserProfile(values);
                     message.success("修改成功");
@@ -93,7 +94,7 @@ class InfoForm extends React.Component {
                         label="出生年月"
                     >
                         {getFieldDecorator('birthday', {
-                            initialValue: moment(birthday, 'YYYY-MM-DD'),
+                            initialValue: moment(birthday||"1998-08", 'YYYY-MM'),
                         })(
                             <MonthPicker />
                         )}

@@ -1,6 +1,7 @@
 // ant-design-pro request.js file with MIT license
 
 import { notification } from "antd";
+import {getToken} from "./authorization";
 
 const codeMessage = {
   200: "服务器成功返回请求的数据。",
@@ -66,6 +67,11 @@ export default async function request(url, options) {
       };
     }
   }
+  
+  newOptions.headers={
+    Authorization:getToken(),
+    ...newOptions.headers,
+  };
 
   const response = await fetch(url, newOptions);
   try {

@@ -82,7 +82,7 @@ export const allStocks = ({ page = 1 }) => {
  * @param stockId
  * @returns {Object}
  */
-export const stockTrend = (stockId) => {
+export const stockTrend = (stockId=null) => {
   return request(`${version}/stock/${stockId}`);
 }
 
