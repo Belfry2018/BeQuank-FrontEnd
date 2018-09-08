@@ -78,6 +78,15 @@ export const allStocks = ({ page = 1 }) => {
 };
 
 /**
+ * 获得过去30天的股票走势
+ * @param stockId
+ * @returns {Object}
+ */
+export const stockTrend = (stockId) => {
+  return request(`${version}/stock/${stockId}`);
+}
+
+/**
  * 添加自选股
  * @param params
  * {
