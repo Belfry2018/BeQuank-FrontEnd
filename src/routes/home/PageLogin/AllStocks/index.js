@@ -4,12 +4,13 @@ import LoadingSpin from "../../../../components/LoadingSpin/index";
 import { allStocks } from "../../../../services/apiStrategy";
 import StockList from "../../../../components/StockList/index";
 import Styles from "./index.module.less";
+import { Skeleton } from "antd";
 const initPage = 1;
 
 export default class AllStocks extends PureComponent {
   state = {
     stocks: undefined,
-    loading:false
+    loading: false
   };
   page = initPage;
 
@@ -20,9 +21,9 @@ export default class AllStocks extends PureComponent {
       page: initPage
     });
     this.setState(prevState => {
-      return { stocks: [...prevState.stocks, ...newStocks]};
+      return { stocks: [...prevState.stocks, ...newStocks] };
     });
-    this.setState({loading:false })
+    this.setState({ loading: false });
   };
 
   async componentDidMount() {
@@ -54,27 +55,27 @@ export default class AllStocks extends PureComponent {
           <NavButton />
         </div>
         <div className={Styles.item}>
-          {stocks ? (
-            stocks && stocks.length > 0 ? (
-              <div>
-                <StockList list={stocks} />
-                {loading ? (
-                  <LoadingSpin background={"blue"} />
-                ) : (
-                  <div
-                    onClick={this.handleNextPageClicked}
-                    className={Styles.loadMore}
-                  >
-                    点击加载更多
+          <div style={{ padding: stocks ? 0 : 20 }}>
+            <Skeleton active loading={!stocks}>
+              {stocks && stocks.length > 0 ? (
+                <div>
+                  <StockList list={stocks} />
+                  <div style={{ padding: loading ? 20 : 0 }}>
+                    <Skeleton active loading={loading}>
+                      <div
+                        onClick={this.handleNextPageClicked}
+                        className={Styles.loadMore}
+                      >
+                        点击加载更多
+                      </div>
+                    </Skeleton>
                   </div>
-                )}
-              </div>
-            ) : (
-              <div>没有数据</div>
-            )
-          ) : (
-            <LoadingSpin background={"blue"} />
-          )}
+                </div>
+              ) : (
+                <div>没有数据</div>
+              )}
+            </Skeleton>
+          </div>
         </div>
       </div>
     );

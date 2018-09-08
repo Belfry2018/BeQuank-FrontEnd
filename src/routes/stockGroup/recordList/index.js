@@ -58,7 +58,7 @@ class GroupList extends React.Component {
                 <Row>
                   <Item data={todayBenefit} comment={"今日收益"}/>
                   <Item data={yearBenefit} comment={"年化收益"}/>
-                  <Item data={risk} comment={"最大回馈"}/>
+                  <Item data={risk} comment={"风险指标"}/>
                 </Row>
               </div>
               <div className={styles.divider}/>

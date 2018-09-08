@@ -15,7 +15,7 @@ export default function({ todayBenefit, yearBenefit, risk }) {
       <div className={Styles.divider} />
       <Item title={"年化收益"}>{yearBenefit}</Item>
       <div className={Styles.divider} />
-      <Item title={"最大回馈"}>{risk}</Item>
+      <Item title={"风险指标"}>{risk}</Item>
     </div>
   );
 }
