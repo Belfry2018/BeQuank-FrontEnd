@@ -1,0 +1,38 @@
+@import "../../themes/default";
+
+.main {
+  position: relative;
+  padding: @header-height+@page-gutter @page-padding @page-gutter;
+  max-width: @page-max-width;
+  margin: 0 auto;
+
+  .simpleSection{
+    width: 100%;
+    background-color: @page-primary-color;
+    border-radius: @default-radius;
+    box-shadow: @default-shadow;
+
+    .title{
+      padding: 30px;
+    }
+
+    .dataSection{
+      text-align: center;
+      padding: 10px 0 25px;
+      .data{
+        font-size: 30px;
+        font-weight: bold;
+        color: @red;
+      }
+      .comment{
+        font-size: 16px;
+        color: grey;
+      }
+    }
+
+    .divider{
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.07);
+    }
+  }
+}

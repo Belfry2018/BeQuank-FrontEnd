@@ -38,7 +38,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>1. 您曾经有没有投资您部分或全部资金的经历？</div>
           {getFieldDecorator("1", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">没有，我不希望承担任何的投资风险</Radio>
@@ -55,7 +58,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>2. 您能够承受的最低的回报率？</div>
           {getFieldDecorator("2", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">没我不能承受任何的负回报率</Radio>
@@ -72,7 +78,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>3. 对于一个波动较大，但长期看来具有升值潜力的投资机会。你会怎么看？</div>
           {getFieldDecorator("3", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">十分诱人</Radio>
@@ -88,7 +97,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>4. 您对投资和相关产品有何了解？</div>
           {getFieldDecorator("4", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">我对投资和相关产品一无所知</Radio>
@@ -104,7 +116,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>5. 下面哪一个更好地描述了您对于投资的立场？</div>
           {getFieldDecorator("5", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">我不希望我的财富有任何的投资风险，即使这会减少我获得回报的机会</Radio>
@@ -120,7 +135,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>6. 如果您的投资出现了较大波动或负面的回报，您会做出如下哪一个决策？</div>
           {getFieldDecorator("6", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">我会马上售卖掉所有的投资</Radio>
@@ -135,8 +153,10 @@ class Question extends React.Component {
           {...formItemLayout}
         >
           <div className={styles["question"]}>7. 根据您的投资偏好，您希望一个五年期的投资正常可以获得多少的年收益？</div>
-          {getFieldDecorator("7", {
-            initialValue: "A",
+          {getFieldDecorator("7", {rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">低于10%</Radio>
@@ -152,7 +172,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>8. 您的投资动机是？</div>
           {getFieldDecorator("8", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">防止资产因为通货膨胀而贬值</Radio>
@@ -168,7 +191,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>9. 您最能够接受的投资期限是？</div>
           {getFieldDecorator("9", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">6-12月</Radio>
@@ -184,7 +210,10 @@ class Question extends React.Component {
         >
           <div className={styles["question"]}>10. 在未来十二个月，您是否有资金必须要提取出来使用？（例如偿还贷款）</div>
           {getFieldDecorator("10", {
-            initialValue: "A",
+              rules: [{
+                  required: true,
+                  message:"      您尚未作出选择",
+              }],
           })(
             <RadioGroup>
               <Radio value="A">有，并且这部分资金超过80%</Radio>

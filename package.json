@@ -4,8 +4,9 @@
   "private": true,
   "dependencies": {
     "@antv/data-set": "^0.9.3",
-    "antd": "^3.7.2",
+    "antd": "^3.9.1",
     "bizcharts": "^3.2.2",
+    "echarts": "^4.1.0",
     "lodash.assign": "^4.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",

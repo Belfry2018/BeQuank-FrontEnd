@@ -4,12 +4,12 @@ import Tip from "./Tip/index";
 
 class RecordList extends Component {
   render() {
-    const { params } = this.props;
+    const { params = [] } = this.props;
 
     return (
       <div className={styles["tip-content"]}>
         {params.map((item, index) => {
-          return <Tip title={item.recordName} time={item.recordTime} />;
+          return <Tip key={`recordListItem${index}`} title={item.recordName} time={item.recordTime} id={item.recordId} />;
         })}
       </div>
     );

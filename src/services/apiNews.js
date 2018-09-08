@@ -24,9 +24,25 @@ export const getSentiment = () => {
   return request(`${version}/sentiment`);
 };
 
-export const getSentimentTrend = word => {
+export const getSentimentTrend = (word = "微博") => {
   return request(`${version}/sentiment/trend`, {
     method: "POST",
     body: { word }
+  });
+};
+
+export const getGovernmentPassage = (page = 1) => {
+  return request(`${version}/gvn/passage/{page}`, {
+    method: "GET"
+  });
+};
+
+/**
+ * 政府热点词，返回值可以直接传给GovernmentWords组件显示
+ * @returns {Object}
+ */
+export const getGovernmentWords = () => {
+  return request(`${version}/gvn/words`, {
+    method: "GET"
   });
 };

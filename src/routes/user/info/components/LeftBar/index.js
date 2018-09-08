@@ -31,7 +31,7 @@ class LeftBar extends React.Component {
         return (
             <Menu
                 mode="inline"
-                selectedKeys={this.state.keys[this.state.currentPageNumber]}
+                selectedKeys={[this.state.keys[this.state.currentPageNumber]]}
                 onClick={this.handleClick}
             >
                 <Menu.Item key={this.state.keys[0]}>{this.state.keys[0]}</Menu.Item>

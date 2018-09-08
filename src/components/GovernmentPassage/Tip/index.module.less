@@ -1,0 +1,55 @@
+@import "../../../themes/default";
+@my-width: @page-max-width * 0.5 - 4px;
+@my-height: @my-width * 0.11;
+@my-margin: 22px;
+.main {
+  cursor: pointer;
+  position: relative;
+  height: @my-height;
+  background-color: @gp-tip-background-color;
+  border-radius: @default-radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2px;
+  .align {
+    display: flex;
+    justify-content: space-between;
+    .part1 {
+      margin-left: @my-margin;
+      display: flex;
+      justify-content: flex-start;
+      .title {
+        cursor: pointer;
+        font-size: @gp-tip-title-font-size;
+        color: @gp-tip-title-font-color;
+      }
+      .pos {
+        margin-left: 10px;
+        font-size: @gp-tip-pos-font-size;
+        color: @gp-tip-pos-font-color;
+      }
+    }
+    .part2 {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      .icon {
+        margin-right: 10px;
+      }
+      .date {
+        margin-right: @my-margin;
+        font-size: @gp-tip-date-font-size;
+        color: @gp-tip-date-font-color;
+      }
+    }
+  }
+}
+.main:hover {
+  z-index: 5;
+  box-shadow: @default-shadow-active;
+
+}
+.odd {
+  background-color: #F7F8FD;
+}

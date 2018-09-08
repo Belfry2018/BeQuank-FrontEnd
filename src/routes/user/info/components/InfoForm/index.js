@@ -4,6 +4,7 @@ import styles from "../form.module.less"
 import moment from 'moment';
 import { setUserProfile } from "../../../../../services/apiUser";
 import SmallPoint from "../../../../../components/SmallPoint";
+import AvatarUploader from "../../../../../components/AvatarUploader";
 
 const FormItem = Form.Item;
 const MonthPicker = DatePicker.MonthPicker;
@@ -35,12 +36,13 @@ class InfoForm extends React.Component {
     }
 
     render() {
-        const{ nickName, bio, gender, birthday } = this.props;
+        const{ nickName, bio, gender, birthday,avatar } = this.props;
         const { getFieldDecorator } = this.props.form;
         const config = {
             rules: [{ type: 'object', required: true, message: 'Please select time!' }],
         };
 
+        console.log(avatar)
         return (
             <div className={styles["main"]}>
                 <SmallPoint title={"个人信息"}/>
@@ -96,7 +98,15 @@ class InfoForm extends React.Component {
                             <MonthPicker />
                         )}
                     </FormItem>
-
+                  <FormItem
+                    label="头像"
+                  >
+                    {getFieldDecorator('avatar', {
+                      initialValue: avatar,
+                    })(
+                      <AvatarUploader/>
+                    )}
+                  </FormItem>
                     <FormItem >
                         <Button type="primary" htmlType="submit">更新信息</Button>
                     </FormItem>

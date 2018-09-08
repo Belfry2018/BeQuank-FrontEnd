@@ -4,18 +4,20 @@ import { getTutorials } from "../../services/apiCourse";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import Card from "../../components/Card";
-import { Col, Row } from "antd";
+import { Col, Row, Skeleton } from "antd";
 import { withRouter } from "react-router-dom";
 
 class Course extends PureComponent {
   state = {
-    tutorials: []
+    tutorials: [],
+    tutorialsLoading: true
   };
 
   async componentDidMount() {
-    const tutorials = await getTutorials();
+    const tutorials = await getTutorials({});
     this.setState({
-      tutorials
+      tutorials,
+      tutorialsLoading: false
     });
   }
 
@@ -24,49 +26,53 @@ class Course extends PureComponent {
   };
 
   render() {
-    const { tutorials } = this.state;
+    const { tutorials, tutorialsLoading } = this.state;
     return (
       <div className={Styles.bodySection}>
         {tutorials.length < 4 ? (
           undefined
         ) : (
           <div className={Styles.bodyItem}>
-            <PopularPart
-              paramText={tutorials.map(e => {
-                return {
-                  imgSrc: e.cover,
-                  title: e.title,
-                  content: e.abstract,
-                  top: e.tutorialType,
-                  ttId: e.tutorialId
-                };
-              })}
-              handleCourseClicked={this.handleCourseClick}
-            />
+            <Skeleton active loading={tutorialsLoading}>
+              <PopularPart
+                paramText={tutorials.map(e => {
+                  return {
+                    imgSrc: e.cover,
+                    title: e.title,
+                    content: e.abstract,
+                    top: e.tutorialType,
+                    ttId: e.tutorialId
+                  };
+                })}
+                handleCourseClicked={this.handleCourseClick}
+              />
+            </Skeleton>
           </div>
         )}
         <div className={Styles.bodyItem}>
           <TutorialFilter />
         </div>
         <div className={Styles.bodyItem}>
-          <Row gutter={40}>
-            {tutorials.map((e, index) => (
-              <Col
-                onClick={()=>this.handleCourseClick(e.tutorialId)}
-                key={`tutorial${index}`}
-                style={{ marginBottom: 40 }}
-                md={8}
-              >
-                <Card
-                  context={e.abstract}
-                  header={e.title}
-                  src={e.cover}
-                  time={e.publishTime}
-                  top={e.tutorialType}
-                />
-              </Col>
-            ))}
-          </Row>
+          <Skeleton active loading={tutorialsLoading}>
+            <Row gutter={40}>
+              {tutorials.map((e, index) => (
+                <Col
+                  onClick={() => this.handleCourseClick(e.tutorialId)}
+                  key={`tutorial${index}`}
+                  style={{ marginBottom: 40 }}
+                  md={8}
+                >
+                  <Card
+                    context={e.abstract}
+                    header={e.title}
+                    src={e.cover}
+                    time={e.publishTime}
+                    top={e.tutorialType}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </Skeleton>
         </div>
       </div>
     );
