@@ -3,6 +3,7 @@
 import { Upload, Icon, message } from "antd";
 import React from "react";
 import { version } from "../../services/apiOverview";
+import {getToken} from "../../utils/authorization";
 
 function getBase64(img, callback) {
   const reader = new FileReader();
@@ -67,6 +68,9 @@ class AvatarUploader extends React.Component {
         showUploadList={false}
         action={`${version}/user/avatar`}
         onChange={this.handleChange}
+        headers={{
+          Authorization: getToken(),
+        }}
       >
         {this.props.value&&!this.state.loading ? (
           <img width={100} height={100} src={this.props.value} alt="avatar" />
