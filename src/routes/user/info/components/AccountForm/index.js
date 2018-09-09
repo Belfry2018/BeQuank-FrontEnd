@@ -117,7 +117,7 @@ class AccountForm extends React.Component {
                         {getFieldDecorator('id', {
                             initialValue: id,
                         })(
-                            <Input disabled={"true"} />
+                            <Input disabled={true} />
                         )}
                     </FormItem>
 
@@ -141,7 +141,7 @@ class AccountForm extends React.Component {
                             }],
                             initialValue: email,
                         })(
-                            <Input />
+                            <Input disabled={true} />
                         )}
                     </FormItem>
 
@@ -161,12 +161,12 @@ class AccountForm extends React.Component {
                         {getFieldDecorator('registerTime', {
                             initialValue: moment(registerTime, 'YYYY-MM-DD'),
                         })(
-                            <DatePicker disabled={"true"}/>
+                            <DatePicker disabled={true}/>
                         )}
                     </FormItem>
 
                     <FormItem >
-                        <Button type="primary" htmlType="submit" >更新信息</Button>
+                        <Button type="primary" onClick={this.handleSubmit} >更新信息</Button>
                     </FormItem>
                 </Form>
                 <Modal visible={this.state.changePassword}
@@ -185,8 +185,9 @@ class AccountForm extends React.Component {
                                 rules: [{
                                     required: true, message: '请输入现在的密码',
                                 }],
+                                initialValue:"1",
                             })(
-                                <Input  placeholder={"请输入现在的密码"}/>
+                                <Input type={"password"}  placeholder={"请输入现在的密码"}/>
                             )}
                         </FormItem>
                         <FormItem
@@ -198,6 +199,7 @@ class AccountForm extends React.Component {
                                 }, {
                                     validator: this.validateToNextPassword,
                                 }],
+                                initialValue:"1",
                             })(
                                 <Input type="password" />
                             )}
@@ -211,13 +213,14 @@ class AccountForm extends React.Component {
                                 }, {
                                     validator: this.compareToFirstPassword,
                                 }],
+                                initialValue:"1",
                             })(
                                 <Input type="password" onBlur={this.handleConfirmBlur} />
                             )}
                         </FormItem>
 
                         <FormItem>
-                            <Button type="primary" htmlType="submit" >修改密码</Button>
+                            <Button type="primary"  onClick={this.handleOk} >修改密码</Button>
                         </FormItem>
 
                     </Form>

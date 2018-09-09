@@ -3,10 +3,8 @@ import { Form, Input, DatePicker, Select, Divider, Button, message, Slider } fro
 import styles from "../form.module.less"
 import { setUserProfile } from "../../../../../services/apiUser";
 import SmallPoint from "../../../../../components/SmallPoint";
-
+import { NavLink } from "react-router-dom";
 const FormItem = Form.Item;
-const MonthPicker = DatePicker.MonthPicker;
-const Option = Select.Option;
 
 class StockDataForm extends React.Component {
     state = {
@@ -17,6 +15,7 @@ class StockDataForm extends React.Component {
     //导航到测试问卷界面
     handleRetest = () => {
         message.info("重新测试");
+
     }
 
     handleSubmit = (e) => {
@@ -117,10 +116,10 @@ class StockDataForm extends React.Component {
                         {getFieldDecorator('level', {
                             initialValue: level,
                         })(
-                            <Input  disabled={"true"}/>
+                            <Input  disabled={true}/>
                         )}
                         <p></p>
-                        <Button type={"default"} onClick={this.handleRetest}>重新测评</Button>
+                        <Button type={"default"}><NavLink to={"/strategy"}>重新测评</NavLink></Button>
                     </FormItem>
 
                     <Divider/>
