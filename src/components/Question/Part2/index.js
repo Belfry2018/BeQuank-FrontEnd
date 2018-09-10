@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./index.module.less";
-import { Form, Input, Divider, Button, message, Slider } from 'antd';
-import { setUserProfile } from "../../../services/apiUser";
+import { Form, Divider, Button, Slider } from 'antd';
 import SmallPoint from "../../../components/SmallPoint";
 
 const FormItem = Form.Item;
@@ -65,7 +64,7 @@ class Part2 extends React.Component {
 
         return (
             <div className={styles["main"]}>
-                <SmallPoint title={"选股数据"}/>
+                <SmallPoint title={"收益指数测评"}/>
 
                 <Form layout={"vertical"}
                       className={styles.form}
@@ -97,7 +96,7 @@ class Part2 extends React.Component {
                     <Divider/>
 
                     <FormItem >
-                        <Button type="primary" htmlType="submit">提交信息</Button>
+                        <Button size={"large"} type="primary" htmlType="submit">提交</Button>
                     </FormItem>
                 </Form>
             </div>
