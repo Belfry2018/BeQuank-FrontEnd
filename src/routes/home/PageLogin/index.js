@@ -9,7 +9,8 @@ import {
 import NavButton from "../components/NavButton";
 import GeneralData from "../components/GeneralData";
 import Button from "../../../components/Button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import RecordModel from "./RecordModel";
 const Option = Select.Option;
 
 const PROFIT = "Profit";
@@ -88,7 +89,9 @@ class PageLogin extends PureComponent {
                     <StockList recommend list={recommendStocks.stocks} />
                   ) : (
                     <div className={Styles.emptySection}>
-                      <div className={Styles.emptyText}>完成问卷后即可获取推荐股票</div>
+                      <div className={Styles.emptyText}>
+                        完成问卷后即可获取推荐股票
+                      </div>
                       <Link to={"/strategy"}>
                         <Button type={"primary"}>创建策略</Button>
                       </Link>
@@ -112,6 +115,11 @@ class PageLogin extends PureComponent {
                   undefined
                 )}
               </div>
+              {recommendStocks &&
+                recommendStocks.stocks &&
+                recommendStocks.stocks.length > 0 && (
+                  <RecordModel stocks={recommendStocks.stocks} />
+                )}
             </div>
           </Col>
         </Row>

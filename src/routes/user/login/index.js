@@ -1,8 +1,11 @@
 import React from "react";
-import { Form, Icon, Input, Button, Alert,message } from "antd";
-import {Link, withRouter} from "react-router-dom";
+import { Form, Icon, Input, Button, Alert, message } from "antd";
+import { Link, withRouter } from "react-router-dom";
 import { login } from "../../../services/apiAuthorization";
-import {setAuthorization} from "../../../utils/authorization";
+import {
+  clearAuthorization,
+  setAuthorization
+} from "../../../utils/authorization";
 
 class NormalLoginForm extends React.Component {
   state = {
@@ -10,6 +13,10 @@ class NormalLoginForm extends React.Component {
     errorMessage: "用户名或密码错",
     loginLoading: false
   };
+
+  componentDidMount() {
+    clearAuthorization();
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -26,7 +33,7 @@ class NormalLoginForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           // if (e.name === 421) {
-            errorMessage = "用户名或密码错";
+          errorMessage = "用户名或密码错";
           // }
           this.setState({
             errorMessage,
@@ -43,7 +50,15 @@ class NormalLoginForm extends React.Component {
     const { showError, errorMessage, loginLoading } = this.state;
     return (
       <Form onSubmit={this.handleSubmit}>
-        {showError ? <Alert style={{marginBottom:24}} message={errorMessage} type="error" /> : undefined}
+        {showError ? (
+          <Alert
+            style={{ marginBottom: 24 }}
+            message={errorMessage}
+            type="error"
+          />
+        ) : (
+          undefined
+        )}
 
         <Form.Item>
           {getFieldDecorator("userName", {
