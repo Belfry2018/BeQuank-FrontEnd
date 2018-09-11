@@ -174,3 +174,14 @@ export const recordDetail = (recordId = null) => {
     method: "GET"
   });
 };
+
+/**
+ * 获得自选股的回测，返回值直接交给组件显示
+ * @param recordId
+ * @returns {Object}
+ */
+export const loopBack = (recordId = null) => {
+    return request(`${version}/strategy/loopback/${recordId}`, {
+        method: "GET"
+    });
+}

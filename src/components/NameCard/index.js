@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styles from "./index.module.less";
 import LoadingSpin from '../LoadingSpin';
 import { Divider, Button } from "antd";

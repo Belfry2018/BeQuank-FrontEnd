@@ -1,41 +1,26 @@
 import React from "react";
-import { Form, Input, DatePicker, Select, Divider, Button, message, Slider } from 'antd';
-import styles from "../form.module.less"
-import { setUserProfile } from "../../../../../services/apiUser";
-import SmallPoint from "../../../../../components/SmallPoint";
-import { NavLink } from "react-router-dom";
+import styles from "./index.module.less";
+import { Form, Divider, Button, Slider } from 'antd';
+import SmallPoint from "../../../components/SmallPoint";
+
 const FormItem = Form.Item;
 
-class StockDataForm extends React.Component {
+class Part2 extends React.Component {
     state = {
         confirmDirty: false,
         autoCompleteResult: [],
     };
 
-    //导航到测试问卷界面
-    handleRetest = () => {
-        message.info("重新测试");
-
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.form.validateFieldsAndScroll((err, values) => {
+        this.props.form.validateFields(async (err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
-                try {
-                    setUserProfile(values);
-                    message.success("修改成功");
-                } catch (e) {
-                    let errorMessage = "";
-                    if (e.name === 418) {
-                        errorMessage = "xxx";
-                    }
-
-                }
+                const {onSubmit=()=>{}}=this.props;
+                this.setState({loading:true});
+                await onSubmit(values);
             }
         });
-    }
+    };
 
     transMoneyLevel = (level) => {
         switch (level){
@@ -79,8 +64,8 @@ class StockDataForm extends React.Component {
 
         return (
             <div className={styles["main"]}>
-                <SmallPoint title={"选股数据"}/>
-    
+                <SmallPoint title={"收益指数测评"}/>
+
                 <Form layout={"vertical"}
                       className={styles.form}
                       onSubmit={this.handleSubmit}
@@ -109,23 +94,9 @@ class StockDataForm extends React.Component {
                         )}
                     </FormItem>
                     <Divider/>
-                    <FormItem
-                        label="您的风险承受能力评级"
-                        extra="*通过参与我们的问卷，您可以得到自己的的风险承受能力评级。我们也会根据您的评级进行与之匹配的股票推荐"
-                    >
-                        {getFieldDecorator('level', {
-                            initialValue: level,
-                        })(
-                            <Input  disabled={true}/>
-                        )}
-                        <p></p>
-                        <Button type={"default"}><NavLink to={"/strategy"}>重新测评</NavLink></Button>
-                    </FormItem>
-
-                    <Divider/>
 
                     <FormItem >
-                        <Button type="primary" htmlType="submit">更新信息</Button>
+                        <Button size={"large"} type="primary" htmlType="submit">提交</Button>
                     </FormItem>
                 </Form>
             </div>
@@ -134,4 +105,4 @@ class StockDataForm extends React.Component {
 
 }
 
-export default Form.create()(StockDataForm);
+export default Form.create()(Part2);

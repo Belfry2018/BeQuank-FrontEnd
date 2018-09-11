@@ -49,3 +49,32 @@ export const getGovernmentWords = () => {
     method: "GET"
   });
 };
+
+/**
+ * 获得一个词的好/中/坏的评论次数
+ * @param word
+ * @returns {Object}
+ * {
+    word:"阿里",
+    positive:199,
+    neutral:188,
+    negative:26
+    }
+ */
+export const getSentimentRatio = (word = "微博") => {
+    return request(`${version}/sentiment/ratio/${word}`, {
+        method: "GET"
+    });
+}
+
+/**
+ * 获得一个词的好中坏出现次数走势
+ * @param word
+ * @returns {Object}
+ * 返回值可以直接给组件显示
+ */
+export const getSentimentRatioTrend= (word = "微博") => {
+    return request(`${version}/sentiment/ratioTrend/${word}`, {
+        method: "GET"
+    });
+}

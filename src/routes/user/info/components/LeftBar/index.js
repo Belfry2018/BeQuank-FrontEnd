@@ -37,7 +37,6 @@ class LeftBar extends React.Component {
                 <Menu.Item key={this.state.keys[0]}>{this.state.keys[0]}</Menu.Item>
                 <Menu.Item key={this.state.keys[1]}>{this.state.keys[1]}</Menu.Item>
                 <Menu.Item key={this.state.keys[2]}>{this.state.keys[2]}</Menu.Item>
-                <Menu.Item key={this.state.keys[3]}>{this.state.keys[3]}</Menu.Item>
             </Menu>
         );
     }
