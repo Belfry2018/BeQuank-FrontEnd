@@ -29,7 +29,7 @@ class LoopBack extends Component {
         };
         return (
             <div>
-                <Chart height={400} data={dv} scale={cols} forceFit>
+                <Chart height={300} data={dv} scale={cols} forceFit>
                     <Legend />
                     <Axis name="date" />
                     <Axis
