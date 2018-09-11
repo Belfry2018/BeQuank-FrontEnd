@@ -91,7 +91,7 @@ export const stockTrend = (stockId=null) => {
  * @param params
  * {
     recordName:"稳赚不赔"，//用户自定义自选股的名字（id后端自定，和id不同，需要唯一吗？？）
-    data:[
+    stocks:[
         {
             stockId:"xxx",
             buyRate:11.1,//百分之
@@ -106,12 +106,12 @@ export const stockTrend = (stockId=null) => {
     addTime:"2018-08-27 13:39"//添加时间
 }
  */
-export const addRecord = ({ recordName = "未命名", data = [] }) => {
+export const addRecord = ({ recordName = "未命名", stocks = [] }) => {
   return request(`${version}/strategy/record`, {
     method: "POST",
     body: {
       recordName,
-      data
+      stocks
     }
   });
 };

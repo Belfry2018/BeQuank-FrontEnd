@@ -24,11 +24,6 @@ const linkList = [
     content: "个人信息"
   },
   {
-    iconType: "setting",
-    to: "/login",
-    content: "个人设置"
-  },
-  {
     isDivider: true
   },
   {
@@ -80,10 +75,6 @@ class UserSection extends PureComponent {
               <img alt={""} src={plus} />
             </div>
           </Link>
-
-          <div className={styles["down-icon"]}>
-            <img alt={""} src={notification} />
-          </div>
           <Dropdown
             overlay={[
               <NickNameSpace key={"nickname-space"}>{nickName}</NickNameSpace>,

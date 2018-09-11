@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import StockTrend from "../../components/StockTrend"
+import StockTrend from "../../components/StockTrend";
 import { stockTrend } from "../../services/apiStrategy";
 import Styles from "./index.module.less";
 import { Col, Row, Skeleton } from "antd";
@@ -46,7 +46,6 @@ export default class Stock extends PureComponent {
               <div className={Styles.recommendDesc}>{stockName}</div>
               <div className={Styles.recommendId}>{stockId}</div>
             </div>
-            <div className={Styles.recommendSelect}>添加自选股</div>
           </div>
         </Skeleton>
         <div className={Styles.detailSection}>
@@ -76,8 +75,8 @@ export default class Stock extends PureComponent {
           </Skeleton>
         </div>
         <div className={Styles.detailSection}>
-          <SmallPoint title={"行情信息"}/>
-          <div style={{height:20}}></div>
+          <SmallPoint title={"行情信息"} />
+          <div style={{ height: 20 }} />
           <Skeleton active loading={stockDataLoading}>
             <StockTrend data={trendData} />
           </Skeleton>

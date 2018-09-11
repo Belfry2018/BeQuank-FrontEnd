@@ -24,6 +24,13 @@ export const setAuthorization = ({ role, token }) => {
   return true;
 };
 
+export const clearAuthorization = () => {
+  localStorage.removeItem(AUTHORIZATION_TOKEN);
+  localStorage.removeItem(AUTHORIZATION_ROLE);
+  
+  return true;
+};
+
 export const judgeLogin = () => {
   return !!getRole();
 };

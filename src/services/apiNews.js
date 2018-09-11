@@ -14,9 +14,12 @@ export const getCloudKeywords = () => {
  * 微博热点
  * @return {Object}
  */
-export const getHotspot = () => {
+export const getHotspot = (page = 1) => {
   return request(`${version}/hotspot`, {
-    method: "POST"
+    method: "POST",
+    body: {
+      page
+    }
   });
 };
 
