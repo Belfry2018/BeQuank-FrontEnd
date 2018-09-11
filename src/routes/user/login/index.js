@@ -38,7 +38,7 @@ class NormalLoginForm extends React.Component {
           this.setState({
             errorMessage,
             showError: true,
-            registerLoading: false
+            loginLoading: false
           });
         }
       }

@@ -6,16 +6,21 @@ import {
   getHotspot,
   getSentiment,
   getSentimentTrend,
-    getGovernmentPassage
+  getSentimentRatio,
+  getSentimentRatioTrend
 } from "../../services/apiNews";
 import LoadingSpin from "../../components/LoadingSpin";
 import HotSpot from "./components/HotSpot";
 import SmallPoint from "../../components/SmallPoint";
 import SentimentDashBoard from "../../components/SentimentDashBoard";
-import { Col, Row, Input } from "antd";
+import { Col, Row, Input, Skeleton } from "antd";
 import TrendChartOfPublicOpinion from "../../components/TrendChartOfPublicOpinion";
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
+import PieChart from "../../components/PieChart";
+import SentimentRatioTrend from "../../components/SentimentRatioTrend";
 const Search = Input.Search;
+
+const initWord = "美团";
 
 export default class Insight extends PureComponent {
   state = {
@@ -23,7 +28,11 @@ export default class Insight extends PureComponent {
     hotspot: undefined,
     sentiment: undefined,
     sentimentTrend: undefined,
-      gvnPassage:undefined
+    gvnPassage: undefined,
+    sentimentRatio: undefined,
+    sentimentRatioTrend: undefined,
+    wordTrend: initWord,
+    sentimentTrendWord: initWord
   };
 
   async componentDidMount() {
@@ -33,14 +42,25 @@ export default class Insight extends PureComponent {
     this.setState({ hotspot });
     const sentiment = await getSentiment();
     this.setState({ sentiment });
-    const sentimentTrend = await getSentimentTrend("美团");
+    const sentimentRatio = await getSentimentRatio(initWord);
+    this.setState({ sentimentRatio });
+    const sentimentRatioTrend = await getSentimentRatioTrend(initWord);
+    this.setState({ sentimentRatioTrend });
+    const sentimentTrend = await getSentimentTrend(initWord);
     this.setState({ sentimentTrend });
-    const gvnPassage = await getGovernmentPassage(1);
-    this.setState({ gvnPassage });
   }
 
   render() {
-    const { cloud, hotspot, sentiment = [], sentimentTrend, gvnPassage=[] } = this.state;
+    const {
+      cloud,
+      hotspot,
+      sentiment = [],
+      sentimentTrend,
+      sentimentRatio,
+      sentimentRatioTrend,
+      wordTrend,
+      sentimentTrendWord
+    } = this.state;
     return (
       <div className={Styles.bodySection}>
         <NavBar />
@@ -87,13 +107,59 @@ export default class Insight extends PureComponent {
         </div>
         <div className={Styles.bodyItem}>
           <div className={Styles.bodySearch}>
-            <SmallPoint title={"舆情走势图"} />
+            <SmallPoint title={`词语评论走势 「${wordTrend}」`} />
             <Search
               placeholder="输入关键词"
               onSearch={async value => {
-                this.setState({ sentimentTrend:undefined});
+                this.setState({
+                  sentimentRatio: undefined,
+                  sentimentRatioTrend: undefined,
+                  wordTrend: value
+                });
+                const sentimentRatio = await getSentimentRatio(value);
+                this.setState({ sentimentRatio });
+                const sentimentRatioTrend = await getSentimentRatioTrend(value);
+                this.setState({ sentimentRatioTrend });
+              }}
+              style={{ width: 200 }}
+            />
+          </div>
+          <div>
+            <Row gutter={40}>
+              <Col md={12}>
+                <div
+                  className={Styles.cardStyle}
+                  style={{ padding: sentimentRatio ? 0 : 20 }}
+                >
+                  <Skeleton active loading={!sentimentRatio}>
+                    {sentimentRatio && <PieChart {...sentimentRatio} />}
+                  </Skeleton>
+                </div>
+              </Col>
+              <Col md={12}>
+                <div
+                  className={Styles.cardStyle}
+                  style={{ padding: sentimentRatioTrend ? 0 : 20 }}
+                >
+                  <Skeleton active loading={!sentimentRatioTrend}>
+                    {sentimentRatioTrend && (
+                      <SentimentRatioTrend data={sentimentRatioTrend} />
+                    )}
+                  </Skeleton>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
+        <div className={Styles.bodyItem}>
+          <div className={Styles.bodySearch}>
+            <SmallPoint title={`舆情走势图 「${sentimentTrendWord}」`}/>
+            <Search
+              placeholder="输入关键词"
+              onSearch={async value => {
+                this.setState({ sentimentTrend: undefined });
                 const sentimentTrend = await getSentimentTrend(value);
-                this.setState({ sentimentTrend });
+                this.setState({ sentimentTrend, sentimentTrendWord: value });
               }}
               style={{ width: 200 }}
             />
