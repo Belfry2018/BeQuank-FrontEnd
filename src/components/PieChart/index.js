@@ -68,10 +68,8 @@ class PieChart extends React.Component {
                     />
                     <Guide>
                         <Html
-                            position={["50%", "50%"]}
-                            html="<div style=&quot;color:#8c8c8c;font-size:1.16em;text-align: center;width: 16em;&quot;></div>"
-                            alignX="middle"
-                            alignY="middle"
+                            position={['50%', '50%']}//百分数的位置
+                            html={() => (`<div style="width: 300px;text-align: center;font-size: 12px!important;"><p style="font-size: 1.1em; color: rgba(0,0,0,0.5);margin: 0;">${word}</p></div>`)}
                         />
                     </Guide>
                     <Geom
