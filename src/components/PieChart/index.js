@@ -49,10 +49,11 @@ class PieChart extends React.Component {
         return (
             <div>
                 <Chart
-                    height={window.innerHeight}
+                    width={window.innerWidth}
+                    height={400}
                     data={dv}
                     scale={cols}
-                    padding={[80, 100, 80, 80]}
+                    padding={[0, 0, 0, 0]}
                     forceFit
                 >
                     <Coord type={"theta"} radius={0.75} innerRadius={0.6} />

@@ -47,7 +47,7 @@ class RecordModel extends React.Component {
         >
           添加至自选股
         </Button>
-        <Modal centered visible={this.state.modalVisible} footer={null}>
+        <Modal closable={false} maskClosable centered visible={this.state.modalVisible} footer={null}>
           <Form style={{ width: "100%" }} onSubmit={this.handleSubmitEvent}>
             <div style={{ display: "flex" }}>
               {getFieldDecorator("recordName")(
@@ -67,6 +67,14 @@ class RecordModel extends React.Component {
                 disabled={!getFieldValue("recordName")}
               >
                 新建
+              </Button>
+              <div style={{ width: 20 }} />
+              <Button
+                disabled={loading}
+                onClick={()=>this.setModalVisible(false)}
+                size="large"
+              >
+                取消
               </Button>
             </div>
           </Form>

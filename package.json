@@ -36,7 +36,7 @@
   },
   "proxy": {
     "/api/*": {
-      "target": "http://192.168.0.106:9001",
+      "target": "https://www.easy-mock.com/mock/5b6282fe70818661082f206c/bequank",
       "changeOrigin": true
     }
   }

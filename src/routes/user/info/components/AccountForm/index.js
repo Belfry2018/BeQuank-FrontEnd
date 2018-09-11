@@ -21,8 +21,9 @@ class AccountForm extends React.Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                const {userProfile={}}=this.props;
                 try {
-                    setUserProfile(values);
+                    setUserProfile({...userProfile,...values});
                     message.success("修改成功");
                 } catch (e) {
                     let errorMessage = "";
