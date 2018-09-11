@@ -63,3 +63,15 @@ export const getSentimentRatio = (word = "微博") => {
         method: "GET"
     });
 }
+
+/**
+ * 获得一个词的好中坏出现次数走势
+ * @param word
+ * @returns {Object}
+ * 返回值可以直接给组件显示
+ */
+export const getSentimentRatioTrend= (word = "微博") => {
+    return request(`${version}/sentiment/ratioTrend/${word}`, {
+        method: "GET"
+    });
+}

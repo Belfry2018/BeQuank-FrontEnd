@@ -1,21 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
 import {
+    G2,
     Chart,
     Geom,
     Axis,
     Tooltip,
+    Coord,
+    Label,
     Legend,
+    View,
+    Guide,
+    Shape,
+    Facet,
+    Util
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-class LoopBack extends Component {
+class SentimentRatioTrend extends React.Component {
     render() {
-        const { data=[] } = this.props;
+        const { data=[] } =this.props;
         const ds = new DataSet();
         const dv = ds.createView().source(data);
         dv.transform({
             type: "fold",
-            fields: ["上证指数", "自选股"],
+            fields: ["positive", "neutral", "negative"],
             // 展开字段集
             key: "type",
             // key字段
@@ -35,7 +43,7 @@ class LoopBack extends Component {
                     <Axis
                         name="value"
                         label={{
-                            formatter: val => `${val}%`
+                            formatter: val => `${val}`
                         }}
                     />
                     <Tooltip
@@ -67,4 +75,4 @@ class LoopBack extends Component {
     }
 }
 
-export default LoopBack;
+export default SentimentRatioTrend;
