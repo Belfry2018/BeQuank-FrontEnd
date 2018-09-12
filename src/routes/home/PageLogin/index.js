@@ -105,66 +105,20 @@ class PageLogin extends PureComponent {
           <Col md={8}>
             <div>
               <NavButton />
-              <div className={Styles.simpleSection}>
-                <div style={{marginLeft:"-20px"}}>
-                  
+              {recommendStocks &&
+              recommendStocks.loopback &&
+              recommendStocks.loopback.length>0 && (
+                <div className={Styles.simpleSection}>
+                  <div className={Styles.simpleTitle}>
+                    回测走势图
+                  </div>
+                  <div style={{marginLeft:"-20px"}}>
+                    <LoopBack data={recommendStocks.loopback}/>
+                  </div>
+  
                 </div>
-                <div style={{marginLeft:"-20px"}}>
-                  <LoopBack data={[
-                    {
-                      date:"2018-06-01",
-                      "上证指数":-12.4,
-                      "自选股":15.5
-                    },
-                    {
-                      date:"2018-06-02",
-                      "上证指数":11.4,
-                      "自选股":13.8
-                    },
-                    {
-                      date:"2018-06-03",
-                      "上证指数":15.4,
-                      "自选股":-19.5
-                    },
-                    {
-                      date:"2018-06-04",
-                      "上证指数":22.4,
-                      "自选股":23.5
-                    },
-                    {
-                      date:"2018-06-05",
-                      "上证指数":12.7,
-                      "自选股":-6.5
-                    },
-                    {
-                      date:"2018-06-06",
-                      "上证指数":-9.4,
-                      "自选股":17.5
-                    },
-                    {
-                      date:"2018-06-07",
-                      "上证指数":19.4,
-                      "自选股":18.5
-                    },
-                    {
-                      date:"2018-06-08",
-                      "上证指数":22.4,
-                      "自选股":24.5
-                    },
-                    {
-                      date:"2018-06-09",
-                      "上证指数":15.4,
-                      "自选股":-5.5
-                    },
-                    {
-                      date:"2018-06-10",
-                      "上证指数":18.4,
-                      "自选股":13.5
-                    },
-                  ]}></LoopBack>
-                </div>
-
-              </div>
+              )}
+              
               <div className={Styles.simpleSection}>
                 {recommendStocks ? (
                   <GeneralData

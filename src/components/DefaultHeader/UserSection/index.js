@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styles from "./index.module.less";
+import styles from "../index.module.less";
 import plus from "./twotone-add_circle-24px.svg";
-import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
 import LoadingSpin from "../../LoadingSpin";
