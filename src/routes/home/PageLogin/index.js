@@ -61,11 +61,11 @@ class PageLogin extends PureComponent {
                   <div className={Styles.recommendSection}>
                     <div className={Styles.recommendDesc}>
                       {recommendStocks.stocks.length !== 0
-                        ? `共有${recommendStocks.stocks.length}个推荐股票`
+                        ? `根据您的个人问卷测算，为您推荐${recommendStocks.stocks.length}只股票`
                         : `没有推荐股票`}
                     </div>
                     <div className={Styles.recommendSelect}>
-                      <div style={{ marginRight: 10 }}>排序方式:</div>
+                      <div style={{ marginRight: 10 }}>偏好选择</div>
                       <Select
                         value={selectedValue}
                         style={{ width: 120 }}

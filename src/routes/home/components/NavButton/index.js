@@ -12,7 +12,7 @@ export default () => (
       to="/stocks"
       activeClassName={Styles.activeItem}
     >
-      全部股票
+      所有股票
     </NavLink>
   </div>
 );
