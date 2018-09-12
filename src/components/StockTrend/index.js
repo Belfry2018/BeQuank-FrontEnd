@@ -176,7 +176,7 @@ function getComponent(data, startTime, endTime) {
                                 ]}
                                 tooltip={[
                                     "time*volume",
-                                    (time, volumn) => {
+                                    (time, volume) => {
                                         return {
                                             name: time,
                                             value:
