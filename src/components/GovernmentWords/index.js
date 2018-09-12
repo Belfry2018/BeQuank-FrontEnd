@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styles from "./index.module.less";
 import {
     Chart,
     Geom,
@@ -28,11 +27,11 @@ class GovernmentWords extends Component {
                 container.addShape("line", {
                     attrs: {
                         x1: cfg.points[0].x,
-                        y1: cfg.points[0].y,
+                        y1: cfg.points[0].y * 0.9,
                         x2: cfg.points[0].x,
                         y2: coord.start.y,
                         stroke: "#ccc",
-                        lineWidth: 1,
+                        lineWidth: 2,
                         lineDash: [4, 2]
                     }
                 });
@@ -61,14 +60,15 @@ class GovernmentWords extends Component {
             value: {
                 nice: false,
                 max: 100,
-                min: 0
+                min: 0,
+                range: [0.05, 0.95]
             }
         };
         return (
             <div>
                 <Chart
-                    height={window.innerHeight*0.7}
-                    width={window.innerWidth*0.5}
+                    height={window.innerHeight * 0.65}
+                    width={window.innerWidth * 0.5}
                     data={data}
                     padding={[20, 20, 90]}
                     scale={cols}

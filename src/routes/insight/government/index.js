@@ -50,21 +50,6 @@ export default class GovernmentInsight extends PureComponent {
         <div className={Styles.government}>
           <div className={Styles.content}>
             <div className={Styles.title}>
-              <SmallPoint title={"政府文章"} />
-            </div>
-            <Skeleton active loading={governmentPassageLoading}>
-              <GovernmentPassage params={data} />
-            </Skeleton>
-            <div className={Styles.pagination}>
-              <Pagination
-                onChange={this.onPaginationChange}
-                defaultCurrent={firstPage}
-                total={totalPage}
-              />
-            </div>
-          </div>
-          <div className={Styles.content}>
-            <div className={Styles.title}>
               <SmallPoint title={"政府热点词汇"} />
             </div>
             {governmentWordsLoading ? (
@@ -73,6 +58,21 @@ export default class GovernmentInsight extends PureComponent {
               <GovernmentWords data={governmentWords} />
             )}
           </div>
+            <div className={Styles.content}>
+                <div className={Styles.title}>
+                    <SmallPoint title={"政府洞见"} />
+                </div>
+                <Skeleton active loading={governmentPassageLoading}>
+                    <GovernmentPassage params={data} />
+                </Skeleton>
+                <div className={Styles.pagination}>
+                    <Pagination
+                        onChange={this.onPaginationChange}
+                        defaultCurrent={firstPage}
+                        total={totalPage}
+                    />
+                </div>
+            </div>
           <div />
         </div>
       </div>
