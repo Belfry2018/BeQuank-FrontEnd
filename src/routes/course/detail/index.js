@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
-import { message } from "antd";
+import {message, Skeleton} from "antd";
 import { getTheTutorial } from "../../../services/apiCourse";
 import Article from "../../../components/Article";
 import Styles from "../index.module.less";
 import Comment from "../components/Comment";
+import {typeToChinese} from "../../../utils/TutorialType";
 
 export default class CourseDetail extends PureComponent {
   state = {
@@ -48,18 +49,20 @@ export default class CourseDetail extends PureComponent {
     return (
       <div className={Styles.bodySection}>
         <div className={Styles.bodyItem}>
-          <Article
-            titleContent={title}
-            date={time}
-            author={author}
-            backgroundImgURL={cover}
-            articleContent={content}
-            tutorialType={tutorialType}
-            likeCount={likeCount}
-            alreadyLike={alreadyLike}
-            likeEvent={this.likeEvent}
-            tutorialId={tutorialId}
-          />
+          <Skeleton active loading={!title}>
+            <Article
+              titleContent={title}
+              date={time}
+              author={author}
+              backgroundImgURL={cover}
+              articleContent={content}
+              tutorialType={typeToChinese(tutorialType)}
+              likeCount={likeCount}
+              alreadyLike={alreadyLike}
+              likeEvent={this.likeEvent}
+              tutorialId={tutorialId}
+            />
+          </Skeleton>
         </div>
         <div className={Styles.bodyItem}>
           <Comment
