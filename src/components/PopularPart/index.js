@@ -56,7 +56,7 @@ class PopularPart extends Component {
             <div className={styles["right-text-part"]}>
                 <div className={styles["title"]}>
                     <div className={styles["title-picture"]}><SmallPoint /></div>
-                    <div className={styles["title-text"]}>What you might like</div>
+                    <div className={styles["title-text"]}>推荐阅读</div>
                 </div>
 
                 <div className={styles["one-tip"]}

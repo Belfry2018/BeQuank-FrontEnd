@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import styles from "./index.module.less";
+import styles from "../index.module.less";
 import plus from "./twotone-add_circle-24px.svg";
-import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
 import LoadingSpin from "../../LoadingSpin";
@@ -22,11 +21,6 @@ const linkList = [
     iconType: "user",
     to: "/userInfo",
     content: "个人信息"
-  },
-  {
-    iconType: "setting",
-    to: "/login",
-    content: "个人设置"
   },
   {
     isDivider: true
@@ -80,10 +74,6 @@ class UserSection extends PureComponent {
               <img alt={""} src={plus} />
             </div>
           </Link>
-
-          <div className={styles["down-icon"]}>
-            <img alt={""} src={notification} />
-          </div>
           <Dropdown
             overlay={[
               <NickNameSpace key={"nickname-space"}>{nickName}</NickNameSpace>,

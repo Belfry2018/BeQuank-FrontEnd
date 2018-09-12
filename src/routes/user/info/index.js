@@ -9,7 +9,7 @@ import AccountForm from "./components/AccountForm/index";
 import StockDataForm from "./components/StockDataForm/index";
 import {Col, Row} from "antd";
 
-const keys = ["个人信息", "账户管理", "选股数据", "opt4"];
+const keys = ["个人信息", "账户管理", "选股数据"];
 
 class NormalInfoForm extends React.Component {
   state = {
@@ -45,6 +45,7 @@ class NormalInfoForm extends React.Component {
                 {
                   0: (
                     <InfoForm
+                      userProfile={this.state.userProfile}
                       nickName={this.state.userProfile.nickname}
                       bio={this.state.userProfile.bio}
                       gender={this.state.userProfile.gender}
@@ -54,6 +55,7 @@ class NormalInfoForm extends React.Component {
                   ),
                   1: (
                     <AccountForm
+                      userProfile={this.state.userProfile}
                       id={this.state.userProfile.id}
                       email={this.state.userProfile.email}
                       phone={this.state.userProfile.phone}
@@ -62,6 +64,7 @@ class NormalInfoForm extends React.Component {
                   ),
                   2: (
                     <StockDataForm
+                      userProfile={this.state.userProfile}
                       moneyLevel={this.state.userProfile.moneyLevel}
                       level={this.state.userProfile.level}
                       expectedProfit={this.state.userProfile.expectedProfit}

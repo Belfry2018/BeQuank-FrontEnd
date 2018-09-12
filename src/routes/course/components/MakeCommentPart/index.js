@@ -52,7 +52,6 @@ class MakeCommentPart extends PureComponent {
               <Button
                 loading={loading}
                 htmlType="submit"
-                onClick={this.handleCommentEvent}
                 type="primary"
                 size="large"
                 disabled={!getFieldValue("content")}

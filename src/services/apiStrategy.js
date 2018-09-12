@@ -78,11 +78,20 @@ export const allStocks = ({ page = 1 }) => {
 };
 
 /**
+ * 获得过去30天的股票走势
+ * @param stockId
+ * @returns {Object}
+ */
+export const stockTrend = (stockId=null) => {
+  return request(`${version}/stock/${stockId}`);
+}
+
+/**
  * 添加自选股
  * @param params
  * {
     recordName:"稳赚不赔"，//用户自定义自选股的名字（id后端自定，和id不同，需要唯一吗？？）
-    data:[
+    stocks:[
         {
             stockId:"xxx",
             buyRate:11.1,//百分之
@@ -97,12 +106,12 @@ export const allStocks = ({ page = 1 }) => {
     addTime:"2018-08-27 13:39"//添加时间
 }
  */
-export const addRecord = ({ recordName = "未命名", data = [] }) => {
+export const addRecord = ({ recordName = "未命名", stocks = [] }) => {
   return request(`${version}/strategy/record`, {
     method: "POST",
     body: {
       recordName,
-      data
+      stocks
     }
   });
 };
@@ -165,3 +174,14 @@ export const recordDetail = (recordId = null) => {
     method: "GET"
   });
 };
+
+/**
+ * 获得自选股的回测，返回值直接交给组件显示
+ * @param recordId
+ * @returns {Object}
+ */
+export const loopBack = (recordId = null) => {
+    return request(`${version}/strategy/loopback/${recordId}`, {
+        method: "GET"
+    });
+}

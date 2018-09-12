@@ -9,7 +9,9 @@ import {
 import NavButton from "../components/NavButton";
 import GeneralData from "../components/GeneralData";
 import Button from "../../../components/Button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import RecordModel from "./RecordModel";
+import LoopBack from "../../../components/LoopBack";
 const Option = Select.Option;
 
 const PROFIT = "Profit";
@@ -59,11 +61,11 @@ class PageLogin extends PureComponent {
                   <div className={Styles.recommendSection}>
                     <div className={Styles.recommendDesc}>
                       {recommendStocks.stocks.length !== 0
-                        ? `共有${recommendStocks.stocks.length}个推荐股票`
+                        ? `根据您的个人问卷测算，为您推荐${recommendStocks.stocks.length}只股票`
                         : `没有推荐股票`}
                     </div>
                     <div className={Styles.recommendSelect}>
-                      <div style={{ marginRight: 10 }}>排序方式:</div>
+                      <div style={{ marginRight: 10 }}>偏好选择</div>
                       <Select
                         value={selectedValue}
                         style={{ width: 120 }}
@@ -88,7 +90,9 @@ class PageLogin extends PureComponent {
                     <StockList recommend list={recommendStocks.stocks} />
                   ) : (
                     <div className={Styles.emptySection}>
-                      <div className={Styles.emptyText}>完成问卷后即可获取推荐股票</div>
+                      <div className={Styles.emptyText}>
+                        完成问卷后即可获取推荐股票
+                      </div>
                       <Link to={"/strategy"}>
                         <Button type={"primary"}>创建策略</Button>
                       </Link>
@@ -101,6 +105,20 @@ class PageLogin extends PureComponent {
           <Col md={8}>
             <div>
               <NavButton />
+              {recommendStocks &&
+              recommendStocks.loopback &&
+              recommendStocks.loopback.length>0 && (
+                <div className={Styles.simpleSection}>
+                  <div className={Styles.simpleTitle}>
+                    回测走势图
+                  </div>
+                  <div style={{marginLeft:"-20px"}}>
+                    <LoopBack data={recommendStocks.loopback}/>
+                  </div>
+  
+                </div>
+              )}
+              
               <div className={Styles.simpleSection}>
                 {recommendStocks ? (
                   <GeneralData
@@ -112,6 +130,11 @@ class PageLogin extends PureComponent {
                   undefined
                 )}
               </div>
+              {recommendStocks &&
+                recommendStocks.stocks &&
+                recommendStocks.stocks.length > 0 && (
+                  <RecordModel stocks={recommendStocks.stocks} />
+                )}
             </div>
           </Col>
         </Row>

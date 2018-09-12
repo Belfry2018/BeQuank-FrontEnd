@@ -1,0 +1,70 @@
+@import "../../themes/default";
+.topPart{
+  width: 100%;
+  padding: @page-gutter+@header-height @page-padding @page-gutter;
+
+}
+
+.mainSection {
+  padding: @header-height+@page-gutter @page-padding @page-gutter;
+  max-width: @page-max-width;
+  margin: 0 auto;
+  .dataSection{
+    width: 100%;
+    text-align: center;
+    padding: 10px 0 20px;
+    .data{
+      font-size: 30px;
+      font-weight: bold;
+      color: @red;
+    }
+    .comment{
+      font-size: 16px;
+      color: grey;
+    }
+  }
+
+}
+
+.detailSection{
+  background-color: @page-primary-color;
+  border-radius: @default-radius;
+  box-shadow: @default-shadow;
+  margin-top: @page-gutter;
+  padding: 20px;
+}
+
+.recommendSection{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .recommendDescSection{
+    display: flex;
+    align-items: center;
+
+    .currentPrice{
+      font-weight: bold;
+      color: @red;
+      line-height: 49px;
+      font-size: 40px;
+      padding-right: 20px;
+    }
+    .recommendDesc{
+      font-weight: bold;
+      font-size: 30px;
+      padding: 2px;
+      color: grey;
+    }
+    .recommendId{
+      margin-left: 20px;
+      background-color: @sky-blue;
+      color: @white;
+      font-weight: bold;
+      padding: 2px 10px;
+      font-size: 16px;
+      border-radius: 2px;
+    }
+  }
+
+}
+

@@ -6,6 +6,7 @@ import TutorialFilter from "./components/TutorialFilter";
 import Card from "../../components/Card";
 import { Col, Row, Skeleton } from "antd";
 import { withRouter } from "react-router-dom";
+import {typeToChinese} from "../../utils/TutorialType";
 
 class Course extends PureComponent {
   state = {
@@ -40,7 +41,7 @@ class Course extends PureComponent {
                     imgSrc: e.cover,
                     title: e.title,
                     content: e.abstract,
-                    top: e.tutorialType,
+                    top: typeToChinese(e.tutorialType),
                     ttId: e.tutorialId
                   };
                 })}
@@ -67,7 +68,7 @@ class Course extends PureComponent {
                     header={e.title}
                     src={e.cover}
                     time={e.publishTime}
-                    top={e.tutorialType}
+                    top={typeToChinese(e.tutorialType)}
                   />
                 </Col>
               ))}

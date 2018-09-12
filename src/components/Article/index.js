@@ -5,18 +5,16 @@ import Title from "./Title";
 import Body from "./Body";
 import Profile from "./Profile";
 import LikeButton from "./LikeButton";
-import {likeTutorial} from "../../services/apiCourse";
-
-
+import { likeTutorial } from "../../services/apiCourse";
+import { judgeLogin } from "../../utils/authorization";
 
 class Article extends PureComponent {
-  
-  likeArticleEvent=async()=>{
-    const {tutorialId, likeEvent=()=>{}} = this.props;
-    await likeTutorial(tutorialId);
-    await likeEvent();
+  likeArticleEvent = async () => {
+      const { tutorialId, likeEvent = () => {} } = this.props;
+      await likeTutorial(tutorialId);
+      await likeEvent();
   };
-  
+
   render() {
     const {
       titleContent,
@@ -26,7 +24,7 @@ class Article extends PureComponent {
       articleContent,
       tutorialType,
       likeCount,
-      alreadyLike,
+      alreadyLike
     } = this.props;
 
     const { username, nickname, avatar, bio } = author;
@@ -54,7 +52,11 @@ class Article extends PureComponent {
             />
           </div>
           <div className={styles.likeSection}>
-            <LikeButton likeEvent={this.likeArticleEvent} likeCount={likeCount} alreadyLike={alreadyLike} />
+            <LikeButton
+              likeEvent={this.likeArticleEvent}
+              likeCount={likeCount}
+              alreadyLike={alreadyLike}
+            />
           </div>
         </div>
       </div>
