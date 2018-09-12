@@ -23,7 +23,7 @@ function getComponent(data, startTime, endTime) {
         trend: {
             values: ["上涨", "下跌"]
         },
-        volumn: {
+        volume: {
             alias: "成交量"
         },
         start: {
@@ -145,13 +145,13 @@ function getComponent(data, startTime, endTime) {
                             }}
                             data={dv}
                             scale={{
-                                volumn: {
+                                volume: {
                                     tickCount: 2
                                 }
                             }}
                         >
                             <Axis
-                                name="volumn"
+                                name="volume"
                                 label={{
                                     formatter: function(val) {
                                         return parseInt(val / 1000, 10) + "k";
@@ -161,7 +161,7 @@ function getComponent(data, startTime, endTime) {
                             <Axis name="time" tickLine={null} label={null} />
                             <Geom
                                 type="interval"
-                                position="time*volumn"
+                                position="time*volume"
                                 color={[
                                     "trend",
                                     val => {
@@ -175,13 +175,13 @@ function getComponent(data, startTime, endTime) {
                                     }
                                 ]}
                                 tooltip={[
-                                    "time*volumn",
-                                    (time, volumn) => {
+                                    "time*volume",
+                                    (time, volume) => {
                                         return {
                                             name: time,
                                             value:
                                             '<br/><span style="padding-left: 16px">成交量：' +
-                                            volumn +
+                                            volume +
                                             "</span><br/>"
                                         };
                                     }
@@ -198,7 +198,7 @@ function getComponent(data, startTime, endTime) {
                             start={ds.state.start}
                             end={ds.state.end}
                             xAxis="time"
-                            yAxis="volumn"
+                            yAxis="volume"
                             scales={{
                                 time: {
                                     type: "timeCat",
