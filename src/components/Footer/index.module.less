@@ -1,0 +1,130 @@
+@import "../../themes/default";
+@my-margin-lr: @page-max-width * 0.13;
+@my-width: @page-max-width;
+@my-height: 140px;
+@my-margin-tb: @my-height * 0.15;
+@my-font: "Kaiti SC";
+@t-width: @my-width * 0.115;
+.main {
+  height: 150px;
+
+  background-color: @page-primary-color;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: @my-font;
+  box-shadow: @default-shadow;
+  display: flex;
+  justify-content: space-between;
+
+  .left {
+    width: @my-width - @my-margin-lr;
+    margin-left: @my-margin-lr;
+    margin-top: @my-margin-tb;
+    margin-bottom: @my-margin-tb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .t1 {
+      display: flex;
+      justify-content: flex-start;
+      .logo {
+        font-family: "Lobster", cursive;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        color: @default-logo-color;
+      }
+      .date {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+        .align {
+          display: flex;
+          justify-content: flex-start;
+          .icon {
+            width: 10px;
+            height: 10px;
+          }
+          .time {
+            font-size: 10px;
+            color: rgba(85,85,90,0.2);
+            margin-left: 5px;
+            font-weight: lighter;
+          }
+        }
+      }
+    }
+    .t2 {
+      font-size: 12px;
+      color: rgba(5,5,5,0.4);
+    }
+    .t3 {
+      display: flex;
+      justify-content: space-between;
+      .text {
+        font-size: 8px;
+        color: rgba(5,5,5,0.2);
+        font-weight: lighter;
+        word-break: break-all;
+      }
+      .empty {
+        width: @my-width * 0.25;
+      }
+    }
+  }
+  .right {
+    width: @my-width - @my-margin-lr;
+    margin-right: @my-margin-lr;
+    display: flex;
+    justify-content: space-between;
+    margin-top: @my-margin-tb;
+    margin-bottom: @my-margin-tb;
+    .r1 {
+      width: @t-width;
+      .title {
+        font-size: 10px;
+        color: rgba(5,5,5,0.4);
+      }
+      .link {
+        font-size: 10px;
+        color: rgba(5,5,5,0.2);
+        font-weight: lighter;
+        margin-top: 5px;
+      }
+    }
+    .r3 {
+      width: @t-width;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .part1 {
+        .title {
+          font-size: 10px;
+          color: rgba(5,5,5,0.4);
+        }
+        .icons {
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 3px;
+          .icon{
+            margin-left: 3px;
+          }
+        }
+      }
+      .part2 {
+        .title {
+          font-size: 10px;
+          color: rgba(5,5,5,0.4);
+        }
+        .content {
+          font-size: 10px;
+          color: rgba(5,5,5,0.2);
+          font-weight: lighter;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
