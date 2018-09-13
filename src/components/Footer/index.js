@@ -13,7 +13,7 @@ class Footer extends Component {
                         <div className={styles.date}>
                             <div className={styles.align}>
                                 <div className={styles.logo}>
-                                    <Icon type="calendar" style={{ fontSize: '10px', color: '#000000', opacity: '0.13' }}/>
+                                    <Icon type="calendar" style={{ fontSize: '16px', color: '#000000', opacity: '0.13' }}/>
                                 </div>
                                 <div className={styles.time}>2018</div>
                             </div>
@@ -38,19 +38,17 @@ class Footer extends Component {
                         <a href={""}><div className={styles.link}>版权声明</div></a>
                         <a href={""}><div className={styles.link}>免责声明</div></a>
                     </div>
-                    <div className={styles.r3}>
-                        <div className={styles.part1}>
-                            <div className={styles.title}>联系我们</div>
+                    <div className={styles.r1}>
+                        <div className={styles.title}>联系我们</div>
+                        <div className={styles.link}>南京大学鼓楼校区 邮编 210093</div>
+                        <div className={styles.link}>南京大学仙林校区 邮编 210023</div>
+                        <div className={styles.link}>
                             <div className={styles.icons}>
                                 <a href={""}><Icon type={"github"} style={{ fontSize: '20px', color: '#686890', opacity: '0.4' }}/></a>
                                 <a href={""}><Icon className={styles.icon} type={"alipay"} style={{ fontSize: '20px', color: '#686890', opacity: '0.4' }}/></a>
                                 <a href={""}><Icon className={styles.icon} type={"twitter"} style={{ fontSize: '20px', color: '#686890', opacity: '0.4' }}/></a>
                                 <a href={""}><Icon className={styles.icon} type={"weibo"} style={{ fontSize: '20px', color: '#686890', opacity: '0.4' }}/></a>
                             </div>
-                        </div>
-                        <div className={styles.part2}>
-                            <div className={styles.content}>南京大学鼓楼校区 邮编210093</div>
-                            <div className={styles.content}>南京大学仙林校区 邮编210023</div>
                         </div>
                     </div>
                 </div>
