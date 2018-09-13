@@ -1,0 +1,21 @@
+@import "../../themes/default";
+
+.article {
+  border-radius: @default-radius;
+  box-shadow: @default-shadow;
+  overflow: hidden;
+  background-color: @page-primary-color;
+}
+
+.bottomSection{
+  padding-top: 40px;
+  display: flex;
+  justify-content: stretch;
+  .likeSection{
+    width: 40%;
+  }
+  .profileSection{
+    padding-right: @page-gutter;
+    width: 60%;
+  }
+}

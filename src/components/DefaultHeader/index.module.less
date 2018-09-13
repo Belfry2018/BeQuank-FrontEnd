@@ -1,0 +1,143 @@
+@import "../../themes/default";
+
+.default-header{
+
+  width: 100%;
+  height: @header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  .header-content{
+    max-width: @page-max-width;
+    padding: 0 @page-padding;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .left{
+      display: flex;
+    }
+
+    .logo{
+      height: 100%;
+      font-family: "Lobster", cursive;
+      display: flex;
+      align-items: center;
+      font-size: @header-icon-size;
+      color: @white;
+    }
+
+    .nav{
+      height: 100%;
+      display: flex;
+      margin-left: 50px;
+      .nav-item{
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin: 0 10px;
+        font-size: @header-font-size;
+        padding: 0 15px;
+        font-weight: bold;
+        text-decoration:none;
+        color: rgba(255, 255,255, 0.6);
+      }
+
+      .nav-active{
+        color: rgba(255, 255,255, 0.8);
+      }
+    }
+
+    .user{
+      height: 100%;
+      display: flex;
+      justify-self: center;
+
+
+      .user-item{
+        align-items: center;
+        display: flex;
+        height: 100%;
+        text-decoration:none;
+        font-weight: bold;
+        font-size: @header-font-size;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .top{
+        padding: 0;
+      }
+    }
+  }
+
+  .user-section {
+    .avatar-section {
+
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.07);
+      }
+      .down-icon{
+        margin-right: 30px;
+        display: flex;
+        align-items: center;
+        color: gray;
+
+        img{
+          width: 34px;
+          height: 34px;
+          opacity: 0.6;
+        }
+
+      }
+
+      .add-part{
+        background-color: rgba(0, 0, 0, 0.07);
+        border-radius: 9999px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+}
+
+.default-header-active {
+  background-color: white;
+  box-shadow: @default-shadow;
+  color: white;
+  .header-content {
+    .logo{
+      color: @default-logo-color;
+    }
+    .nav{
+      height: 100%;
+      display: flex;
+      margin-left: 50px;
+      .nav-item{
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      .nav-active{
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+    }
+    .user{
+      .user-item{
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .top{
+        padding: 0;
+      }
+    }
+  }
+}

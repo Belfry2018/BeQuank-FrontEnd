@@ -1,0 +1,29 @@
+@import "../../themes/default";
+
+.drop-wrap{
+  position: relative;
+  cursor: pointer;
+  .overlay{
+    margin-top: 20px;
+    position: absolute;
+    top:  100%;
+    right: 0;
+    min-width: 200px;
+    background-color: @dropdown-background;
+    box-shadow: 0 3px 30px rgba(0, 0, 0, 0.2);
+    border-radius: @default-radius;
+    padding: 5px 0;
+    cursor: default;
+    &:before{
+      display: block;
+      content: "";
+      border: 10px solid;
+      border-color:transparent transparent @dropdown-background transparent;
+      position: absolute;
+      right: 10px;
+      top: -20px;
+
+    }
+  }
+
+}

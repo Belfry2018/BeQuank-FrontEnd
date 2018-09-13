@@ -1,0 +1,110 @@
+@import "../../themes/default";
+@my-margin-lr: @page-max-width * 0.018;
+@my-width: @page-max-width;
+@my-height: 180px;
+@my-margin-tb: @my-height * 0.15;
+@t-width: @my-width * 0.15;
+@default-font-size: 13px;
+@half-width: @my-width - @my-margin-lr;
+
+.main {
+  height: @my-height;
+  width:100%;
+  background-color: @page-primary-color;
+  box-shadow: @default-shadow;
+
+  .footer {
+    max-width: @my-width;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      width: @half-width;
+      margin: @my-margin-tb auto;
+      padding: 0 @page-padding;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .t1 {
+        display: flex;
+        justify-content: flex-start;
+        .logo {
+          font-family: "Lobster", cursive;
+          display: flex;
+          align-items: center;
+          font-size: @header-icon-size;
+          color: @default-logo-color;
+        }
+        .date {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-left: 24px;
+          .align {
+            display: flex;
+            justify-content: flex-start;
+            .icon {
+              width: 16px;
+              height: 16px;
+            }
+            .time {
+              font-size: 13px;
+              color: rgba(85,85,90,0.2);
+              margin-left: 8px;
+              font-weight: lighter;
+            }
+          }
+        }
+      }
+      .t2 {
+        font-size: @default-font-size;
+        color: rgba(5,5,5,0.4);
+        margin-top: 16px;
+      }
+      .t3 {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        .text {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.2);
+          word-break: break-all;
+        }
+        .empty {
+          width: @half-width * 0.2;
+        }
+      }
+    }
+    .right {
+      width: @my-width - @my-margin-lr;
+      margin-right: @my-margin-lr;
+      display: flex;
+      justify-content: space-between;
+      margin-top: @my-margin-tb;
+      margin-bottom: @my-margin-tb;
+      .r1 {
+        width: @t-width;
+        .title {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.4);
+        }
+        .link {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.2);
+          margin-top: 13px;
+          .icons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 3px;
+            .icon{
+              margin-left: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

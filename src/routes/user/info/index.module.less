@@ -1,0 +1,19 @@
+@import "../../../themes/default";
+@total-width : @page-max-width - @page-padding;
+
+.main {
+  position: relative;
+  padding: @header-height+@page-gutter @page-padding @page-gutter;
+  max-width: @page-max-width;
+  margin: 0 auto;
+  .left-bar {
+    transition: all 0.3s;
+    overflow: hidden;
+    border-radius: @default-radius;
+    box-shadow: @default-shadow;
+    padding: 20px 0;
+    background-color: white;
+  }
+  .form {
+  }
+}

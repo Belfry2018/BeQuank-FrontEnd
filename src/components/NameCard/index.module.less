@@ -1,0 +1,87 @@
+@import "../../themes/default";
+@my-width: @page-max-width/4.3;
+@my-height: @my-width * 1.47;
+@upper-height: @my-height/9*5;
+@lower-height: @my-height/9*4;
+@avatar-size: @my-width/11*4;
+@avatar-top-margin: @avatar-size/4;
+@bio-width: @my-width - 70px;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  box-shadow: @default-shadow;
+  border-radius: @default-radius;
+  background-color: @nc-bg-color;
+  .upper {
+    height: @upper-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .align {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .photo {
+        margin-top: @avatar-top-margin;
+        .avatar {
+          border-radius: 50%;
+          width: @avatar-size;
+          height: @avatar-size;
+        }
+      }
+      .name {
+        text-align: center;
+        font-size: @nc-name-font-size;
+        color: @nc-name-font-color;
+      }
+      .id {
+        text-align: center;
+        font-size: @nc-id-font-size;
+        color: @nc-id-font-color;
+      }
+    }
+  }
+  .divider {
+    display: flex;
+    justify-content: space-between;
+    .left{
+      width: 30px;
+    }
+    .d {
+
+    }
+    .right {
+      width: 30px;
+    }
+  }
+  .lower {
+    height: @lower-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .left {
+      width: 35px;
+    }
+    .ali {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: @bio-width;
+      .intro {
+        font-size: @nc-bio-font-size;
+        color: @nc-bio-font-color;
+        text-align: center;
+        word-break: break-all;
+      }
+      .button {
+
+      }
+    }
+    .right {
+      width: 35px;
+    }
+  }
+}
