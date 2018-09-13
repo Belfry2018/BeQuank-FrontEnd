@@ -49,8 +49,8 @@ class Footer extends Component {
                             </div>
                         </div>
                         <div className={styles.part2}>
-                            <div className={styles.title}>联系地址</div>
-                            <div className={styles.content}>南京大学鼓楼校区 仙林校区</div>
+                            <div className={styles.content}>南京大学鼓楼校区 邮编210093</div>
+                            <div className={styles.content}>南京大学仙林校区 邮编210023</div>
                         </div>
                     </div>
                 </div>
