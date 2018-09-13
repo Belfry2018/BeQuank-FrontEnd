@@ -1,5 +1,5 @@
 @import "../../themes/default";
-@my-margin-lr: @page-max-width * 0.13;
+@my-margin-lr: @page-max-width * 0.018;
 @my-width: @page-max-width;
 @my-height: 180px;
 @my-margin-tb: @my-height * 0.15;
@@ -9,96 +9,99 @@
 
 .main {
   height: @my-height;
+  width:100%;
   background-color: @page-primary-color;
-  font-weight: bold;
   box-shadow: @default-shadow;
-  display: flex;
-  justify-content: space-between;
 
-  .left {
-    width: @half-width;
-    margin-left: @my-margin-lr;
-    margin-top: @my-margin-tb;
-    margin-bottom: @my-margin-tb;
+  .footer {
+    max-width: @my-width;
+    margin: 0 auto;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 
-    .t1 {
+    .left {
+      width: @half-width;
+      margin: @my-margin-tb auto;
+      padding: 0 @page-padding;
       display: flex;
-      justify-content: flex-start;
-      .logo {
-        font-family: "Lobster", cursive;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .t1 {
         display: flex;
-        align-items: center;
-        font-size: @header-icon-size;
-        color: @default-logo-color;
-      }
-      .date {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-left: 24px;
-        .align {
+        justify-content: flex-start;
+        .logo {
+          font-family: "Lobster", cursive;
           display: flex;
-          justify-content: flex-start;
-          .icon {
-            width: 16px;
-            height: 16px;
-          }
-          .time {
-            font-size: 13px;
-            color: rgba(85,85,90,0.2);
-            margin-left: 8px;
-            font-weight: lighter;
+          align-items: center;
+          font-size: @header-icon-size;
+          color: @default-logo-color;
+        }
+        .date {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-left: 24px;
+          .align {
+            display: flex;
+            justify-content: flex-start;
+            .icon {
+              width: 16px;
+              height: 16px;
+            }
+            .time {
+              font-size: 13px;
+              color: rgba(85,85,90,0.2);
+              margin-left: 8px;
+              font-weight: lighter;
+            }
           }
         }
       }
-    }
-    .t2 {
-      font-size: @default-font-size;
-      color: rgba(5,5,5,0.4);
-      margin-top: 16px;
-    }
-    .t3 {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 5px;
-      .text {
-        font-size: @default-font-size;
-        color: rgba(5,5,5,0.2);
-        font-weight: lighter;
-        word-break: break-all;
-      }
-      .empty {
-        width: @half-width * 0.2;
-      }
-    }
-  }
-  .right {
-    width: @my-width - @my-margin-lr;
-    margin-right: @my-margin-lr;
-    display: flex;
-    justify-content: space-between;
-    margin-top: @my-margin-tb;
-    margin-bottom: @my-margin-tb;
-    .r1 {
-      width: @t-width;
-      .title {
+      .t2 {
         font-size: @default-font-size;
         color: rgba(5,5,5,0.4);
+        margin-top: 16px;
       }
-      .link {
-        font-size: @default-font-size;
-        color: rgba(5,5,5,0.2);
-        font-weight: lighter;
-        margin-top: 13px;
-        .icons {
-          display: flex;
-          justify-content: flex-start;
-          margin-top: 3px;
-          .icon{
-            margin-left: 3px;
+      .t3 {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        .text {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.2);
+          word-break: break-all;
+        }
+        .empty {
+          width: @half-width * 0.2;
+        }
+      }
+    }
+    .right {
+      width: @my-width - @my-margin-lr;
+      margin-right: @my-margin-lr;
+      display: flex;
+      justify-content: space-between;
+      margin-top: @my-margin-tb;
+      margin-bottom: @my-margin-tb;
+      .r1 {
+        width: @t-width;
+        .title {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.4);
+        }
+        .link {
+          font-size: @default-font-size;
+          color: rgba(5,5,5,0.2);
+          margin-top: 13px;
+          .icons {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 3px;
+            .icon{
+              margin-left: 3px;
+            }
           }
         }
       }
