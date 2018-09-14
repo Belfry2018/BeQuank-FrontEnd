@@ -3,6 +3,7 @@ import DefaultHeader from "../components/DefaultHeader";
 import AuthorizationRoute from "../components/AuthorizationComponents/AuthorizationRoute";
 import styles from "./DefaultLayout.module.less"
 import ScrollToTopOnMount from "../components/ScrollToTopOnMount";
+import Footer from "../components/Footer/index";
 
 export const DefaultLayout = ({ component: Component, ...rest }) => {
   return (
@@ -16,7 +17,7 @@ export const DefaultLayout = ({ component: Component, ...rest }) => {
             <div className={styles.BodyContent}>
               <Component {...props} />
             </div>
-            <div className={styles.TmpFooter}>@Belfry</div>
+            <Footer/>
           </div>
         );
       }}
