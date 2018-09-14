@@ -1,7 +1,7 @@
 // ant-design-pro request.js file with MIT license
 
 import { notification } from "antd";
-import {getToken} from "./authorization";
+import { getToken } from "./authorization";
 
 const codeMessage = {
   200: "服务器成功返回请求的数据。",
@@ -67,10 +67,10 @@ export default async function request(url, options) {
       };
     }
   }
-  
-  newOptions.headers={
-    Authorization:getToken(),
-    ...newOptions.headers,
+
+  newOptions.headers = {
+    Authorization: getToken(),
+    ...newOptions.headers
   };
 
   const response = await fetch(url, newOptions);
@@ -78,7 +78,14 @@ export default async function request(url, options) {
     checkStatus(response);
   } catch (e) {
     console.log(e);
-    throw e;
+    if(e.response.status===401){
+      const from=encodeURIComponent(window.location.pathname);
+      window.location.href=`/login?from=${from}`;
+    }else if(e.response.status===403){
+      window.location.href="/403";
+    }else {
+      throw e;
+    }
   }
 
   if (newOptions.method === "DELETE" || response.status === 204) {

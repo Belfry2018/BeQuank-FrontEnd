@@ -3,6 +3,7 @@ import Styles from "./TopComment.module.less";
 import { Icon } from "antd";
 import { judgeLogin } from "../../../../utils/authorization";
 import { likeComment } from "../../../../services/apiCourse";
+import {DEFAULT_AVATAR} from "../../../../themes/default";
 
 class User extends PureComponent {
   state = {
@@ -12,7 +13,7 @@ class User extends PureComponent {
   onLikeEvent = async () => {
     const { onLikeCommentEvent = () => {}, commentId } = this.props;
     this.setState({ likeLoading: true });
-    likeComment(commentId);
+    await likeComment(commentId);
     await onLikeCommentEvent();
     this.setState({ likeLoading: false });
   };
@@ -23,6 +24,7 @@ class User extends PureComponent {
       time,
       content,
       replyEvent,
+      commentId,
       alreadyLike = false
     } = this.props;
     const { nickname, avatar  } = author;
@@ -35,7 +37,7 @@ class User extends PureComponent {
     const likeText = alreadyLike ? "已喜欢" : "喜欢";
     return (
       <div className={Styles.wholePart}>
-        <img className={Styles.avatar} src={avatar} alt={""} />
+        <img className={Styles.avatar} src={avatar||DEFAULT_AVATAR} alt={""} />
         <div className={Styles.rightPart}>
           <div className={Styles.top}>
             <div className={Styles.topLeft}>
@@ -53,7 +55,7 @@ class User extends PureComponent {
                   {likeText}
                 </div>
                 <div
-                  onClick={() => replyEvent(author)}
+                  onClick={() => replyEvent(author,commentId)}
                   className={Styles.topRightItems}
                 >
                   <Icon className={Styles.commentIcon} type="form" />

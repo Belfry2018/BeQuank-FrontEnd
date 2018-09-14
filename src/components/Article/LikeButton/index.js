@@ -28,7 +28,7 @@ class LikeButton extends PureComponent {
         className={`${Styles.mainPart}${wholePartClassName}`}
       >
         <div>
-          <Icon className={Styles.icon} type={loading ? "loading" : "like"} />
+          <Icon className={Styles.icon} type={loading ? "loading" : "like"}  theme={!loading&&alreadyLike&&"filled"}  />
           <div className={Styles.description}>
             {judgeLogin()
               ? likeCount && likeCount > 0

@@ -12,7 +12,7 @@ export default function({ component: Component, role, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/403",
               state: { from: props.location }
             }}
           />

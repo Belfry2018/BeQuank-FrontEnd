@@ -6,6 +6,7 @@ import UserSection from "./UserSection";
 import Authorization from "../AuthorizationComponents/Authorization";
 import { judgeLogin } from "../../utils/authorization";
 import { getUserProfile } from "../../services/apiUser";
+import { DEFAULT_AVATAR } from "../../themes/default";
 
 class DefaultHeader extends PureComponent {
   async componentDidMount() {
@@ -17,17 +18,19 @@ class DefaultHeader extends PureComponent {
   getUser = async () => {
     if (judgeLogin()) {
       let userInfo = await getUserProfile();
+      if(!userInfo.avatar){
+        userInfo.avatar=DEFAULT_AVATAR;
+      }
       this.setState(prevState => {
-        return { ...prevState, ...userInfo };
+        return { ...prevState,  ...userInfo };
       });
     }
   };
 
   judgeBackground = () => {
     const { pathname } = this.props.location;
-    console.log(pathname);
     if (pathname === "/" && !judgeLogin()) {
-      this.setState({isTop:true});
+      this.setState({ isTop: true });
       return true;
     }
     return false;
@@ -43,9 +46,9 @@ class DefaultHeader extends PureComponent {
 
   handleScroll = e => {
     if (this.judgeBackground()) {
-      if (window.scrollY < 5&&this.state.isTop===false) {
+      if (window.scrollY < 5 && this.state.isTop === false) {
         this.setState({ isTop: true });
-      } else if(window.scrollY >= 5&&this.state.isTop===true) {
+      } else if (window.scrollY >= 5 && this.state.isTop === true) {
         this.setState({ isTop: false });
       }
     }

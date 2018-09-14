@@ -16,9 +16,11 @@ const article = PageLoadable(() => import("../articleTest/index"));
 const UserInfo = PageLoadable(() => import("../user/info/index"));
 const GroupList = PageLoadable(() => import("../stockGroup/groupList/index"));
 const GroupListItem=PageLoadable(()=>import("../stockGroup/recordList/index"));
+const default403=PageLoadable(()=>import("../error/403"));
 
 export default [
   <DefaultLayout path="/" exact component={Home} />,
+  <DefaultLayout path="/403" exact component={default403} />,
   <DefaultLayout path="/stocks" exact component={AllStocks} />,
   <DefaultLayout path="/stocks/:stockId" exact component={Stock} />,
   <DefaultLayout path="/course" exact component={Course} />,
