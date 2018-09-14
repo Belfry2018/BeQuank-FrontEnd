@@ -1,0 +1,29 @@
+@import "../../themes/default";
+
+.wholeContent {
+  max-width: @page-max-width;
+  margin: 0 auto;
+  padding: @header-height+ @header-height+ @page-gutter @page-padding
+    @page-gutter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 50%;
+  }
+
+  .content {
+    width: 40%;
+    .title {
+      font-family: Lobster, @default-font;
+      font-size: 90px;
+      color: @sky-blue;
+    }
+    .text {
+      font-size: 20px;
+      font-weight: bold;
+      color: grey;
+      padding-bottom: 30px;
+    }
+  }
+}

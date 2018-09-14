@@ -9,6 +9,7 @@
 
 .popular-part {
   display: grid;
+  height: @picture-height;
   max-width: @total-width;
   background-color: @pp-background-color;
   border-radius: @default-radius;
@@ -141,6 +142,7 @@
   .popular-part{
     grid-template-columns: 100%;
     grid-template-rows: 50% 50%;
+    height: auto;
     .left-picture-part{
       grid-column-start: 1;
       grid-row-start: 1;
@@ -151,4 +153,13 @@
       height: 400px;
     }
   }
+}
+
+.loading-popular-part {
+  height: @picture-height;
+  max-width: @total-width;
+  background-color: @page-primary-color;
+  border-radius: @default-radius;
+  box-shadow: @default-shadow;
+  overflow: hidden;
 }

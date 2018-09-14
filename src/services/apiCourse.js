@@ -61,6 +61,11 @@ export const getTheTutorial = tutorialId => {
   return request(`${version}/tutorial?id=${tutorialId}`);
 };
 
+
+export const getRecommendationTutorials=()=>{
+  return request(`${version}/tutorials/recommendation`);
+};
+
 /**
  * 发表评论
  * @param params
