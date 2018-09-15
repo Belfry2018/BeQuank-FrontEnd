@@ -1,0 +1,58 @@
+@import "../../themes/default";
+
+.section {
+  max-width: @page-max-width;
+  padding: @page-gutter+ @header-height @page-padding @page-gutter;
+  margin: 0 auto;
+
+  .simpleSection{
+
+    background-color: @page-primary-color;
+    border-radius: @default-radius;
+    box-shadow: @default-shadow;
+    padding: @page-gutter;
+
+
+  }
+
+  .item {
+    background-color: @page-primary-color;
+    border-radius: @default-radius;
+    overflow: hidden;
+    box-shadow: @default-shadow;
+    padding: 30px;
+
+    .successSection{
+      max-width: @page-max-width*0.7;
+      padding: 20px;
+      text-align: center;
+      margin: 0 auto;
+      .icon{
+        color: #0bbf70;
+        font-size: 100px;
+      }
+
+      .text{
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .scoreSection{
+        padding: 5px 10px;
+        background-color: @page-background-color;
+        border-radius: @default-radius;
+        max-width: @page-max-width*0.2;
+        margin: 0 auto 20px;
+        .listItem{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+
+    }
+  }
+}

@@ -59,7 +59,7 @@ class GovernmentWords extends Component {
         const cols = {
             value: {
                 nice: false,
-                max: 100,
+                max: 300,
                 min: 0,
                 range: [0.05, 0.95]
             }
@@ -67,10 +67,9 @@ class GovernmentWords extends Component {
         return (
             <div>
                 <Chart
-                    height={window.innerHeight * 0.65}
+                    height={600}
                     width={window.innerWidth * 0.5}
                     data={data}
-                    padding={[20, 20, 90]}
                     scale={cols}
                     forceFit
                 >

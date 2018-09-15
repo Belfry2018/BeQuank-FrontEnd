@@ -1,12 +1,12 @@
 import React from "react";
-import { Form, Icon, Input, Button, Alert, message,notification } from "antd";
+import { Form, Icon, Input, Button, Alert, message, notification } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import { login } from "../../../services/apiAuthorization";
 import {
   clearAuthorization,
   setAuthorization
 } from "../../../utils/authorization";
-import {GetQueryString} from "../../../utils/urlQuery";
+import { GetQueryString } from "../../../utils/urlQuery";
 
 class NormalLoginForm extends React.Component {
   state = {
@@ -17,14 +17,14 @@ class NormalLoginForm extends React.Component {
 
   componentDidMount() {
     clearAuthorization();
-    const from=GetQueryString("from");
-    if(from){
-      this.from=decodeURIComponent(from)
+    const from = GetQueryString("from");
+    if (from) {
+      this.from = decodeURIComponent(from);
+      notification.info({
+        message: `请重新登陆`,
+        description: "可能是登陆时间过长，或服务器正在重启"
+      });
     }
-    notification.info({
-      message: `请重新登陆`,
-      description: "可能是登陆时间过长，或服务器正在重启"
-    });
   }
 
   handleSubmit = e => {
@@ -37,9 +37,9 @@ class NormalLoginForm extends React.Component {
           const data = await login(values);
           setAuthorization(data);
           this.setState({ loginLoading: false });
-          if(this.from){
+          if (this.from) {
             this.props.history.push(this.from);
-          }else {
+          } else {
             this.props.history.push("/");
           }
           message.success("登陆成功");

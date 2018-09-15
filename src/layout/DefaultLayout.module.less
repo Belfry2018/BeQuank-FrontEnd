@@ -1,16 +1,27 @@
 @import "../themes/default";
-.wholeBody{
+.wholeBody {
+  position: relative;
   background-color: @page-background-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  .createForm {
+    position: absolute;
+    margin-top: @header-height+ @page-gutter;
+    padding: 8px 40px;
+    background-color: rgba(0, 0, 0, 0.84);
+    border-radius: 0 1000px 1000px 0;
+    box-sizing: @default-shadow;
+    color: @white;
+  }
 }
 
-.BodyContent{
+.BodyContent {
   flex: 1;
 }
 
-.TmpFooter{
+.TmpFooter {
   height: 80px;
   background-color: @page-primary-color;
   font-size: 20px;
@@ -20,4 +31,3 @@
   justify-content: center;
   align-items: center;
 }
-

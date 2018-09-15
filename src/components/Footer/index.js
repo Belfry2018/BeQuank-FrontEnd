@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./index.module.less";
 import { Icon } from 'antd';
+import {Link} from "react-router-dom";
 
 class Footer extends Component {
     render() {
@@ -29,15 +30,15 @@ class Footer extends Component {
                     <div className={styles.right}>
                         <div className={styles.r1}>
                             <div className={styles.title}>功能导航</div>
-                            <a href={""}><div className={styles.link}>Home</div></a>
-                            <a href={""}><div className={styles.link}>Course</div></a>
-                            <a href={""}><div className={styles.link}>Insight</div></a>
+                            <Link to={"/"}><div className={styles.link}>主页</div></Link>
+                            <Link to={"/course"}><div className={styles.link}>课程</div></Link>
+                            <Link to={"/insight"}><div className={styles.link}>视角</div></Link>
                         </div>
                         <div className={styles.r1}>
                             <div className={styles.title}>链接</div>
-                            <a href={""}><div className={styles.link}>使用帮助</div></a>
-                            <a href={""}><div className={styles.link}>版权声明</div></a>
-                            <a href={""}><div className={styles.link}>免责声明</div></a>
+                            <a href={"https://www.yuque.com/bequank/help"}><div className={styles.link}>使用帮助</div></a>
+                            <a href={"https://www.yuque.com/bequank/acknowledgements"}><div className={styles.link}>版权声明</div></a>
+                            <a href={"https://www.yuque.com/bequank/terms_and_privacy"}><div className={styles.link}>免责声明</div></a>
                         </div>
                         <div className={styles.r1}>
                             <div className={styles.title}>联系我们</div>

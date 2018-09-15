@@ -1,4 +1,12 @@
+@import "../../../../themes/default";
+
 .wholeBody {
+  margin-top: @page-gutter;
+  background-color: @page-primary-color;
+  border-radius: @default-radius;
+  box-shadow: @default-shadow;
+  min-height: 400px;
+  padding: 20px;
   .title {
     margin-bottom: 20px;
   }
@@ -6,7 +14,6 @@
   .bodySection {
     .peopleItem {
       display: flex;
-      align-items: center;
       padding: 15px 0;
       width: 100%;
       .hotAvatar {
@@ -35,6 +42,7 @@
       }
       .content {
       }
+
     }
   }
 }

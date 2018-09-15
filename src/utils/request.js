@@ -1,7 +1,7 @@
 // ant-design-pro request.js file with MIT license
 
 import { notification } from "antd";
-import { getToken } from "./authorization";
+import {getToken, judgeLogin} from "./authorization";
 
 const codeMessage = {
   200: "服务器成功返回请求的数据。",
@@ -81,7 +81,7 @@ export default async function request(url, options) {
     if(e.response.status===401){
       const from=encodeURIComponent(window.location.pathname);
       window.location.href=`/login?from=${from}`;
-    }else if(e.response.status===403){
+    }else if(e.response.status===403&&judgeLogin()){
       window.location.href="/403";
     }else {
       throw e;
