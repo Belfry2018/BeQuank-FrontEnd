@@ -35,6 +35,10 @@ export const judgeLogin = () => {
   return !!getRole();
 };
 
+export const judgeAdmin = () => {
+  return getRole()&&getRole()==="SYSTEM";
+};
+
 /**
  * 判断权限 role无则返回true，否则判断用户身份是否在传入的role参数中
  * @param role role可为undefined string array

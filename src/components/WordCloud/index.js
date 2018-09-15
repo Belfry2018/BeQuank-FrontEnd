@@ -1,4 +1,4 @@
-import React from "react";
+import React,{PureComponent} from "react";
 import PropTypes from "prop-types";
 import DataSet from "@antv/data-set";
 import assign from "lodash.assign"
@@ -15,13 +15,13 @@ const WordCloudProps = {
   style: PropTypes.object,
 };
 
-class WordCloud extends React.Component {
+class WordCloud extends PureComponent {
   render() {
     const {data} = this.props;
     const newData=data.map(e=>{return {
       x:e.word,
-      value:e.count,
-      category:e.count
+      value:(e.count-100)**10,
+      category:(e.count)/8
     }});
     
     
@@ -109,7 +109,7 @@ class WordCloud extends React.Component {
             position="x*y"
             color="category"
             shape="cloud"
-            tooltip="value*category"
+            tooltip="value/10000000000"
           />
         </Chart>
       </div>
