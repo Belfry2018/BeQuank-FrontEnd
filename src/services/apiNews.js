@@ -35,7 +35,7 @@ export const getSentimentTrend = (word = "微博") => {
 };
 
 export const getGovernmentPassage = (page = 1) => {
-  return request(`${version}/gvn/passage/{page}`, {
+  return request(`${version}/gvn/passage/${page}`, {
     method: "GET"
   });
 };

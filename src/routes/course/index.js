@@ -1,57 +1,95 @@
 import React, { PureComponent } from "react";
 import Styles from "./index.module.less";
-import { getTutorials } from "../../services/apiCourse";
+import {
+  getRecommendationTutorials,
+  getTutorials
+} from "../../services/apiCourse";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import Card from "../../components/Card";
 import { Col, Row, Skeleton } from "antd";
 import { withRouter } from "react-router-dom";
-import {typeToChinese} from "../../utils/TutorialType";
+import { typeToChinese } from "../../utils/TutorialType";
 
 class Course extends PureComponent {
   state = {
     tutorials: [],
-    tutorialsLoading: true
+    recommendTutorials: [],
+    tutorialsLoading: true,
+    tutorialType: ""
   };
 
   async componentDidMount() {
+    const recommendTutorials = await getRecommendationTutorials();
     const tutorials = await getTutorials({});
     this.setState({
       tutorials,
+      recommendTutorials,
       tutorialsLoading: false
     });
+
+    this.searchValue = "";
   }
 
   handleCourseClick = tutorialId => {
     this.props.history.push(`/course/${tutorialId}`);
   };
 
+  getTutorials = async (tutorialType = this.state.tutorialType) => {
+    this.setState({ tutorialsLoading: true });
+    const tutorials = await getTutorials({
+      tutorialType: tutorialType,
+      keywords: this.searchValue
+    });
+    this.setState({
+      tutorials,
+      tutorialsLoading: false
+    });
+  };
+
+  onClickTypeEvent = async tutorialType => {
+    this.setState({ tutorialType });
+    await this.getTutorials(tutorialType);
+  };
+
+  onSearchEvent = async () => {
+    await this.getTutorials();
+  };
+
+  onSearchKeyUp = searchValue => {
+    this.searchValue = searchValue;
+  };
+
   render() {
-    const { tutorials, tutorialsLoading } = this.state;
+    const {
+      tutorials,
+      tutorialsLoading,
+      tutorialType,
+      recommendTutorials
+    } = this.state;
     return (
       <div className={Styles.bodySection}>
-        {tutorials.length < 4 ? (
-          undefined
-        ) : (
-          <div className={Styles.bodyItem}>
-            <Skeleton active loading={tutorialsLoading}>
-              <PopularPart
-                paramText={tutorials.map(e => {
-                  return {
-                    imgSrc: e.cover,
-                    title: e.title,
-                    content: e.abstract,
-                    top: typeToChinese(e.tutorialType),
-                    ttId: e.tutorialId
-                  };
-                })}
-                handleCourseClicked={this.handleCourseClick}
-              />
-            </Skeleton>
-          </div>
-        )}
         <div className={Styles.bodyItem}>
-          <TutorialFilter />
+          <PopularPart
+            paramText={recommendTutorials.map(e => {
+              return {
+                imgSrc: e.cover,
+                title: e.title,
+                content: e.abstract,
+                top: typeToChinese(e.tutorialType),
+                ttId: e.tutorialId
+              };
+            })}
+            handleCourseClicked={this.handleCourseClick}
+          />
+        </div>
+        <div className={Styles.bodyItem}>
+          <TutorialFilter
+            selectedType={tutorialType}
+            onClickTypeEvent={this.onClickTypeEvent}
+            onSearchEvent={this.onSearchEvent}
+            onKeyUp={this.onSearchKeyUp}
+          />
         </div>
         <div className={Styles.bodyItem}>
           <Skeleton active loading={tutorialsLoading}>

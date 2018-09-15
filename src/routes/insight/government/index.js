@@ -48,7 +48,7 @@ export default class GovernmentInsight extends PureComponent {
       <div className={Styles.bodySection}>
         <NavBar />
         <div className={Styles.government}>
-          <div className={Styles.content}>
+          <div className={Styles.content} style={{height:700}}>
             <div className={Styles.title}>
               <SmallPoint title={"政府热点词汇"} />
             </div>

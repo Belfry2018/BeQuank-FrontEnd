@@ -13,8 +13,9 @@ export default class Comment extends PureComponent {
     loading:false
   };
 
-  replyEvent = user => {
+  replyEvent = (user,commentId )=> {
     this.setState({ isReply: true, commenter: user });
+    this.selectedCommentId=commentId;
   };
 
   closeReply = () => {
@@ -23,12 +24,12 @@ export default class Comment extends PureComponent {
 
   makeComment = async content => {
     const { tutorialId } = this.props;
-    const { isReply, commenter } = this.state;
+    const { isReply } = this.state;
     this.setState({loading:true});
     if (isReply) {
       await replyComment({
         content,
-        commentId: commenter.username,
+        commentId: this.selectedCommentId,
         time: getTime()
       });
     } else {
