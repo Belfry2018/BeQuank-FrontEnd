@@ -64,7 +64,7 @@ class Question extends React.Component {
               }],
           })(
             <RadioGroup>
-              <Radio value="A">没我不能承受任何的负回报率</Radio>
+              <Radio value="A">没，我不能承受任何的负回报率</Radio>
               <Radio value="B">-10%</Radio>
               <Radio value="C">-20%</Radio>
               <Radio value="D">-30%</Radio>
