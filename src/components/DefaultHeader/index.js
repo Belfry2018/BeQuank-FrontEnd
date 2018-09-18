@@ -18,11 +18,11 @@ class DefaultHeader extends PureComponent {
   getUser = async () => {
     if (judgeLogin()) {
       let userInfo = await getUserProfile();
-      if(!userInfo.avatar){
-        userInfo.avatar=DEFAULT_AVATAR;
+      if (!userInfo.avatar) {
+        userInfo.avatar = DEFAULT_AVATAR;
       }
       this.setState(prevState => {
-        return { ...prevState,  ...userInfo };
+        return { ...prevState, ...userInfo };
       });
     }
   };
@@ -65,7 +65,9 @@ class DefaultHeader extends PureComponent {
       >
         <div className={styles["header-content"]}>
           <div className={styles.left}>
-            <div className={styles.logo}>BeQuank</div>
+            <Link to={"/"}>
+              <div className={styles.logo}>BeQuank</div>
+            </Link>
             <nav className={styles.nav}>
               <NavLink
                 className={styles["nav-item"]}
