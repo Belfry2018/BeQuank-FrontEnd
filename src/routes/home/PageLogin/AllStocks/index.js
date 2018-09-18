@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import NavButton from "../../components/NavButton";
-import LoadingSpin from "../../../../components/LoadingSpin/index";
 import { allStocks } from "../../../../services/apiStrategy";
 import StockList from "../../../../components/StockList/index";
 import Styles from "./index.module.less";
@@ -18,7 +17,7 @@ export default class AllStocks extends PureComponent {
     this.page++;
     this.setState({ loading: true });
     const newStocks = await allStocks({
-      page: initPage
+      page: this.page
     });
     this.setState(prevState => {
       return { stocks: [...prevState.stocks, ...newStocks] };
@@ -27,25 +26,12 @@ export default class AllStocks extends PureComponent {
   };
 
   async componentDidMount() {
-    // window.addEventListener("scroll", this.handleScroll);
-
     const stocks = await allStocks({
       page: initPage
     });
     this.setState({ stocks });
   }
 
-  componentWillUnmount() {
-    // window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  // handleScroll = e => {
-  //   if (window.scrollY < 5) {
-  //     this.setState({ isTop: true });
-  //   } else {
-  //     this.setState({ isTop: false });
-  //   }
-  // };
 
   render() {
     const { stocks, loading } = this.state;

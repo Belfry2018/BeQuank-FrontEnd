@@ -1,6 +1,6 @@
 export const AUTHORIZATION_TOKEN = "token";
 export const AUTHORIZATION_ROLE = "role";
-export const ALL_ROLE_TYPE = ["NORMAL"];
+export const ALL_ROLE_TYPE = ["NORMAL","SYSTEM"];
 
 export const getRole = () => {
   return localStorage.getItem(AUTHORIZATION_ROLE);
@@ -33,6 +33,10 @@ export const clearAuthorization = () => {
 
 export const judgeLogin = () => {
   return !!getRole();
+};
+
+export const judgeAdmin = () => {
+  return getRole()&&getRole()==="SYSTEM";
 };
 
 /**

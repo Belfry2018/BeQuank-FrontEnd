@@ -46,14 +46,15 @@ class AvatarUploader extends React.Component {
         })
       );
 
-      const { onChange = () => {} } = this.props;
+      const { onChange = () => {},specialCode="?x-oss-process=style/avatar" } = this.props;
       if (onChange) {
-        onChange(info.file.response.url + "?x-oss-process=style/avatar");
+        onChange(info.file.response.url + specialCode);
       }
     }
   };
 
   render() {
+    const {width=100,height=100}=this.props;
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -73,7 +74,7 @@ class AvatarUploader extends React.Component {
         }}
       >
         {this.props.value&&!this.state.loading ? (
-          <img width={100} height={100} src={this.props.value} alt="avatar" />
+          <img width={width} height={height} src={this.props.value} alt="avatar" />
         ) : (
           uploadButton
         )}

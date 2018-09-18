@@ -32,7 +32,8 @@ export default class Insight extends PureComponent {
     sentimentRatio: undefined,
     sentimentRatioTrend: undefined,
     wordTrend: initWord,
-    sentimentTrendWord: initWord
+    sentimentTrendWord: initWord,
+    currentHotSpotPage: 1
   };
 
   async componentDidMount() {
@@ -50,16 +51,22 @@ export default class Insight extends PureComponent {
     this.setState({ sentimentTrend });
   }
 
+  onPageClicked = async page => {
+    const hotspot = await getHotspot(page);
+    this.setState({ hotspot, currentHotSpotPage: page });
+  };
+
   render() {
     const {
       cloud,
-      hotspot,
+      hotspot = {},
       sentiment = [],
       sentimentTrend,
       sentimentRatio,
       sentimentRatioTrend,
       wordTrend,
-      sentimentTrendWord
+      sentimentTrendWord,
+      currentHotSpotPage
     } = this.state;
     return (
       <div className={Styles.bodySection}>
@@ -81,7 +88,13 @@ export default class Insight extends PureComponent {
           <div className={Styles.bodyBlackMask}>
             <div className={Styles.hotSpotSection}>
               <div className={Styles.mainSection}>
-                <HotSpot list={hotspot} />
+                <SmallPoint title={"微博热点"} />
+                <HotSpot
+                  onPageClicked={this.onPageClicked}
+                  currentPage={currentHotSpotPage}
+                  totalPage={hotspot.totalPage}
+                  list={hotspot.data}
+                />
               </div>
             </div>
           </div>
@@ -90,18 +103,28 @@ export default class Insight extends PureComponent {
           <SmallPoint title={"舆情随机展示"} />
           <div>
             <Row gutter={40}>
-              {sentiment.map(e => {
-                return (
-                  <Col md={8}>
-                    <div className={Styles.cardStyle}>
-                      <SentimentDashBoard
-                        word={e.word}
-                        sentiment={e.sentiment}
-                      />
+              {sentiment.length === 0 ? (
+                <Col md={8}>
+                  <div className={Styles.cardStyle}>
+                    <div style={{padding:20}}>
+                      <Skeleton active />
                     </div>
-                  </Col>
-                );
-              })}
+                  </div>
+                </Col>
+              ) : (
+                sentiment.map(e => {
+                  return (
+                    <Col md={8}>
+                      <div className={Styles.cardStyle}>
+                        <SentimentDashBoard
+                          word={e.word}
+                          sentiment={e.sentiment}
+                        />
+                      </div>
+                    </Col>
+                  );
+                })
+              )}
             </Row>
           </div>
         </div>
@@ -153,7 +176,7 @@ export default class Insight extends PureComponent {
         </div>
         <div className={Styles.bodyItem}>
           <div className={Styles.bodySearch}>
-            <SmallPoint title={`舆情走势图 「${sentimentTrendWord}」`}/>
+            <SmallPoint title={`舆情走势图 「${sentimentTrendWord}」`} />
             <Search
               placeholder="输入关键词"
               onSearch={async value => {
