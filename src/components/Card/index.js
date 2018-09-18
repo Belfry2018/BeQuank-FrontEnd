@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
+import Truncate from "react-truncate";
 
 const MyCardProps = {
   /** Define header of button */
@@ -12,7 +13,7 @@ const MyCardProps = {
   /** Define top of button */
   top: PropTypes.string.isRequired,
   /** Define time of button */
-  time: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired
 };
 
 class MyCard extends PureComponent {
@@ -25,8 +26,13 @@ class MyCard extends PureComponent {
           <img className={styles.image} src={src} />
         </div>
         <div className={styles.textbox}>
-          <h3>{header}</h3>
-          <p>{context}</p>
+          <h3>
+            <Truncate lines={1}>{header} </Truncate>
+          </h3>
+          <p style={{ height: 40 }}>
+            <Truncate lines={2}>{context}</Truncate>
+          </p>
+
           <span className={styles.time}>{time}</span>
         </div>
       </div>
