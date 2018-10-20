@@ -2,13 +2,13 @@
 @my-width: @page-max-width/4.3;
 @my-height: @my-width * 1.47;
 @block-left-margin: @my-width /20;
-@block-margin: 10px 10px 10px 10px;
+@align-margin: 10px 10px 10px 10px;
 @avatar-size: @my-width/11*4;
 @avatar-top-margin: @avatar-size/4;
 @bio-width: @my-width - 70px;
 
+@group-name-front-size: 20px;
 @member-name-front-size: 20px;
-@group-name-front-size: 30px;
 
 .main {
   display: flex;
@@ -24,7 +24,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin: @block-margin;
+      margin: @align-margin;
       .photo {
         margin-top: @avatar-top-margin;
         .avatar {
