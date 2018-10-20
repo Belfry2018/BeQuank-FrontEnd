@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import Styles from "./index.module.less";
 import { Col, Row, Select, Skeleton } from "antd";
 import StockList from "../../../components/StockList/index";
+
 import {
   getRecommendByProfit,
   getRecommendByRisk
@@ -11,6 +12,7 @@ import GeneralData from "../components/GeneralData";
 import Button from "../../../components/Button";
 import { Link } from "react-router-dom";
 import RecordModel from "./RecordModel";
+import SignCard from "./SignCard";
 import LoopBack from "../../../components/LoopBack";
 const Option = Select.Option;
 
@@ -20,7 +22,10 @@ const RISK = "Risk";
 class PageLogin extends PureComponent {
   state = {
     recommendStocks: undefined,
-    selectedValue: PROFIT
+    selectedValue: PROFIT,
+      coins: 0,
+      exp: 0,
+      courses: "BEGINNER"
   };
 
   async componentDidMount() {
@@ -51,7 +56,7 @@ class PageLogin extends PureComponent {
     return (
       <div className={Styles.mainSection}>
         <Row gutter={40}>
-          <Col md={16}>
+          <Col md={14}>
             <div
               className={Styles.text}
               style={{ padding: recommendStocks ? 0 : 5 }}
@@ -102,7 +107,10 @@ class PageLogin extends PureComponent {
               </div>
             </div>
           </Col>
-          <Col md={8}>
+          <Col md={10}>
+              <div className={Styles.signSection}>
+                  <SignCard coins={this.state.coins} exp={this.state.exp} courses={this.state.courses}/>
+              </div>
             <div>
               <NavButton />
               {recommendStocks &&

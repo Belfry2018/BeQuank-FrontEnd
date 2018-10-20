@@ -75,3 +75,22 @@ export const changePassword = ({ oriPassword = "", newPassword = "" }) => {
     body: { oriPassword, newPassword }
   });
 };
+
+/**
+ * 签到
+ * @returns {Object}
+ */
+export const dailySignIn = () => {
+    return request(`${version}/user/dailysign`, {
+        method: "POST",
+        body: {}
+    });
+}
+
+/**
+ * 获得用户权限
+ * @returns {Object}
+ */
+export const getUserAuth = () => {
+    return request(`${version}/user/auth`);
+}
