@@ -4,7 +4,7 @@ import styles from "../index.module.less";
 import NameCard from "../../../components/NameCard/index";
 import { recordDetail } from "../../../services/apiStrategy";
 import { getUserProfile } from "../../../services/apiUser";
-import {Col, Icon, Row} from "antd";
+import { Col, Icon, Row } from "antd";
 import SmallPoint from "../../../components/SmallPoint";
 import StockList from "../../../components/StockList";
 
@@ -26,9 +26,15 @@ class GroupList extends React.Component {
   }
 
   render() {
-    const { recordName, todayBenefit, yearBenefit, risk,stocks } = this.state.record;
-  
-    const Item = ({ data=0, comment }) => (
+    const {
+      recordName,
+      todayBenefit,
+      yearBenefit,
+      risk,
+      stocks
+    } = this.state.record;
+
+    const Item = ({ data = 0, comment }) => (
       <Col span={8}>
         <div className={styles.dataSection}>
           <div className={styles.data}>{`${data}%`}</div>
@@ -36,7 +42,7 @@ class GroupList extends React.Component {
         </div>
       </Col>
     );
-    
+
     return (
       <div className={styles.main}>
         <Row gutter={40}>
@@ -51,17 +57,25 @@ class GroupList extends React.Component {
           <Col md={16}>
             <div className={styles.simpleSection}>
               <div className={styles.title}>
-                <SmallPoint title={<div><Link to={"/groupList"}>我的自选股组</Link><Icon type="right" theme="outlined" />{recordName}</div>} />
+                <SmallPoint
+                  title={
+                    <div>
+                      <Link to={"/groupList"}>我的自选股组</Link>
+                      <Icon type="right" theme="outlined" />
+                      {recordName}
+                    </div>
+                  }
+                />
               </div>
-              <div className={styles.divider}/>
+              <div className={styles.divider} />
               <div>
                 <Row>
-                  <Item data={todayBenefit} comment={"今日收益"}/>
-                  <Item data={yearBenefit} comment={"年化收益"}/>
-                  <Item data={risk} comment={"风险指标"}/>
+                  <Item data={todayBenefit} comment={"今日收益"} />
+                  <Item data={yearBenefit} comment={"年化收益"} />
+                  <Item data={risk} comment={"风险指标"} />
                 </Row>
               </div>
-              <div className={styles.divider}/>
+              <div className={styles.divider} />
               <StockList list={stocks} />
             </div>
           </Col>

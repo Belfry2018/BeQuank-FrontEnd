@@ -7,7 +7,7 @@ import LeftBar from "./components/LeftBar/index";
 import InfoForm from "./components/InfoForm/index";
 import AccountForm from "./components/AccountForm/index";
 import StockDataForm from "./components/StockDataForm/index";
-import {Col, Row} from "antd";
+import { Col, Row } from "antd";
 
 const keys = ["个人信息", "账户管理", "选股数据"];
 
