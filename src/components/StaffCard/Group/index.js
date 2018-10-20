@@ -4,10 +4,8 @@ import LoadingSpin from "../../LoadingSpin";
 import PropTypes from "prop-types";
 
 const GroupProps = {
-
     groupName: PropTypes.string.isRequired,
-    memberAvatarInfoList: PropTypes.object.isRequired,
-    // memberNameList: PropTypes.object.isRequired,
+    memberInfoList: PropTypes.array.isRequired,
 };
 
 class Group extends PureComponent {
@@ -22,20 +20,19 @@ class Group extends PureComponent {
     // }
 
     render() {
-        const { groupName, memberAvatarInfoList } = this.props;
-        let tmpUrl = "https://bequank.oss-cn-beijing.aliyuncs.com/avatars/avatar.jpg?x-oss-process=style/avatar";
+        const { groupName, memberInfoList } = this.props;
 
-        const MembersAvatarBlock = memberAvatarInfoList.map((item, index)=>{
+        const MemberBlock = memberInfoList.map((memberInfo, index)=>{
             return (
-                <div key={`groupItem${index}`} className={styles.align}>
+                <div key={`member${index}`} className={styles.align}>
                     <div className={styles.photo}>
-                        {tmpUrl ? (
-                            <img alt={""} src={tmpUrl} className={styles.avatar} />
+                        {memberInfo.avatarUrl ? (
+                            <img alt={""} src={memberInfo.avatarUrl} className={styles.avatar} />
                         ) : (
                             <LoadingSpin background="#2980B9">Primary</LoadingSpin>
                         )}
                     </div>
-                    <div className={styles.name}>{item.memberName}</div>
+                    <div className={styles.name}>{memberInfo.memberName}</div>
                 </div>
             )
         });
@@ -43,7 +40,7 @@ class Group extends PureComponent {
         return(
             <div className={styles.main}>
                 <div className={styles.groupName}>{groupName}</div>
-                <div className={styles.block}>{MembersAvatarBlock}</div>
+                <div className={styles.block}>{MemberBlock}</div>
             </div>
         );
     }
