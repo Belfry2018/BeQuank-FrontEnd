@@ -10,9 +10,9 @@ import { judgeLogin } from "../../utils/authorization";
 
 class Article extends PureComponent {
   likeArticleEvent = async () => {
-      const { tutorialId, likeEvent = () => {} } = this.props;
-      await likeTutorial(tutorialId);
-      await likeEvent();
+    const { tutorialId, likeEvent = () => {} } = this.props;
+    await likeTutorial(tutorialId);
+    await likeEvent();
   };
 
   render() {

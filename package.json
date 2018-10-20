@@ -50,7 +50,7 @@
   },
   "proxy": {
     "/api/*": {
-      "target": "http://172.17.143.19:9001",
+      "target": "https://www.easy-mock.com/mock/5b6282fe70818661082f206c/bequank/",
       "changeOrigin": true
     }
   }
