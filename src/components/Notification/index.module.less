@@ -1,0 +1,30 @@
+@import "../../themes/default";
+
+.notification{
+  .item{
+    width: 330px;
+    padding: 10px 20px;
+    color: #575757;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    &:hover{
+      background-color: @sky-blue;
+      color: @white;
+    }
+    &:last-child{
+      border: 0;
+    }
+    .nickname{
+      font-weight: bold;
+      .addOn{
+        font-weight: normal;
+        margin-left: 20px;
+      }
+    }
+
+    .comment{
+      text-overflow:ellipsis;
+      font-weight: normal;
+    }
+  }
+}

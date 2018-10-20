@@ -5,7 +5,11 @@ import Button from "../Button";
 import UserSection from "./UserSection";
 import Authorization from "../AuthorizationComponents/Authorization";
 import { judgeLogin } from "../../utils/authorization";
-import { getUserProfile } from "../../services/apiUser";
+import {
+  getUserProfile,
+  getNotification,
+  readNotification
+} from "../../services/apiUser";
 import { DEFAULT_AVATAR } from "../../themes/default";
 
 class DefaultHeader extends PureComponent {
@@ -13,6 +17,7 @@ class DefaultHeader extends PureComponent {
     this.judgeBackground();
     window.addEventListener("scroll", this.handleScroll);
     await this.getUser();
+    await this.getNotification();
   }
 
   getUser = async () => {
@@ -25,6 +30,20 @@ class DefaultHeader extends PureComponent {
         return { ...prevState, ...userInfo };
       });
     }
+  };
+
+  getNotification = async () => {
+    if (judgeLogin()) {
+      let { list } = await getNotification();
+      this.setState({ notificationList: list });
+    }
+  };
+
+  onClickNotification = async ({ courseId, responseId }) => {
+    await readNotification(responseId);
+    this.props.history.push({
+      pathname: `/course/${courseId}`
+    });
   };
 
   judgeBackground = () => {
@@ -44,7 +63,7 @@ class DefaultHeader extends PureComponent {
     isTop: false
   };
 
-  handleScroll = e => {
+  handleScroll = () => {
     if (this.judgeBackground()) {
       if (window.scrollY < 5 && this.state.isTop === false) {
         this.setState({ isTop: true });
@@ -55,7 +74,7 @@ class DefaultHeader extends PureComponent {
   };
 
   render() {
-    const { isTop, nickname, avatar } = this.state;
+    const { isTop, nickname, avatar, notificationList } = this.state;
 
     return (
       <div
@@ -114,7 +133,12 @@ class DefaultHeader extends PureComponent {
               }
               afterAuthorization={
                 <div className={`${styles["user-item"]} ${styles.button}`}>
-                  <UserSection avatarUrl={avatar} nickName={nickname} />
+                  <UserSection
+                    notificationList={notificationList}
+                    onClickNotification={this.onClickNotification}
+                    avatarUrl={avatar}
+                    nickName={nickname}
+                  />
                 </div>
               }
             />

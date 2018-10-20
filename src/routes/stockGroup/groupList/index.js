@@ -5,7 +5,7 @@ import RecordList from "../../../components/RecordList/index";
 import NameCard from "../../../components/NameCard/index";
 import { allRecords } from "../../../services/apiStrategy";
 import { getUserProfile } from "../../../services/apiUser";
-import {Col, Row} from "antd";
+import { Col, Row } from "antd";
 import SmallPoint from "../../../components/SmallPoint";
 
 class GroupList extends React.Component {
@@ -13,7 +13,7 @@ class GroupList extends React.Component {
     allRecords: [],
     profile: {}
   };
-  
+
   async componentDidMount() {
     const records = await allRecords();
     const pro = await getUserProfile();
@@ -22,7 +22,7 @@ class GroupList extends React.Component {
       profile: pro
     });
   }
-  
+
   render() {
     return (
       <div className={styles.main}>
@@ -38,7 +38,7 @@ class GroupList extends React.Component {
           <Col md={16}>
             <div className={styles.simpleSection}>
               <div className={styles.title}>
-                <SmallPoint title={"我的自选股组"}/>
+                <SmallPoint title={"我的自选股组"} />
               </div>
               <RecordList params={this.state.allRecords} />
             </div>

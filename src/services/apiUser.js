@@ -59,6 +59,23 @@ export const getUserProfile = () => {
 };
 
 /**
+ * 获取用户消息
+ * @returns {Object}
+ */
+export const getNotification = () => {
+  return request(`${version}/user/message`);
+};
+
+export const readNotification = (responseId = null) => {
+  return request(`${version}/user/message`, {
+    method: "POST",
+    body: {
+      responseId
+    }
+  });
+};
+
+/**
  * 修改密码
  * @param params
  * @return {Object}
