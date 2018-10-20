@@ -1,5 +1,5 @@
 {
-  "name": "BeQuank",
+  "name": "be-quank",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,11 +26,25 @@
     "docz:dev": "docz dev",
     "docz:build": "docz build"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,json,css,less}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "babel-plugin-import": "^1.8.0",
-    "docz": "^0.7.1",
-    "docz-plugin-css": "^0.7.1",
-    "prettier": "1.14.0",
+    "docz": "^0.12.5",
+    "docz-plugin-css": "^0.11.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.0",
     "react-app-rewire-less-with-modules": "^0.0.4",
     "react-app-rewired": "^1.5.2"
   },
