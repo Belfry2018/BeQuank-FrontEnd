@@ -48,7 +48,7 @@ class StockList extends PureComponent {
             {list.map((e, index) => (
               <tr onClick={()=>this.onRowClicked(e.stockId)} key={`tableList${index}`}>
                 {recommend?<td>
-                  <div className={Styles.buyRate}>{`${e.buyRate}%`}</div>
+                  <div className={Styles.buyRate}>{`${ e.buyRate * 100 }%`}</div>
                 </td>:undefined}
                 <td>
                   <ProductName name={e.stockName} id={e.stockId} />

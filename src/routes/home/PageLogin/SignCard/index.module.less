@@ -1,0 +1,44 @@
+@import "../../../../themes/default";
+.main {
+  background-color: @page-primary-color;
+  box-shadow: @default-shadow;
+  border-radius: @default-radius;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .content {
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 25px;
+    display: flex;
+    justify-content: space-between;
+
+    .tips {
+      margin-top: 8px;
+      display: flex;
+
+      .tip {
+        display: flex;
+        justify-content: flex-start;
+        margin-right: 20px;
+        .icon {
+          margin-right: 5px;
+        }
+        .text {
+          margin-right: 5px;
+        }
+        .value {
+
+        }
+      }
+    }
+
+    .btn {
+      margin-top: 8px;
+    }
+  }
+
+}
