@@ -73,8 +73,8 @@ export const getRecommendByRisk = () => {
             ...
  ]
  */
-export const allStocks = ({ page = 1 }) => {
-  return request(`${version}/stocks/${page}`);
+export const searchStocks = ({ pattern = "", page = 1}) => {
+  return request(`${version}/stocks/${pattern}/${page}`);
 };
 
 /**
