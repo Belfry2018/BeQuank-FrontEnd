@@ -13,7 +13,7 @@ class NameCard extends Component {
                     <div className={styles.align}>
                         <div className={styles.photo}>
                             {tmpUrl ? (
-                                <img alt={""} src={tmpUrl} className={styles.avatar} />
+                                <img alt={""} src={avatarUrl} className={styles.avatar} />
                             ) : (
                                 <LoadingSpin background="#2980B9">Primary</LoadingSpin>
                             )}
