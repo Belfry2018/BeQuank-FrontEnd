@@ -11,11 +11,9 @@ export default function({ todayBenefit, yearBenefit, risk }) {
 
   return (
     <div className={Styles.wholePart}>
-      <Item title={"今日收益"}>{todayBenefit}</Item>
+      <Item title={"当月收益"}>{todayBenefit * 100}</Item>
       <div className={Styles.divider} />
-      <Item title={"年化收益"}>{yearBenefit}</Item>
-      <div className={Styles.divider} />
-      <Item title={"风险指标"}>{risk}</Item>
+      <Item title={"风险指标"}>{risk * 100}</Item>
     </div>
   );
 }

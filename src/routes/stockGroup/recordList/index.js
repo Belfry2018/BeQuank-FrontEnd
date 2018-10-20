@@ -29,7 +29,6 @@ class GroupList extends React.Component {
     const {
       recordName,
       todayBenefit,
-      yearBenefit,
       risk,
       stocks
     } = this.state.record;
@@ -70,9 +69,8 @@ class GroupList extends React.Component {
               <div className={styles.divider} />
               <div>
                 <Row>
-                  <Item data={todayBenefit} comment={"今日收益"} />
-                  <Item data={yearBenefit} comment={"年化收益"} />
-                  <Item data={risk} comment={"风险指标"} />
+                  <Item data={todayBenefit * 100} comment={"当月收益"} />
+                  <Item data={risk * 100} comment={"风险指标"} />
                 </Row>
               </div>
               <div className={styles.divider} />
