@@ -4,8 +4,10 @@ import {
   getRecommendationTutorials,
   getTutorials
 } from "../../services/apiCourse";
+import { getDalaos } from "../../services/apiUser";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
+import PayforQuestion from "../../components/PayforQuestion";
 import Card from "../../components/Card";
 import { Col, Row, Skeleton } from "antd";
 import { withRouter } from "react-router-dom";
@@ -16,16 +18,19 @@ class Course extends PureComponent {
     tutorials: [],
     recommendTutorials: [],
     tutorialsLoading: true,
-    tutorialType: ""
+    tutorialType: "",
+    dalaos: []
   };
 
   async componentDidMount() {
     const recommendTutorials = await getRecommendationTutorials();
     const tutorials = await getTutorials({});
+    const dalaos = await getDalaos();
     this.setState({
       tutorials,
       recommendTutorials,
-      tutorialsLoading: false
+      tutorialsLoading: false,
+      dalaos: dalaos
     });
 
     this.searchValue = "";
@@ -65,10 +70,17 @@ class Course extends PureComponent {
       tutorials,
       tutorialsLoading,
       tutorialType,
-      recommendTutorials
+      recommendTutorials,
+      dalaos
     } = this.state;
     return (
       <div className={Styles.bodySection}>
+        <div className={Styles.topSection}>
+          <div className={Styles.left}>
+              <PayforQuestion params={dalaos}/>
+          </div>
+          <div className={Styles.right}></div>
+        </div>
         <div className={Styles.bodyItem}>
           <PopularPart
             paramText={recommendTutorials.map(e => {

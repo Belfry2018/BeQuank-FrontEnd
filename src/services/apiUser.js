@@ -111,3 +111,12 @@ export const dailySignIn = () => {
 export const getUserAuth = () => {
     return request(`${version}/user/auth`);
 }
+
+/**
+ *
+ * @returns {Object}
+ */
+export const getDalaos = () => {
+    return request(`${version}/user/dalaos`);
+}
+
