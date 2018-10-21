@@ -35,7 +35,7 @@ class LoopBack extends Component {
                     <Axis
                         name="value"
                         label={{
-                            formatter: val => `${val}%`
+                            formatter: val => `${val * 100}%`
                         }}
                     />
                     <Tooltip
