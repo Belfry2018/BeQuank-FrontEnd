@@ -23,5 +23,20 @@
   .bodyItem{
     padding-top: @page-gutter;
   }
+}
 
+.questionSection {
+  position: absolute;
+  margin-top: @header-height+ @page-gutter;
+  display: flex;
+  justify-content: flex-end;
+  .questionIcon {
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+  }
+}
+
+.pop {
+  width: @page-max-width / 4;
 }

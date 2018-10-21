@@ -9,7 +9,7 @@ import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import PayforQuestion from "../../components/PayforQuestion";
 import Card from "../../components/Card";
-import { Col, Row, Skeleton } from "antd";
+import { Col, Row, Skeleton, Popover, Button, Affix, Icon } from "antd";
 import { withRouter } from "react-router-dom";
 import { typeToChinese } from "../../utils/TutorialType";
 
@@ -73,14 +73,21 @@ class Course extends PureComponent {
       recommendTutorials,
       dalaos
     } = this.state;
-    return (
-      <div className={Styles.bodySection}>
-        <div className={Styles.topSection}>
-          <div className={Styles.left}>
+
+    const content = (
+          <div className={Styles.pop}>
               <PayforQuestion params={dalaos}/>
           </div>
-          <div className={Styles.right}></div>
-        </div>
+    );
+    return (
+      <div className={Styles.bodySection}>
+          <Affix offsetTop={100} className={Styles.questionSection}>
+              <Popover content={content} placement="left">
+                <div>
+                    <Icon className={Styles.questionIcon} type="question-circle" theme="filled" style={{fontSize: '35px', color: "#86ABE7"}}/>
+                </div>
+              </Popover>
+          </Affix>
         <div className={Styles.bodyItem}>
           <PopularPart
             paramText={recommendTutorials.map(e => {
