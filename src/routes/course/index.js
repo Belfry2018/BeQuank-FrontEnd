@@ -9,12 +9,13 @@ import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import PayforQuestion from "../../components/PayforQuestion";
 import Card from "../../components/Card";
-import { Col, Row, Skeleton, Popover, Button, Affix, Icon } from "antd";
+import { Col, Row, Skeleton, Popover, Button, Affix, Icon, Drawer } from "antd";
 import { withRouter } from "react-router-dom";
 import { typeToChinese } from "../../utils/TutorialType";
 
 class Course extends PureComponent {
   state = {
+    drawerVisible: false,
     tutorials: [],
     recommendTutorials: [],
     tutorialsLoading: true,
@@ -65,6 +66,18 @@ class Course extends PureComponent {
     this.searchValue = searchValue;
   };
 
+  onDrawerClose = () => {
+    this.setState({
+        drawerVisible: false,
+    });
+  };
+
+  showDrawer = () => {
+    this.setState({
+        drawerVisible: true,
+    });
+  };
+
   render() {
     const {
       tutorials,
@@ -74,20 +87,8 @@ class Course extends PureComponent {
       dalaos
     } = this.state;
 
-    const content = (
-          <div className={Styles.pop}>
-              <PayforQuestion params={dalaos}/>
-          </div>
-    );
     return (
       <div className={Styles.bodySection}>
-          <Affix offsetTop={100} className={Styles.questionSection}>
-              <Popover content={content} placement="left">
-                <div>
-                    <Icon className={Styles.questionIcon} type="question-circle" theme="filled" style={{fontSize: '35px', color: "#86ABE7"}}/>
-                </div>
-              </Popover>
-          </Affix>
         <div className={Styles.bodyItem}>
           <PopularPart
             paramText={recommendTutorials.map(e => {
@@ -108,6 +109,7 @@ class Course extends PureComponent {
             onClickTypeEvent={this.onClickTypeEvent}
             onSearchEvent={this.onSearchEvent}
             onKeyUp={this.onSearchKeyUp}
+            onShowDrawer={this.showDrawer}
           />
         </div>
         <div className={Styles.bodyItem}>
@@ -132,6 +134,15 @@ class Course extends PureComponent {
             </Row>
           </Skeleton>
         </div>
+          <Drawer
+              placement="right"
+              closable={true}
+              onClose={this.onDrawerClose}
+              visible={this.state.drawerVisible}
+              width={400}
+          >
+            <PayforQuestion params={this.state.dalaos}/>
+          </Drawer>
       </div>
     );
   }
