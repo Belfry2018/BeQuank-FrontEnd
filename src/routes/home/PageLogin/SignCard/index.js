@@ -24,7 +24,8 @@ export default class SignCard extends Component {
         this.setState({
             exp: profile.exp,
             coins: profile.coins,
-            courses: auth.courses
+            courses: auth.courses,
+            signed: auth.hasSigned
         });
 
     }
