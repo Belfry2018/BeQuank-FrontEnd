@@ -119,4 +119,27 @@ export const getUserAuth = () => {
 export const getDalaos = () => {
     return request(`${version}/user/dalaos`);
 }
+/**
+ * 解锁功能
+ * @param type
+ * @returns {Object}
+ */
+export const unlockInsight = ( type ) => {
+    return request(`${version}/user/unlock/insight`, {
+      method: "POST",
+        body: {type: type}
+    });
+}
+
+/**
+ * 解锁课程
+ * @param type
+ * @returns {Object}
+ */
+export const unlockCourse = ( type ) => {
+    return request(`${version}/user/unlock/course`, {
+        method: "POST",
+        body: {type: type}
+    });
+}
 
