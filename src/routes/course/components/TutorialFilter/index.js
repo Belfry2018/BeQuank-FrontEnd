@@ -14,8 +14,8 @@ export default class TutorialFilter extends PureComponent {
       selectedType = "",
       onClickTypeEvent = () => {},
       onSearchEvent = () => {},
-      onKeyUp=()=>{},
-        onShowDrawer=()=>{},
+      onKeyUp = () => {},
+      onShowDrawer = () => {}
     } = this.props;
 
     const leftClassName = type =>
@@ -65,7 +65,7 @@ export default class TutorialFilter extends PureComponent {
               />
             </div>
             <div className={Styles.rightItem}>
-                <Button onClick={onShowDrawer}>付费提问</Button>
+              <Button onClick={onShowDrawer}>付费提问</Button>
             </div>
           </div>
         </div>

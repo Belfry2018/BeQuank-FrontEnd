@@ -15,8 +15,7 @@ const keys = ["个人信息", "账户管理", "选股数据", "功能解锁"];
 class NormalInfoForm extends React.Component {
   state = {
     currentPage: 0,
-    userProfile: {},
-
+    userProfile: {}
   };
 
   setCurrentPage = pageNumber => {
@@ -72,9 +71,7 @@ class NormalInfoForm extends React.Component {
                       expectedProfit={this.state.userProfile.expectedProfit}
                     />
                   ),
-                    3: (
-                        <UnlockForm/>
-                    )
+                  3: <UnlockForm />
                 }[this.state.currentPage]
               }
             </div>

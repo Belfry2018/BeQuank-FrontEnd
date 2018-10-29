@@ -26,12 +26,7 @@ class GroupList extends React.Component {
   }
 
   render() {
-    const {
-      recordName,
-      todayBenefit,
-      risk,
-      stocks
-    } = this.state.record;
+    const { recordName, todayBenefit, risk, stocks } = this.state.record;
 
     const Item = ({ data = 0, comment }) => (
       <Col span={8}>

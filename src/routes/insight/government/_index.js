@@ -7,7 +7,7 @@ import {
   getGovernmentPassage,
   getGovernmentWords
 } from "../../../services/apiNews";
-import {Pagination, Skeleton} from "antd";
+import { Pagination, Skeleton } from "antd";
 import LoadingSpin from "../../../components/LoadingSpin";
 import GovernmentWords from "../../../components/GovernmentWords";
 
@@ -48,7 +48,7 @@ export default class GovernmentInsight extends PureComponent {
       <div className={Styles.bodySection}>
         <NavBar />
         <div className={Styles.government}>
-          <div className={Styles.content} style={{height:700}}>
+          <div className={Styles.content} style={{ height: 700 }}>
             <div className={Styles.title}>
               <SmallPoint title={"政府热点词汇"} />
             </div>
@@ -58,21 +58,21 @@ export default class GovernmentInsight extends PureComponent {
               <GovernmentWords data={governmentWords} />
             )}
           </div>
-            <div className={Styles.content}>
-                <div className={Styles.title}>
-                    <SmallPoint title={"政府洞见"} />
-                </div>
-                <Skeleton active loading={governmentPassageLoading}>
-                    <GovernmentPassage params={data} />
-                </Skeleton>
-                <div className={Styles.pagination}>
-                    <Pagination
-                        onChange={this.onPaginationChange}
-                        defaultCurrent={firstPage}
-                        total={totalPage}
-                    />
-                </div>
+          <div className={Styles.content}>
+            <div className={Styles.title}>
+              <SmallPoint title={"政府洞见"} />
             </div>
+            <Skeleton active loading={governmentPassageLoading}>
+              <GovernmentPassage params={data} />
+            </Skeleton>
+            <div className={Styles.pagination}>
+              <Pagination
+                onChange={this.onPaginationChange}
+                defaultCurrent={firstPage}
+                total={totalPage}
+              />
+            </div>
+          </div>
           <div />
         </div>
       </div>
