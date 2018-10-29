@@ -110,6 +110,13 @@ class DefaultHeader extends PureComponent {
               >
                 视角
               </NavLink>
+              <NavLink
+                className={styles["nav-item"]}
+                to={"/pricing"}
+                activeClassName={styles["nav-active"]}
+              >
+                价格
+              </NavLink>
             </nav>
           </div>
           <div className={styles.user}>
