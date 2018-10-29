@@ -50,7 +50,7 @@ export const getRecommendByProfit = () => {
 };
 
 export const getRecommendByRisk = () => {
-    return request(`${version}/strategy/recommend/risk`);
+  return request(`${version}/strategy/recommend/risk`);
 };
 
 /**
@@ -73,8 +73,8 @@ export const getRecommendByRisk = () => {
             ...
  ]
  */
-export const allStocks = ({ page = 1 }) => {
-  return request(`${version}/stocks/${page}`);
+export const searchStocks = ({ pattern = "", page = 1 }) => {
+  return request(`${version}/stocks/${pattern}/${page}`);
 };
 
 /**
@@ -82,9 +82,9 @@ export const allStocks = ({ page = 1 }) => {
  * @param stockId
  * @returns {Object}
  */
-export const stockTrend = (stockId=null) => {
+export const stockTrend = (stockId = null) => {
   return request(`${version}/stock/${stockId}`);
-}
+};
 
 /**
  * 添加自选股
@@ -181,7 +181,7 @@ export const recordDetail = (recordId = null) => {
  * @returns {Object}
  */
 export const loopBack = (recordId = null) => {
-    return request(`${version}/strategy/loopback/${recordId}`, {
-        method: "GET"
-    });
-}
+  return request(`${version}/strategy/loopback/${recordId}`, {
+    method: "GET"
+  });
+};

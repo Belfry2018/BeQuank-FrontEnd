@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "../index.module.less";
 import plus from "./twotone-add_circle-24px.svg";
+import notification from "./twotone-notifications-24px.svg";
 import { Link } from "react-router-dom";
 import Dropdown from "../../Dropdown";
 import LoadingSpin from "../../LoadingSpin";
@@ -10,6 +11,7 @@ import {
   DropdownDivider
 } from "../../Dropdown/DefaultDropdownItems";
 import { Icon } from "antd";
+import Notification from "../../Notification";
 
 const linkList = [
   {
@@ -63,7 +65,12 @@ const UserSectionProps = {
 
 class UserSection extends PureComponent {
   render() {
-    const { nickName, avatarUrl } = this.props;
+    const {
+      nickName,
+      avatarUrl,
+      notificationList,
+      onClickNotification
+    } = this.props;
     // return <div>{children}</div>;
     return (
       <div className={styles["user-section"]}>
@@ -74,6 +81,18 @@ class UserSection extends PureComponent {
               <img alt={""} src={plus} />
             </div>
           </Link>
+          <div className={`${styles["down-icon"]}`}>
+            <Dropdown
+              overlay={
+                <Notification
+                  list={notificationList}
+                  onClickNotification={onClickNotification}
+                />
+              }
+            >
+              <img alt={""} src={notification} />
+            </Dropdown>
+          </div>
           <Dropdown
             overlay={[
               <NickNameSpace key={"nickname-space"}>{nickName}</NickNameSpace>,

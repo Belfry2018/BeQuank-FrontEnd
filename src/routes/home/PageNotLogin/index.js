@@ -49,12 +49,10 @@ export default class PageNotLogin extends PureComponent {
             <img className={Styles.image} src={Function1} alt={""} />
             <div className={Styles.text}>
               <div>
-                <div className={Styles.title}>
-                  多因子选股策略版块
-                </div>
-                <div className={Styles.divider}/>
+                <div className={Styles.title}>多因子选股策略版块</div>
+                <div className={Styles.divider} />
                 <div className={Styles.content}>
-                  我们在此提供候选因子列表、有效性检验和预测模型生成服务，利用后台的原创多因子算法，帮助您进行决策。您可以在此选择和形成自己的策略，进行自己的决策选择
+                  本推荐系统基于多因子选股策略进行智能推荐，在多因子模型中，我们应用相关性分析、主成分分析及多元线性回归等方法并结合考虑风险价值模型（VaR）为我们的客户精心推荐出满足客户预期收益和风险偏好的投资组合。
                 </div>
               </div>
             </div>
@@ -64,10 +62,8 @@ export default class PageNotLogin extends PureComponent {
           <div className={Styles.forthSectionMainPart}>
             <div className={Styles.text}>
               <div>
-                <div className={Styles.title}>
-                  消费者教育模块
-                </div>
-                <div className={Styles.divider}/>
+                <div className={Styles.title}>消费者教育模块</div>
+                <div className={Styles.divider} />
                 <div className={Styles.content}>
                   我们在此提供低门槛、全方位的教程服务，您可以在此进行文字教程的阅读，了解量化投资科普、教程和实战经验，分享自己的决策过程，功能板块内还设置了“知识付费”模式的投资策略问答和定向投资分析的功能板块，通过一对一个人服务，与专业的基金经理人对接，完善和商讨自己的投资战略，帮助个人投资者进一步优化策略、便利决策过程。
                 </div>
@@ -81,17 +77,16 @@ export default class PageNotLogin extends PureComponent {
             <img className={Styles.image} src={Function3} alt={""} />
             <div className={Styles.text}>
               <div>
-                <div className={Styles.title}>
-                  舆情汇总板块
-                </div>
-                <div className={Styles.divider}/>
+                <div className={Styles.title}>舆情汇总板块</div>
+                <div className={Styles.divider} />
                 <div className={Styles.content}>
-                  我们在此通过数据爬虫工具、文本分析工具和文本数据可视化工具进行包括关键词分析、语义网络分析、情感分析和主成分分析与聚类分析进行信息的筛选、预处理和可视化，通过信息呈现和信息推送订阅的方式，利用多样化的关键词云、话题树、走势分析反应社会舆论和宏观政策对股票市场运行的反应，并传递各级各部门政策动态。您也可以在此进行订阅服务，事实掌握政策动向，反应决策，调整投资战略。                </div>
+                  我们在此通过数据爬虫工具、文本分析工具和文本数据可视化工具进行包括关键词分析、语义网络分析、情感分析和主成分分析与聚类分析进行信息的筛选、预处理和可视化，通过信息呈现和信息推送订阅的方式，利用多样化的关键词云、话题树、走势分析反应社会舆论和宏观政策对股票市场运行的反应，并传递各级各部门政策动态。您也可以在此进行订阅服务，事实掌握政策动向，反应决策，调整投资战略。{" "}
+                </div>
               </div>
             </div>
           </div>
         </div>
-  
+
         {/*<Carousel className={Styles.carousel} effect="fade" autoplay>*/}
         {/*<div>*/}
         {/*<h3>1</h3>*/}

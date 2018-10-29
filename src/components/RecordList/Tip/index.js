@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Button, Popconfirm, message } from "antd";
 import styles from "./index.module.less";
-import {Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { deleteRecord } from "../../../services/apiStrategy";
 
 class Tip extends Component {
   onDeleteEvent = async () => {
     await deleteRecord(this.props.id);
     this.props.history.push({
-      pathname: `/groupList`,
+      pathname: `/groupList`
     });
     message.success("已成功删除");
   };
@@ -45,4 +45,4 @@ class Tip extends Component {
   }
 }
 
-export default withRouter(Tip) ;
+export default withRouter(Tip);

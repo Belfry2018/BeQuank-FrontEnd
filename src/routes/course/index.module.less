@@ -5,7 +5,38 @@
   padding: @header-height @page-padding @page-gutter;
   margin: 0 auto;
 
+  .topSection {
+    padding-top: @page-gutter;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      height: 100%;
+      width: @page-max-width / 3;
+    }
+    .right {
+      height: 100%;
+      width: @page-max-width / 3;
+    }
+  }
+
   .bodyItem{
     padding-top: @page-gutter;
   }
+}
+
+.questionSection {
+  position: absolute;
+  margin-top: @header-height+ @page-gutter;
+  display: flex;
+  justify-content: flex-end;
+  .questionIcon {
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+  }
+}
+
+.pop {
+  width: @page-max-width / 4;
 }

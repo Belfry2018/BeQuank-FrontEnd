@@ -1,0 +1,46 @@
+@import "../../../themes/default";
+@my-width: @page-max-width/4.3;
+@my-height: @my-width * 1.47;
+@block-left-margin: @my-width /20;
+@align-margin: 10px 10px 10px 10px;
+@avatar-size: @my-width/11*4;
+@avatar-top-margin: @avatar-size/4;
+@bio-width: @my-width - 70px;
+
+@group-name-front-size: 20px;
+@member-name-front-size: 20px;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  box-shadow: @default-shadow;
+  border-radius: @default-radius;
+  background-color: @nc-bg-color;
+  .block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .align {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: @align-margin;
+      .photo {
+        margin-top: @avatar-top-margin;
+        .avatar {
+          border-radius: 50%;
+          width: @avatar-size;
+          height: @avatar-size;
+        }
+      }
+      .name {
+        text-align: center;
+        font-size: @member-name-front-size;
+        color: @nc-name-font-color;
+      }
+    }
+  }
+  .groupName {
+    font-size: @group-name-front-size;
+  }
+}

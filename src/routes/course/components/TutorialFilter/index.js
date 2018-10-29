@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import Styles from "./index.module.less";
-import { Input } from "antd";
+import { Input, Button } from "antd";
 import {
   ADVANCED,
   BEGINNER,
@@ -14,7 +14,8 @@ export default class TutorialFilter extends PureComponent {
       selectedType = "",
       onClickTypeEvent = () => {},
       onSearchEvent = () => {},
-      onKeyUp=()=>{}
+      onKeyUp = () => {},
+      onShowDrawer = () => {}
     } = this.props;
 
     const leftClassName = type =>
@@ -62,6 +63,9 @@ export default class TutorialFilter extends PureComponent {
                 onSearch={onSearchEvent}
                 style={{ width: 200 }}
               />
+            </div>
+            <div className={Styles.rightItem}>
+              <Button onClick={onShowDrawer}>付费提问</Button>
             </div>
           </div>
         </div>

@@ -9,6 +9,7 @@ import {
   getSentimentRatio,
   getSentimentRatioTrend
 } from "../../services/apiNews";
+import { getUserAuth } from "../../services/apiUser";
 import LoadingSpin from "../../components/LoadingSpin";
 import HotSpot from "./components/HotSpot";
 import SmallPoint from "../../components/SmallPoint";
@@ -18,9 +19,16 @@ import TrendChartOfPublicOpinion from "../../components/TrendChartOfPublicOpinio
 import NavBar from "./components/NavBar";
 import PieChart from "../../components/PieChart";
 import SentimentRatioTrend from "../../components/SentimentRatioTrend";
+import withLocker from "../../components/LockerHOC";
 const Search = Input.Search;
 
-const initWord = "美团";
+const initWord = "阿里";
+const SentimentRatioTrendWithLocker = withLocker(SentimentRatioTrend);
+const TrendChartOfPublicOpinionWithLocker = withLocker(props => (
+  <div className={Styles.trend}>
+    <TrendChartOfPublicOpinion {...props} />
+  </div>
+));
 
 export default class Insight extends PureComponent {
   state = {
@@ -33,22 +41,37 @@ export default class Insight extends PureComponent {
     sentimentRatioTrend: undefined,
     wordTrend: initWord,
     sentimentTrendWord: initWord,
+    sentimentRatioTrendLock: true,
+    trendChartOfPublicOpinionLock: true,
     currentHotSpotPage: 1
   };
 
-  async componentDidMount() {
-    const cloud = await getCloudKeywords();
-    this.setState({ cloud });
-    const hotspot = await getHotspot();
-    this.setState({ hotspot });
-    const sentiment = await getSentiment();
-    this.setState({ sentiment });
-    const sentimentRatio = await getSentimentRatio(initWord);
-    this.setState({ sentimentRatio });
-    const sentimentRatioTrend = await getSentimentRatioTrend(initWord);
-    this.setState({ sentimentRatioTrend });
-    const sentimentTrend = await getSentimentTrend(initWord);
-    this.setState({ sentimentTrend });
+  componentDidMount() {
+    getUserAuth().then(auth => {
+      this.setState({
+        sentimentRatioTrendLock: !auth.ratioTrend,
+        trendChartOfPublicOpinionLock: !auth.trend
+      });
+
+      getCloudKeywords().then(cloud => {
+        this.setState({ cloud });
+      });
+      getHotspot().then(hotspot => {
+        this.setState({ hotspot });
+      });
+      getSentiment().then(sentiment => {
+        this.setState({ sentiment });
+      });
+      getSentimentRatio(initWord).then(sentimentRatio => {
+        this.setState({ sentimentRatio });
+      });
+      getSentimentRatioTrend(initWord).then(sentimentRatioTrend => {
+        this.setState({ sentimentRatioTrend });
+      });
+      getSentimentTrend(initWord).then(sentimentTrend => {
+        this.setState({ sentimentTrend });
+      });
+    });
   }
 
   onPageClicked = async page => {
@@ -66,8 +89,11 @@ export default class Insight extends PureComponent {
       sentimentRatioTrend,
       wordTrend,
       sentimentTrendWord,
-      currentHotSpotPage
+      currentHotSpotPage,
+      sentimentRatioTrendLock,
+      trendChartOfPublicOpinionLock
     } = this.state;
+
     return (
       <div className={Styles.bodySection}>
         <NavBar />
@@ -106,7 +132,7 @@ export default class Insight extends PureComponent {
               {sentiment.length === 0 ? (
                 <Col md={8}>
                   <div className={Styles.cardStyle}>
-                    <div style={{padding:20}}>
+                    <div style={{ padding: 20 }}>
                       <Skeleton active />
                     </div>
                   </div>
@@ -166,7 +192,11 @@ export default class Insight extends PureComponent {
                 >
                   <Skeleton active loading={!sentimentRatioTrend}>
                     {sentimentRatioTrend && (
-                      <SentimentRatioTrend data={sentimentRatioTrend} />
+                      <SentimentRatioTrendWithLocker
+                        type={"ratioTrend"}
+                        locked={sentimentRatioTrendLock}
+                        data={sentimentRatioTrend}
+                      />
                     )}
                   </Skeleton>
                 </div>
@@ -189,17 +219,21 @@ export default class Insight extends PureComponent {
           </div>
         </div>
         <div className={Styles.bodyWidthItem}>
-          <div className={Styles.trend}>
-            {sentimentTrend ? (
-              sentimentTrend.length > 0 ? (
-                <TrendChartOfPublicOpinion data={sentimentTrend || []} />
-              ) : (
-                undefined
-              )
+          {sentimentTrend ? (
+            sentimentTrend.length > 0 ? (
+              <TrendChartOfPublicOpinionWithLocker
+                type={"trend"}
+                locked={trendChartOfPublicOpinionLock}
+                data={sentimentTrend || []}
+              />
             ) : (
+              undefined
+            )
+          ) : (
+            <div className={Styles.trend}>
               <LoadingSpin background={"blue"} />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -3,24 +3,12 @@
 import { Upload, Icon, message } from "antd";
 import React from "react";
 import { version } from "../../services/apiOverview";
-import {getToken} from "../../utils/authorization";
+import { getToken } from "../../utils/authorization";
 
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener("load", () => callback(reader.result));
   reader.readAsDataURL(img);
-}
-
-function beforeUpload(file) {
-  const isJPG = file.type === "image/jpeg;image/png";
-  if (!isJPG) {
-    message.error("You can only upload JPG and PNG file!");
-  }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error("Image must smaller than 2MB!");
-  }
-  return isJPG && isLt2M;
 }
 
 class AvatarUploader extends React.Component {
@@ -46,7 +34,10 @@ class AvatarUploader extends React.Component {
         })
       );
 
-      const { onChange = () => {},specialCode="?x-oss-process=style/avatar" } = this.props;
+      const {
+        onChange = () => {},
+        specialCode = "?x-oss-process=style/avatar"
+      } = this.props;
       if (onChange) {
         onChange(info.file.response.url + specialCode);
       }
@@ -54,7 +45,7 @@ class AvatarUploader extends React.Component {
   };
 
   render() {
-    const {width=100,height=100}=this.props;
+    const { width = 100, height = 100 } = this.props;
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? "loading" : "plus"} />
@@ -70,11 +61,16 @@ class AvatarUploader extends React.Component {
         action={`${version}/user/avatar`}
         onChange={this.handleChange}
         headers={{
-          Authorization: getToken(),
+          Authorization: getToken()
         }}
       >
-        {this.props.value&&!this.state.loading ? (
-          <img width={width} height={height} src={this.props.value} alt="avatar" />
+        {this.props.value && !this.state.loading ? (
+          <img
+            width={width}
+            height={height}
+            src={this.props.value}
+            alt="avatar"
+          />
         ) : (
           uploadButton
         )}

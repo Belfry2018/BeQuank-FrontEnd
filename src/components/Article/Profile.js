@@ -8,7 +8,7 @@ import { Skeleton } from "antd";
 
 class Profile extends PureComponent {
   render() {
-    const { style, profilePictureURL, profileContent } = this.props;
+    const { profilePictureURL, profileContent } = this.props;
     return (
       <div className={styles.profile}>
         <div className={styles.profileComponent}>

@@ -17,7 +17,8 @@
     "react-onclickoutside": "^6.7.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "react-truncate": "^2.3.0"
+    "react-truncate": "^2.3.0",
+    "moment": "latest"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -50,7 +51,7 @@
   },
   "proxy": {
     "/api/*": {
-      "target": "http://172.17.143.19:9001",
+      "target": "https://easy-mock.com/mock/5b6282fe70818661082f206c/bequank",
       "changeOrigin": true
     }
   }

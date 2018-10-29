@@ -4,28 +4,48 @@ import {
   getRecommendationTutorials,
   getTutorials
 } from "../../services/apiCourse";
+import { getDalaos, getUserAuth } from "../../services/apiUser";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
+import PayforQuestion from "../../components/PayforQuestion";
 import Card from "../../components/Card";
-import { Col, Row, Skeleton } from "antd";
+import { Col, Row, Skeleton, Drawer } from "antd";
 import { withRouter } from "react-router-dom";
-import { typeToChinese } from "../../utils/TutorialType";
+import {
+  ADVANCED,
+  shouldCourseLocked,
+  typeToChinese
+} from "../../utils/TutorialType";
+import withLocker from "../../components/LockerHOC";
+
+const CourseWithLocker = withLocker(Card);
 
 class Course extends PureComponent {
   state = {
+    drawerVisible: false,
     tutorials: [],
     recommendTutorials: [],
     tutorialsLoading: true,
-    tutorialType: ""
+    tutorialType: "",
+    dalaos: [],
+    coursesLock: ADVANCED
   };
 
-  async componentDidMount() {
-    const recommendTutorials = await getRecommendationTutorials();
-    const tutorials = await getTutorials({});
-    this.setState({
-      tutorials,
-      recommendTutorials,
-      tutorialsLoading: false
+  componentDidMount() {
+    getUserAuth().then(auth => {
+      this.setState({
+        coursesLock: !auth.ratioTrend,
+        trendChartOfPublicOpinionLock: !auth.trend
+      });
+      getRecommendationTutorials().then(recommendTutorials => {
+        this.setState({ recommendTutorials });
+      });
+      getTutorials({}).then(tutorials => {
+        this.setState({ tutorials, tutorialsLoading: false });
+      });
+      getDalaos().then(dalaos => {
+        this.setState({ dalaos });
+      });
     });
 
     this.searchValue = "";
@@ -60,13 +80,28 @@ class Course extends PureComponent {
     this.searchValue = searchValue;
   };
 
+  onDrawerClose = () => {
+    this.setState({
+      drawerVisible: false
+    });
+  };
+
+  showDrawer = () => {
+    this.setState({
+      drawerVisible: true
+    });
+  };
+
   render() {
     const {
       tutorials,
       tutorialsLoading,
       tutorialType,
-      recommendTutorials
+      recommendTutorials,
+      coursesLock,
+      dalaos
     } = this.state;
+
     return (
       <div className={Styles.bodySection}>
         <div className={Styles.bodyItem}>
@@ -89,6 +124,7 @@ class Course extends PureComponent {
             onClickTypeEvent={this.onClickTypeEvent}
             onSearchEvent={this.onSearchEvent}
             onKeyUp={this.onSearchKeyUp}
+            onShowDrawer={this.showDrawer}
           />
         </div>
         <div className={Styles.bodyItem}>
@@ -96,12 +132,16 @@ class Course extends PureComponent {
             <Row gutter={40}>
               {tutorials.map((e, index) => (
                 <Col
-                  onClick={() => this.handleCourseClick(e.tutorialId)}
                   key={`tutorial${index}`}
                   style={{ marginBottom: 40 }}
                   md={8}
+                  onClick={() =>
+                    !shouldCourseLocked(coursesLock, e.tutorialType) &&
+                    this.handleCourseClick(e.tutorialId)
+                  }
                 >
-                  <Card
+                  <CourseWithLocker
+                    locked={shouldCourseLocked(coursesLock, e.tutorialType)}
                     context={e.abstract}
                     header={e.title}
                     src={e.cover}
@@ -113,6 +153,15 @@ class Course extends PureComponent {
             </Row>
           </Skeleton>
         </div>
+        <Drawer
+          placement="right"
+          closable={true}
+          onClose={this.onDrawerClose}
+          visible={this.state.drawerVisible}
+          width={400}
+        >
+          <PayforQuestion params={this.state.dalaos} />
+        </Drawer>
       </div>
     );
   }

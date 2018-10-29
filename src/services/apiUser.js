@@ -59,6 +59,23 @@ export const getUserProfile = () => {
 };
 
 /**
+ * 获取用户消息
+ * @returns {Object}
+ */
+export const getNotification = () => {
+  return request(`${version}/user/message`);
+};
+
+export const readNotification = (responseId = null) => {
+  return request(`${version}/user/message`, {
+    method: "POST",
+    body: {
+      responseId
+    }
+  });
+};
+
+/**
  * 修改密码
  * @param params
  * @return {Object}
@@ -73,5 +90,55 @@ export const changePassword = ({ oriPassword = "", newPassword = "" }) => {
   return request(`${version}/user/password`, {
     method: "POST",
     body: { oriPassword, newPassword }
+  });
+};
+
+/**
+ * 签到
+ * @returns {Object}
+ */
+export const dailySignIn = () => {
+  return request(`${version}/user/dailysign`, {
+    method: "POST",
+    body: {}
+  });
+};
+
+/**
+ * 获得用户权限
+ * @returns {Object}
+ */
+export const getUserAuth = () => {
+  return request(`${version}/user/auth`);
+};
+
+/**
+ *
+ * @returns {Object}
+ */
+export const getDalaos = () => {
+  return request(`${version}/user/dalaos`);
+};
+/**
+ * 解锁功能
+ * @param type
+ * @returns {Object}
+ */
+export const unlockInsight = type => {
+  return request(`${version}/user/unlock/insight`, {
+    method: "POST",
+    body: { type: type }
+  });
+};
+
+/**
+ * 解锁课程
+ * @param type
+ * @returns {Object}
+ */
+export const unlockCourse = type => {
+  return request(`${version}/user/unlock/course`, {
+    method: "POST",
+    body: { type: type }
   });
 };
