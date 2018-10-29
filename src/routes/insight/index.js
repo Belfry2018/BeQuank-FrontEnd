@@ -24,10 +24,11 @@ const Search = Input.Search;
 
 const initWord = "阿里";
 const SentimentRatioTrendWithLocker = withLocker(SentimentRatioTrend);
-const TrendChartOfPublicOpinionWithLocker = withLocker(TrendChartOfPublicOpinion);
+const TrendChartOfPublicOpinionWithLocker = withLocker(
+  TrendChartOfPublicOpinion
+);
 
 export default class Insight extends PureComponent {
-
   state = {
     cloud: undefined,
     hotspot: undefined,
@@ -38,29 +39,36 @@ export default class Insight extends PureComponent {
     sentimentRatioTrend: undefined,
     wordTrend: initWord,
     sentimentTrendWord: initWord,
-      sentimentRatioTrendLock: true,
-      trendChartOfPublicOpinionLock: true,
+    sentimentRatioTrendLock: true,
+    trendChartOfPublicOpinionLock: true,
     currentHotSpotPage: 1
   };
 
-  async componentDidMount() {
-    const cloud = await getCloudKeywords();
-    this.setState({ cloud });
-    const hotspot = await getHotspot();
-    this.setState({ hotspot });
-    const sentiment = await getSentiment();
-    this.setState({ sentiment });
-    const sentimentRatio = await getSentimentRatio(initWord);
-    this.setState({ sentimentRatio });
-    const sentimentRatioTrend = await getSentimentRatioTrend(initWord);
-    this.setState({ sentimentRatioTrend });
-    const sentimentTrend = await getSentimentTrend(initWord);
-    this.setState({ sentimentTrend });
-    const auth = await getUserAuth();
-    this.setState({
+  componentDidMount() {
+    getCloudKeywords().then(cloud => {
+      this.setState({ cloud });
+    });
+    getHotspot().then(hotspot => {
+      this.setState({ hotspot });
+    });
+    getSentiment().then(sentiment => {
+      this.setState({ sentiment });
+    });
+    getSentimentRatio(initWord).then(sentimentRatio => {
+      this.setState({ sentimentRatio });
+    });
+    getSentimentRatioTrend(initWord).then(sentimentRatioTrend => {
+      this.setState({ sentimentRatioTrend });
+    });
+    getSentimentTrend(initWord).then(sentimentTrend => {
+      this.setState({ sentimentTrend });
+    });
+    getUserAuth().then(auth => {
+      this.setState({
         sentimentRatioTrendLock: !auth.ratioTrend,
         trendChartOfPublicOpinionLock: !auth.trend
-    })
+      });
+    });
   }
 
   onPageClicked = async page => {
@@ -79,8 +87,8 @@ export default class Insight extends PureComponent {
       wordTrend,
       sentimentTrendWord,
       currentHotSpotPage,
-        sentimentRatioTrendLock,
-        trendChartOfPublicOpinionLock
+      sentimentRatioTrendLock,
+      trendChartOfPublicOpinionLock
     } = this.state;
 
     return (
@@ -121,7 +129,7 @@ export default class Insight extends PureComponent {
               {sentiment.length === 0 ? (
                 <Col md={8}>
                   <div className={Styles.cardStyle}>
-                    <div style={{padding:20}}>
+                    <div style={{ padding: 20 }}>
                       <Skeleton active />
                     </div>
                   </div>
@@ -181,7 +189,11 @@ export default class Insight extends PureComponent {
                 >
                   <Skeleton active loading={!sentimentRatioTrend}>
                     {sentimentRatioTrend && (
-                      <SentimentRatioTrendWithLocker type={"ratioTrend"} locked={sentimentRatioTrendLock} data={sentimentRatioTrend} />
+                      <SentimentRatioTrendWithLocker
+                        type={"ratioTrend"}
+                        locked={sentimentRatioTrendLock}
+                        data={sentimentRatioTrend}
+                      />
                     )}
                   </Skeleton>
                 </div>
@@ -204,10 +216,14 @@ export default class Insight extends PureComponent {
           </div>
         </div>
         <div className={Styles.bodyWidthItem}>
-          <div className={Styles.trend} >
+          <div className={Styles.trend}>
             {sentimentTrend ? (
               sentimentTrend.length > 0 ? (
-                <TrendChartOfPublicOpinionWithLocker type={"trend"} locked={trendChartOfPublicOpinionLock} data={sentimentTrend || []} />
+                <TrendChartOfPublicOpinionWithLocker
+                  type={"trend"}
+                  locked={trendChartOfPublicOpinionLock}
+                  data={sentimentTrend || []}
+                />
               ) : (
                 undefined
               )

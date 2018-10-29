@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./index.module.less";
 import SmallPoint from "../SmallPoint";
 import { Skeleton } from "antd";
-import Truncate from "react-truncate"
+import Truncate from "react-truncate";
 
 class PopularPart extends Component {
   handleClick(tutorialId) {
@@ -59,9 +59,7 @@ class PopularPart extends Component {
             <div className={styles.top}>{top0}</div>
             <div className={styles.title}>{title0}</div>
             <div className={styles.content}>
-              <Truncate lines={1}>
-                {content0}
-              </Truncate>
+              <Truncate lines={1}>{content0}</Truncate>
             </div>
           </div>
         </div>
@@ -81,9 +79,7 @@ class PopularPart extends Component {
             <div className={styles["tip-top"]}>{top1}</div>
             <div className={styles["tip-title"]}>{title1}</div>
             <div className={styles["tip-content"]}>
-              <Truncate lines={1}>
-                {content1}
-              </Truncate>
+              <Truncate lines={1}>{content1}</Truncate>
             </div>
           </div>
           <div
@@ -93,9 +89,7 @@ class PopularPart extends Component {
             <div className={styles["tip-top"]}>{top2}</div>
             <div className={styles["tip-title"]}>{title2}</div>
             <div className={styles["tip-content"]}>
-              <Truncate lines={1}>
-                {content2}
-              </Truncate>
+              <Truncate lines={1}>{content2}</Truncate>
             </div>
           </div>
           <div
@@ -105,9 +99,7 @@ class PopularPart extends Component {
             <div className={styles["tip-top"]}>{top3}</div>
             <div className={styles["tip-title"]}>{title3}</div>
             <div className={styles["tip-content"]}>
-              <Truncate lines={1}>
-                {content3}
-              </Truncate>
+              <Truncate lines={1}>{content3}</Truncate>
             </div>
           </div>
         </div>

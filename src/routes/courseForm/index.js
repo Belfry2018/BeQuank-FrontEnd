@@ -5,8 +5,8 @@ import { makeAnswer } from "../../services/apiStrategy";
 import { withRouter } from "react-router-dom";
 import { Steps } from "antd";
 import SmallPoint from "../../components/SmallPoint";
-import {tutorialTime} from "../../utils/timer";
-import {pushTutorial} from "../../services/apiCourse";
+import { tutorialTime } from "../../utils/timer";
+import { pushTutorial } from "../../services/apiCourse";
 const Step = Steps.Step;
 
 class CourseForm extends PureComponent {
@@ -17,12 +17,12 @@ class CourseForm extends PureComponent {
   handleSubmit = async values => {
     const articleValue = {
       ...values,
-      time:tutorialTime(),
+      time: tutorialTime()
     };
 
     const result = await pushTutorial(articleValue);
     this.props.history.push({
-      pathname: "/courseForm/result",
+      pathname: "/courseForm/result"
     });
   };
 
@@ -30,8 +30,8 @@ class CourseForm extends PureComponent {
     return (
       <div className={Styles.section}>
         <div className={Styles.simpleSection}>
-          <SmallPoint title={"新建教程"}/>
-          <div style={{height:20}} />
+          <SmallPoint title={"新建教程"} />
+          <div style={{ height: 20 }} />
           <Question onSubmit={this.handleSubmit} />
         </div>
       </div>

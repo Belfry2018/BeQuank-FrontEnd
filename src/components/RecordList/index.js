@@ -9,7 +9,14 @@ class RecordList extends Component {
     return (
       <div className={styles["tip-content"]}>
         {params.map((item, index) => {
-          return <Tip key={`recordListItem${index}`} title={item.recordName} time={item.recordTime} id={item.recordId} />;
+          return (
+            <Tip
+              key={`recordListItem${index}`}
+              title={item.recordName}
+              time={item.recordTime}
+              id={item.recordId}
+            />
+          );
         })}
       </div>
     );

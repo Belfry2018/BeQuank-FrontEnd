@@ -68,13 +68,13 @@ class Course extends PureComponent {
 
   onDrawerClose = () => {
     this.setState({
-        drawerVisible: false,
+      drawerVisible: false
     });
   };
 
   showDrawer = () => {
     this.setState({
-        drawerVisible: true,
+      drawerVisible: true
     });
   };
 
@@ -134,15 +134,15 @@ class Course extends PureComponent {
             </Row>
           </Skeleton>
         </div>
-          <Drawer
-              placement="right"
-              closable={true}
-              onClose={this.onDrawerClose}
-              visible={this.state.drawerVisible}
-              width={400}
-          >
-            <PayforQuestion params={this.state.dalaos}/>
-          </Drawer>
+        <Drawer
+          placement="right"
+          closable={true}
+          onClose={this.onDrawerClose}
+          visible={this.state.drawerVisible}
+          width={400}
+        >
+          <PayforQuestion params={this.state.dalaos} />
+        </Drawer>
       </div>
     );
   }

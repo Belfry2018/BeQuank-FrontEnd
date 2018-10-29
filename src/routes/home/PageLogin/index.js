@@ -23,9 +23,9 @@ class PageLogin extends PureComponent {
   state = {
     recommendStocks: undefined,
     selectedValue: PROFIT,
-      coins: 0,
-      exp: 0,
-      courses: "BEGINNER"
+    coins: 0,
+    exp: 0,
+    courses: "BEGINNER"
   };
 
   async componentDidMount() {
@@ -66,7 +66,9 @@ class PageLogin extends PureComponent {
                   <div className={Styles.recommendSection}>
                     <div className={Styles.recommendDesc}>
                       {recommendStocks.stocks.length !== 0
-                        ? `根据您的个人问卷测算，为您推荐${recommendStocks.stocks.length}只股票`
+                        ? `根据您的个人问卷测算，为您推荐${
+                            recommendStocks.stocks.length
+                          }只股票`
                         : `没有推荐股票`}
                     </div>
                     <div className={Styles.recommendSelect}>
@@ -108,25 +110,26 @@ class PageLogin extends PureComponent {
             </div>
           </Col>
           <Col md={10}>
-              <div className={Styles.signSection}>
-                  <SignCard coins={this.state.coins} exp={this.state.exp} courses={this.state.courses}/>
-              </div>
+            <div className={Styles.signSection}>
+              <SignCard
+                coins={this.state.coins}
+                exp={this.state.exp}
+                courses={this.state.courses}
+              />
+            </div>
             <div>
               <NavButton />
               {recommendStocks &&
-              recommendStocks.loopback &&
-              recommendStocks.loopback.length>0 && (
-                <div className={Styles.simpleSection}>
-                  <div className={Styles.simpleTitle}>
-                    回测走势图
+                recommendStocks.loopback &&
+                recommendStocks.loopback.length > 0 && (
+                  <div className={Styles.simpleSection}>
+                    <div className={Styles.simpleTitle}>回测走势图</div>
+                    <div style={{ marginLeft: "-20px" }}>
+                      <LoopBack data={recommendStocks.loopback} />
+                    </div>
                   </div>
-                  <div style={{marginLeft:"-20px"}}>
-                    <LoopBack data={recommendStocks.loopback}/>
-                  </div>
-  
-                </div>
-              )}
-              
+                )}
+
               <div className={Styles.simpleSection}>
                 {recommendStocks ? (
                   <GeneralData

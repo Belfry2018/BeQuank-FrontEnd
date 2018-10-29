@@ -34,7 +34,7 @@ export const getSentimentTrend = (word = "微博") => {
   });
 };
 
-export const getGovernmentPassage = ( data = {} ) => {
+export const getGovernmentPassage = (data = {}) => {
   return request(`${version}/gvn/passage`, {
     method: "POST",
     body: {}
@@ -63,10 +63,10 @@ export const getGovernmentWords = () => {
     }
  */
 export const getSentimentRatio = (word = "微博") => {
-    return request(`${version}/sentiment/ratio/${word}`, {
-        method: "GET"
-    });
-}
+  return request(`${version}/sentiment/ratio/${word}`, {
+    method: "GET"
+  });
+};
 
 /**
  * 获得一个词的好中坏出现次数走势
@@ -74,8 +74,8 @@ export const getSentimentRatio = (word = "微博") => {
  * @returns {Object}
  * 返回值可以直接给组件显示
  */
-export const getSentimentRatioTrend= (word = "微博") => {
-    return request(`${version}/sentiment/ratioTrend/${word}`, {
-        method: "GET"
-    });
-}
+export const getSentimentRatioTrend = (word = "微博") => {
+  return request(`${version}/sentiment/ratioTrend/${word}`, {
+    method: "GET"
+  });
+};

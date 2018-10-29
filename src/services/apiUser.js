@@ -98,48 +98,47 @@ export const changePassword = ({ oriPassword = "", newPassword = "" }) => {
  * @returns {Object}
  */
 export const dailySignIn = () => {
-    return request(`${version}/user/dailysign`, {
-        method: "POST",
-        body: {}
-    });
-}
+  return request(`${version}/user/dailysign`, {
+    method: "POST",
+    body: {}
+  });
+};
 
 /**
  * 获得用户权限
  * @returns {Object}
  */
 export const getUserAuth = () => {
-    return request(`${version}/user/auth`);
-}
+  return request(`${version}/user/auth`);
+};
 
 /**
  *
  * @returns {Object}
  */
 export const getDalaos = () => {
-    return request(`${version}/user/dalaos`);
-}
+  return request(`${version}/user/dalaos`);
+};
 /**
  * 解锁功能
  * @param type
  * @returns {Object}
  */
-export const unlockInsight = ( type ) => {
-    return request(`${version}/user/unlock/insight`, {
-      method: "POST",
-        body: {type: type}
-    });
-}
+export const unlockInsight = type => {
+  return request(`${version}/user/unlock/insight`, {
+    method: "POST",
+    body: { type: type }
+  });
+};
 
 /**
  * 解锁课程
  * @param type
  * @returns {Object}
  */
-export const unlockCourse = ( type ) => {
-    return request(`${version}/user/unlock/course`, {
-        method: "POST",
-        body: {type: type}
-    });
-}
-
+export const unlockCourse = type => {
+  return request(`${version}/user/unlock/course`, {
+    method: "POST",
+    body: { type: type }
+  });
+};

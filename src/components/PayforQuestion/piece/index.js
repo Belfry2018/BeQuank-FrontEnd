@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
-import { Avatar } from 'antd';
-import { Icon } from 'antd';
+import { Avatar } from "antd";
+import { Icon } from "antd";
 
 const PieceProperty = {
   /** Define avatar'url of button */
@@ -10,7 +10,7 @@ const PieceProperty = {
   /** Define bio of button */
   bio: PropTypes.string.isRequired,
   /** Define username of button */
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired
 };
 
 class Piece extends PureComponent {

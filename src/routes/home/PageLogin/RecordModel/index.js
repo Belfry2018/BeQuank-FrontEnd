@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button, Form, Input ,message} from "antd";
+import { Modal, Button, Form, Input, message } from "antd";
 import { addRecord } from "../../../../services/apiStrategy";
 
 class RecordModel extends React.Component {
@@ -23,10 +23,10 @@ class RecordModel extends React.Component {
             recordName: values.recordName,
             stocks
           });
-        }catch (e) {
+        } catch (e) {
           //TODO
         }
-        this.setState({ loading: false,modalVisible:false });
+        this.setState({ loading: false, modalVisible: false });
         message.success(`已成功添加「${values.recordName}」`);
       }
     });
@@ -47,7 +47,13 @@ class RecordModel extends React.Component {
         >
           添加至自选股
         </Button>
-        <Modal closable={false} maskClosable centered visible={this.state.modalVisible} footer={null}>
+        <Modal
+          closable={false}
+          maskClosable
+          centered
+          visible={this.state.modalVisible}
+          footer={null}
+        >
           <Form style={{ width: "100%" }} onSubmit={this.handleSubmitEvent}>
             <div style={{ display: "flex" }}>
               {getFieldDecorator("recordName")(
@@ -71,7 +77,7 @@ class RecordModel extends React.Component {
               <div style={{ width: 20 }} />
               <Button
                 disabled={loading}
-                onClick={()=>this.setModalVisible(false)}
+                onClick={() => this.setModalVisible(false)}
                 size="large"
               >
                 取消
