@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styles from "./index.module.less";
-import TextCutter from "../TextCutter";
 import SmallPoint from "../SmallPoint";
 import { Skeleton } from "antd";
-import Truncate from "react-truncate";
+import Truncate from "react-truncate"
 
 class PopularPart extends Component {
   handleClick(tutorialId) {

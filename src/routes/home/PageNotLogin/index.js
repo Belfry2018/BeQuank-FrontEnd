@@ -54,7 +54,7 @@ export default class PageNotLogin extends PureComponent {
                 </div>
                 <div className={Styles.divider}/>
                 <div className={Styles.content}>
-                  我们在此提供候选因子列表、有效性检验和预测模型生成服务，利用后台的原创多因子算法，帮助您进行决策。您可以在此选择和形成自己的策略，进行自己的决策选择
+                    本推荐系统基于多因子选股策略进行智能推荐，在多因子模型中，我们应用相关性分析、主成分分析及多元线性回归等方法并结合考虑风险价值模型（VaR）为我们的客户精心推荐出满足客户预期收益和风险偏好的投资组合。
                 </div>
               </div>
             </div>

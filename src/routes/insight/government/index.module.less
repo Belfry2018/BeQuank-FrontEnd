@@ -1,0 +1,52 @@
+@import "../../../themes/default";
+.main {
+  padding: @header-height 0 0;
+  margin: 0 auto;
+
+  .content {
+    max-width: @page-max-width;
+    margin: 0 auto;
+    padding: @page-padding @page-padding 40px;
+    display: flex;
+    justify-content: flex-start;
+
+    .leftBar {
+      width: 250px;
+      border-radius: @default-radius;
+      margin-left: 20px;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+      margin-left: 30px;
+      margin-right: 20px;
+      .select {
+        display: flex;
+        justify-content: flex-end;
+        .item {
+          margin: 0 50px 0 50px;
+          display: flex;
+          .text {
+            margin-top: 6px;
+          }
+          .selector {
+            margin-left: 5px;
+          }
+        }
+      }
+      .list {
+        box-shadow: @default-shadow;
+        background: @page-primary-color;
+        border-radius: @default-radius;
+        margin-top: 15px;
+        .pagination {
+          padding-top: 20px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import Styles from "./index.module.less";
 import Question from "./ArticleForm";
 import { makeAnswer } from "../../services/apiStrategy";
 import { withRouter } from "react-router-dom";
-import { Steps, Button } from "antd";
+import { Steps } from "antd";
 import SmallPoint from "../../components/SmallPoint";
 import {tutorialTime} from "../../utils/timer";
 import {pushTutorial} from "../../services/apiCourse";

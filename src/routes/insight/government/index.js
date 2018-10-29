@@ -1,81 +1,136 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
+import styles from "./index.module.less";
+import TypeBar from "./components/TypeBar/index";
 import NavBar from "../components/NavBar";
-import Styles from "../index.module.less";
-import SmallPoint from "../../../components/SmallPoint";
 import GovernmentPassage from "../../../components/GovernmentPassage";
+import {Pagination, Skeleton, Select, DatePicker, message} from "antd";
 import {
-  getGovernmentPassage,
-  getGovernmentWords
+    getGovernmentPassage,
+    getGovernmentWords
 } from "../../../services/apiNews";
-import {Pagination, Skeleton} from "antd";
-import LoadingSpin from "../../../components/LoadingSpin";
-import GovernmentWords from "../../../components/GovernmentWords";
-
+import moment from "moment";
+import NameCard from "../../../components/NameCard";
+const dateFormat = 'YYYY-MM-DD';
+const Option = Select.Option;
 const firstPage = 1;
 
-export default class GovernmentInsight extends PureComponent {
-  state = {
-    governmentPassage: {},
-    governmentPassageLoading: true,
-    governmentWords: [],
-    governmentWordsLoading: true,
-    page: firstPage
-  };
+class GovernmentInsight extends Component {
 
-  async componentDidMount() {
-    const governmentPassage = await getGovernmentPassage(firstPage);
-    this.setState({ governmentPassage, governmentPassageLoading: false });
-    const governmentWords = await getGovernmentWords();
-    this.setState({ governmentWords, governmentWordsLoading: false });
-  }
+    state = {
+        startDate: "2018-09-01",
+        endDate: "2018-10-01",
+        region: "china",
+        currentType: "TZGG",
+        page: firstPage,
+        governmentPassage: {},
+        governmentPassageLoading: true,
+    };
 
-  onPaginationChange = async page => {
-    this.setState({ governmentPassageLoading: true });
-    const governmentPassage = await getGovernmentPassage(page);
-    this.setState({ governmentPassage, governmentPassageLoading: false });
-  };
+    async onSearch() {
+        if(this.state.startDate <= this.state.endDate){
+            this.setState({ governmentPassageLoading: true });
+            let param = {
+                page: this.state.page,
+                start: this.state.startDate,
+                end: this.state.endDate,
+                region: this.state.region,
+                type: this.state.currentType
+            }
+            const governmentPassage = await getGovernmentPassage(param);
+            this.setState({governmentPassage: governmentPassage, governmentPassageLoading: false});
+        }
+        else{
+            message.info("请输入正确的时间范围");
+            console.log(this.state.startDate +">"+ this.state.endDate)
+        }
+    }
 
-  render() {
-    const {
-      governmentPassageLoading,
-      governmentWordsLoading,
-      governmentPassage: { totalPage = 1, currentPage = 1, data = [] },
-      governmentWords,
-      page
-    } = this.state;
+    async componentDidMount() {
+        await this.onSearch();
+    }
 
-    return (
-      <div className={Styles.bodySection}>
-        <NavBar />
-        <div className={Styles.government}>
-          <div className={Styles.content} style={{height:700}}>
-            <div className={Styles.title}>
-              <SmallPoint title={"政府热点词汇"} />
-            </div>
-            {governmentWordsLoading ? (
-              <LoadingSpin background={"blue"} />
-            ) : (
-              <GovernmentWords data={governmentWords} />
-            )}
-          </div>
-            <div className={Styles.content}>
-                <div className={Styles.title}>
-                    <SmallPoint title={"政府洞见"} />
+    onPaginationChange = async page => {
+        this.setState({ page: page });
+        await this.onSearch();
+    };
+
+    setCurrentType = async ( type ) => {
+        this.setState({currentType : type});
+        await this.onSearch();
+    }
+
+    handleRegionChange = async (value) => {
+        this.setState({region : value});
+        await this.onSearch();
+    }
+
+    handleStartChange = async (date, dateString) => {
+        this.setState({startDate : dateString});
+        await this.onSearch();
+    }
+
+    handleEndChange = async (date, dateString) => {
+        this.setState({endDate : dateString});
+        await this.onSearch();
+    }
+
+    render () {
+        const {
+            governmentPassageLoading,
+            governmentPassage: { totalPage = 1, currentPage = 1, data = [] },
+            page
+        } = this.state;
+
+        return (
+            <div className={styles.main}>
+                <NavBar/>
+                <div className={styles.content}>
+                    <div className={styles.leftBar}>
+                        <TypeBar setCurrentType={this.setCurrentType}/>
+                    </div>
+                    <div className={styles.right}>
+                        <div className={styles.select}>
+                           <div className={styles.item}>
+                               <div className={styles.text}>地区:</div>
+                               <div className={styles.selector}>
+                                   <Select defaultValue="china" style={{ width: 120 }} onChange={this.handleRegionChange}>
+                                       <Option value="china">中国</Option>
+                                       <Option value="guangdong">广东</Option>
+                                       <Option value="zhejiang">浙江</Option>
+                                       <Option value="jiangsu">江苏</Option>
+                                   </Select>
+                               </div>
+                           </div>
+                            <div className={styles.item}>
+                                <div className={styles.text}>开始时间:</div>
+                                <div className={styles.selector}>
+                                    <DatePicker defaultValue={moment(this.state.startDate, dateFormat)} format={dateFormat} allowClear={false} onChange={this.handleStartChange} />
+                                </div>
+                            </div>
+                            <div className={styles.item}>
+                                <div className={styles.text}>结束时间:</div>
+                                <div className={styles.selector}>
+                                    <DatePicker defaultValue={moment(this.state.endDate, dateFormat)} format={dateFormat} allowClear={false} onChange={this.handleEndChange} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.list}>
+                            <Skeleton active loading={governmentPassageLoading}>
+                                <GovernmentPassage params={data} />
+                            </Skeleton>
+                            <div className={styles.pagination}>
+                                <Pagination
+                                    onChange={this.onPaginationChange}
+                                    defaultCurrent={firstPage}
+                                    total={totalPage}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <Skeleton active loading={governmentPassageLoading}>
-                    <GovernmentPassage params={data} />
-                </Skeleton>
-                <div className={Styles.pagination}>
-                    <Pagination
-                        onChange={this.onPaginationChange}
-                        defaultCurrent={firstPage}
-                        total={totalPage}
-                    />
-                </div>
             </div>
-          <div />
-        </div>
-      </div>
-    );
-  }
+        );
+    }
 }
+
+export default GovernmentInsight;
