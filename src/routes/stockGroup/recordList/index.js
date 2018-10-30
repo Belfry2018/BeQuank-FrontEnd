@@ -29,7 +29,7 @@ class GroupList extends React.Component {
     const { recordName, todayBenefit, risk, stocks } = this.state.record;
 
     const Item = ({ data = 0, comment }) => (
-      <Col span={8}>
+      <Col span={12}>
         <div className={styles.dataSection}>
           <div className={styles.data}>{`${data}%`}</div>
           <div className={styles.comment}>{comment}</div>
