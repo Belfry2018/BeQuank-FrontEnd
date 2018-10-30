@@ -121,10 +121,23 @@ export const getDalaos = () => {
 };
 /**
  * 解锁功能
+ * @deprecated
  * @param type
  * @returns {Object}
  */
 export const unlockInsight = type => {
+  return request(`${version}/user/unlock/insight`, {
+    method: "POST",
+    body: { type: type }
+  });
+};
+
+/**
+ * 解锁功能
+ * @param type
+ * @returns {Object}
+ */
+export const unlockFeature = type => {
   return request(`${version}/user/unlock/insight`, {
     method: "POST",
     body: { type: type }
