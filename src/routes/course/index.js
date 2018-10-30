@@ -4,14 +4,21 @@ import {
   getRecommendationTutorials,
   getTutorials
 } from "../../services/apiCourse";
-import { getDalaos } from "../../services/apiUser";
+import { getDalaos, getUserAuth } from "../../services/apiUser";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import PayforQuestion from "../../components/PayforQuestion";
 import Card from "../../components/Card";
-import { Col, Row, Skeleton, Popover, Button, Affix, Icon, Drawer } from "antd";
+import { Col, Row, Skeleton, Drawer } from "antd";
 import { withRouter } from "react-router-dom";
-import { typeToChinese } from "../../utils/TutorialType";
+import {
+  ADVANCED,
+  shouldCourseLocked,
+  typeToChinese
+} from "../../utils/TutorialType";
+import withLocker from "../../components/LockerHOC";
+
+const CourseWithLocker = withLocker(Card);
 
 class Course extends PureComponent {
   state = {
@@ -20,18 +27,25 @@ class Course extends PureComponent {
     recommendTutorials: [],
     tutorialsLoading: true,
     tutorialType: "",
-    dalaos: []
+    dalaos: [],
+    coursesLock: ADVANCED
   };
 
-  async componentDidMount() {
-    const recommendTutorials = await getRecommendationTutorials();
-    const tutorials = await getTutorials({});
-    const dalaos = await getDalaos();
-    this.setState({
-      tutorials,
-      recommendTutorials,
-      tutorialsLoading: false,
-      dalaos: dalaos
+  componentDidMount() {
+    getUserAuth().then(auth => {
+      this.setState({
+        coursesLock: !auth.ratioTrend,
+        trendChartOfPublicOpinionLock: !auth.trend
+      });
+      getRecommendationTutorials().then(recommendTutorials => {
+        this.setState({ recommendTutorials });
+      });
+      getTutorials({}).then(tutorials => {
+        this.setState({ tutorials, tutorialsLoading: false });
+      });
+      getDalaos().then(dalaos => {
+        this.setState({ dalaos });
+      });
     });
 
     this.searchValue = "";
@@ -84,6 +98,7 @@ class Course extends PureComponent {
       tutorialsLoading,
       tutorialType,
       recommendTutorials,
+      coursesLock,
       dalaos
     } = this.state;
 
@@ -117,12 +132,16 @@ class Course extends PureComponent {
             <Row gutter={40}>
               {tutorials.map((e, index) => (
                 <Col
-                  onClick={() => this.handleCourseClick(e.tutorialId)}
                   key={`tutorial${index}`}
                   style={{ marginBottom: 40 }}
                   md={8}
+                  onClick={() =>
+                    !shouldCourseLocked(coursesLock, e.tutorialType) &&
+                    this.handleCourseClick(e.tutorialId)
+                  }
                 >
-                  <Card
+                  <CourseWithLocker
+                    locked={shouldCourseLocked(coursesLock, e.tutorialType)}
                     context={e.abstract}
                     header={e.title}
                     src={e.cover}

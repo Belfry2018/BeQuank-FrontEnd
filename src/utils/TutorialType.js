@@ -14,3 +14,20 @@ export const typeToChinese = type => {
       return "无分类教程";
   }
 };
+
+const levelOfCourse = type => {
+  switch (type) {
+    case BEGINNER:
+      return 0;
+    case INTERMEDIATE:
+      return 1;
+    case ADVANCED:
+      return 2;
+    default:
+      return -1;
+  }
+};
+
+export const shouldCourseLocked = (lockedType, courseType) => {
+  return levelOfCourse(lockedType) < levelOfCourse(courseType);
+};

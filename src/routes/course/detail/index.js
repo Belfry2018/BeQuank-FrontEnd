@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import {message, Skeleton} from "antd";
+import { message, Skeleton } from "antd";
 import { getTheTutorial } from "../../../services/apiCourse";
 import Article from "../../../components/Article";
 import Styles from "../index.module.less";
 import Comment from "../components/Comment";
-import {typeToChinese} from "../../../utils/TutorialType";
+import { typeToChinese } from "../../../utils/TutorialType";
 
 export default class CourseDetail extends PureComponent {
   state = {
@@ -19,8 +19,8 @@ export default class CourseDetail extends PureComponent {
     await this.getTutorial();
     message.success("评论成功");
   };
-  
-  likeEvent=async()=>{
+
+  likeEvent = async () => {
     await this.getTutorial();
     message.success("操作成功");
   };

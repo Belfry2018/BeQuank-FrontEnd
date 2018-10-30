@@ -24,9 +24,11 @@ const Search = Input.Search;
 
 const initWord = "阿里";
 const SentimentRatioTrendWithLocker = withLocker(SentimentRatioTrend);
-const TrendChartOfPublicOpinionWithLocker = withLocker(
-  TrendChartOfPublicOpinion
-);
+const TrendChartOfPublicOpinionWithLocker = withLocker(props => (
+  <div className={Styles.trend}>
+    <TrendChartOfPublicOpinion {...props} />
+  </div>
+));
 
 export default class Insight extends PureComponent {
   state = {
@@ -45,28 +47,29 @@ export default class Insight extends PureComponent {
   };
 
   componentDidMount() {
-    getCloudKeywords().then(cloud => {
-      this.setState({ cloud });
-    });
-    getHotspot().then(hotspot => {
-      this.setState({ hotspot });
-    });
-    getSentiment().then(sentiment => {
-      this.setState({ sentiment });
-    });
-    getSentimentRatio(initWord).then(sentimentRatio => {
-      this.setState({ sentimentRatio });
-    });
-    getSentimentRatioTrend(initWord).then(sentimentRatioTrend => {
-      this.setState({ sentimentRatioTrend });
-    });
-    getSentimentTrend(initWord).then(sentimentTrend => {
-      this.setState({ sentimentTrend });
-    });
     getUserAuth().then(auth => {
       this.setState({
         sentimentRatioTrendLock: !auth.ratioTrend,
         trendChartOfPublicOpinionLock: !auth.trend
+      });
+
+      getCloudKeywords().then(cloud => {
+        this.setState({ cloud });
+      });
+      getHotspot().then(hotspot => {
+        this.setState({ hotspot });
+      });
+      getSentiment().then(sentiment => {
+        this.setState({ sentiment });
+      });
+      getSentimentRatio(initWord).then(sentimentRatio => {
+        this.setState({ sentimentRatio });
+      });
+      getSentimentRatioTrend(initWord).then(sentimentRatioTrend => {
+        this.setState({ sentimentRatioTrend });
+      });
+      getSentimentTrend(initWord).then(sentimentTrend => {
+        this.setState({ sentimentTrend });
       });
     });
   }
@@ -216,21 +219,21 @@ export default class Insight extends PureComponent {
           </div>
         </div>
         <div className={Styles.bodyWidthItem}>
-          <div className={Styles.trend}>
-            {sentimentTrend ? (
-              sentimentTrend.length > 0 ? (
-                <TrendChartOfPublicOpinionWithLocker
-                  type={"trend"}
-                  locked={trendChartOfPublicOpinionLock}
-                  data={sentimentTrend || []}
-                />
-              ) : (
-                undefined
-              )
+          {sentimentTrend ? (
+            sentimentTrend.length > 0 ? (
+              <TrendChartOfPublicOpinionWithLocker
+                type={"trend"}
+                locked={trendChartOfPublicOpinionLock}
+                data={sentimentTrend || []}
+              />
             ) : (
+              undefined
+            )
+          ) : (
+            <div className={Styles.trend}>
               <LoadingSpin background={"blue"} />
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     );

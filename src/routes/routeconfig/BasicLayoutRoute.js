@@ -9,16 +9,23 @@ const Stock = PageLoadable(() => import("../stock"));
 const Course = PageLoadable(() => import("../course/index"));
 const CourseDetail = PageLoadable(() => import("../course/detail/index"));
 const Insight = PageLoadable(() => import("../insight/index"));
-const GovernmentInsight = PageLoadable(() => import("../insight/government/index"));
+const Pricing = PageLoadable(() => import("../pricing/index"));
+const GovernmentInsight = PageLoadable(() =>
+  import("../insight/government/index")
+);
 const Strategy = PageLoadable(() => import("../strategy/index"));
 const StrategyResult = PageLoadable(() => import("../strategy/result/index"));
 const CourseForm = PageLoadable(() => import("../courseForm/index"));
-const CourseFormResult = PageLoadable(() => import("../courseForm/result/index"));
+const CourseFormResult = PageLoadable(() =>
+  import("../courseForm/result/index")
+);
 const article = PageLoadable(() => import("../articleTest/index"));
 const UserInfo = PageLoadable(() => import("../user/info/index"));
 const GroupList = PageLoadable(() => import("../stockGroup/groupList/index"));
-const GroupListItem=PageLoadable(()=>import("../stockGroup/recordList/index"));
-const default403=PageLoadable(()=>import("../error/403"));
+const GroupListItem = PageLoadable(() =>
+  import("../stockGroup/recordList/index")
+);
+const default403 = PageLoadable(() => import("../error/403"));
 
 export default [
   <DefaultLayout path="/" exact component={Home} />,
@@ -29,12 +36,40 @@ export default [
   <DefaultLayout path="/course/:tutorialId" component={CourseDetail} />,
   <DefaultLayout path="/insight" exact component={Insight} />,
   <DefaultLayout path="/insight/government" component={GovernmentInsight} />,
-  <DefaultLayout path="/strategy" exact component={Strategy} role={ALL_ROLE_TYPE}/>,
-  <DefaultLayout path="/strategy/result" component={StrategyResult} role={ALL_ROLE_TYPE}/>,
-  <DefaultLayout path="/courseForm" exact component={CourseForm} role={"SYSTEM"}/>,
-  <DefaultLayout path="/courseForm/result" component={CourseFormResult} role={"SYSTEM"}/>,
+  <DefaultLayout path="/pricing" exact component={Pricing} />,
+  <DefaultLayout
+    path="/strategy"
+    exact
+    component={Strategy}
+    role={ALL_ROLE_TYPE}
+  />,
+  <DefaultLayout
+    path="/strategy/result"
+    component={StrategyResult}
+    role={ALL_ROLE_TYPE}
+  />,
+  <DefaultLayout
+    path="/courseForm"
+    exact
+    component={CourseForm}
+    role={"SYSTEM"}
+  />,
+  <DefaultLayout
+    path="/courseForm/result"
+    component={CourseFormResult}
+    role={"SYSTEM"}
+  />,
   <DefaultLayout path="/articleTest" component={article} />,
   <DefaultLayout path="/userInfo" component={UserInfo} role={ALL_ROLE_TYPE} />,
-  <DefaultLayout path="/groupList" exact component={GroupList} role={ALL_ROLE_TYPE}/>,
-  <DefaultLayout path="/groupList/:recordId" component={GroupListItem} role={ALL_ROLE_TYPE}/>
+  <DefaultLayout
+    path="/groupList"
+    exact
+    component={GroupList}
+    role={ALL_ROLE_TYPE}
+  />,
+  <DefaultLayout
+    path="/groupList/:recordId"
+    component={GroupListItem}
+    role={ALL_ROLE_TYPE}
+  />
 ];
