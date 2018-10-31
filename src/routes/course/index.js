@@ -8,8 +8,9 @@ import { getDalaos, getUserAuth } from "../../services/apiUser";
 import PopularPart from "../../components/PopularPart";
 import TutorialFilter from "./components/TutorialFilter";
 import PayforQuestion from "../../components/PayforQuestion";
+import AskForm from "./components/AskForm";
 import Card from "../../components/Card";
-import { Col, Row, Skeleton, Drawer } from "antd";
+import { Col, Row, Skeleton, Drawer, Modal, Button } from "antd";
 import { withRouter } from "react-router-dom";
 import {
   ADVANCED,
@@ -28,7 +29,9 @@ class Course extends PureComponent {
     tutorialsLoading: true,
     tutorialType: "",
     dalaos: [],
-    coursesLock: ADVANCED
+    coursesLock: ADVANCED,
+      dalaoModalVisible:false,
+      daolaoModalName:""
   };
 
   componentDidMount() {
@@ -91,6 +94,21 @@ class Course extends PureComponent {
       drawerVisible: true
     });
   };
+
+  handlePieceClick = (username) => {
+    console.log(username);
+    this.setState({
+        dalaoModalVisible:true,
+        daolaoModalName:"username"
+    })
+  }
+
+    handleAskModalCancel = () => {
+        this.setState({
+            dalaoModalVisible:false,
+            daolaoModalName:""
+        })
+    }
 
   render() {
     const {
@@ -160,8 +178,20 @@ class Course extends PureComponent {
           visible={this.state.drawerVisible}
           width={400}
         >
-          <PayforQuestion params={this.state.dalaos} />
+          <PayforQuestion params={this.state.dalaos} onPieceClick={this.handlePieceClick} />
         </Drawer>
+        <Modal
+            closable={false}
+            visible={this.state.dalaoModalVisible}
+            title="付费提问"
+            footer={[
+                <Button key="cancel" onClick={this.handleAskModalCancel}>
+                    取消
+                </Button>
+            ]}
+           >
+            <AskForm username={this.state.daolaoModalName} onClose={this.handleAskModalCancel}/>
+        </Modal>
       </div>
     );
   }

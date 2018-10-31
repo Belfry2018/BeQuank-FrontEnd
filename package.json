@@ -51,7 +51,7 @@
   },
   "proxy": {
     "/api/*": {
-      "target": "http://172.17.143.19:9001/",
+      "target": " http://172.19.166.12:9001",
       "changeOrigin": true
     }
   }

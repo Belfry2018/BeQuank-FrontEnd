@@ -12,7 +12,7 @@ export default class SignCard extends Component {
   state = {
     exp: 0,
     coins: 0,
-    signed: false,
+    hasSigned: false,
     courses: "BEGINNER"
   };
 
@@ -27,6 +27,7 @@ export default class SignCard extends Component {
     const profile = await getUserProfile();
     const auth = await getUserAuth();
     this.setState({
+        hasSigned: auth.hasSigned,
       exp: profile.exp,
       coins: profile.coins,
       courses: auth.courses
@@ -71,9 +72,9 @@ export default class SignCard extends Component {
               type={"dashed"}
               size={"small"}
               onClick={this.onSignIn}
-              disabled={this.state.signed}
+              disabled={this.state.hasSigned}
             >
-              {this.state.signed ? "已签到" : "签到"}
+              {this.state.hasSigned ? "已签到" : "签到"}
             </Button>
           </div>
         </div>

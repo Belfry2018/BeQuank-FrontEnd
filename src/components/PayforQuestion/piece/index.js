@@ -15,9 +15,9 @@ const PieceProperty = {
 
 class Piece extends PureComponent {
   render() {
-    const { avatar, bio, username } = this.props;
+    const { avatar, bio, username, onClick=()=>{} } = this.props;
     return (
-      <div className={styles.piece}>
+      <div className={styles.piece} onClick={onClick}>
         <div className={styles.avatar}>
           <Avatar size={56} src={avatar} />
         </div>

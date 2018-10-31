@@ -14,15 +14,19 @@ class GroupList extends React.Component {
     profile: {}
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { recordId } = this.props.match.params;
 
-    const record = await recordDetail(recordId);
-    const pro = await getUserProfile();
-    this.setState({
-      record,
-      profile: pro
+    recordDetail(recordId).then(record => {
+        this.setState({
+            record: record,
+        });
     });
+    getUserProfile().then(pro => {
+          this.setState({
+              profile: pro
+          });
+    })
   }
 
   render() {
@@ -64,8 +68,8 @@ class GroupList extends React.Component {
               <div className={styles.divider} />
               <div>
                 <Row>
-                  <Item data={todayBenefit * 100} comment={"当月收益"} />
-                  <Item data={risk * 100} comment={"风险指标"} />
+                  <Item data={(todayBenefit * 100).toFixed(2)} comment={"当月收益"} />
+                  <Item data={(todayBenefit * 100).toFixed(2)} comment={"风险指标"} />
                 </Row>
               </div>
               <div className={styles.divider} />
