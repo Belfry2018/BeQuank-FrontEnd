@@ -35,14 +35,13 @@ export default class AllStocks extends PureComponent {
       this.setState({
         pattern: value,
         page: 1,
-        stocks: undefined
+        stocks: undefined,
+        loading: true
       });
-      this.setState({ loading: true });
       const newStocks = await searchStocks({
-        pattern: this.state.pattern,
-        page: this.state.page
+        pattern: value,
+        page: 1
       });
-
       this.setState({
         loading: false,
         stocks: newStocks
