@@ -11,9 +11,9 @@ export default function({ todayBenefit, yearBenefit, risk }) {
 
   return (
     <div className={Styles.wholePart}>
-      <Item title={"当月收益"}>{(todayBenefit * 100).toFixed(2)}</Item>
+      <Item title={"当月收益"}>{todayBenefit?(todayBenefit * 100).toFixed(2):"-----" }</Item>
       <div className={Styles.divider} />
-      <Item title={"风险指标"}>{(risk * 100).toFixed(2)}</Item>
+      <Item title={"风险指标"}>{risk?(risk * 100).toFixed(2):"-----" }</Item>
     </div>
   );
 }
