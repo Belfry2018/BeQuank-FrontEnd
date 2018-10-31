@@ -9,7 +9,7 @@ import moment from "moment";
 
 const dateFormat = "YYYY-MM-DD";
 const Option = Select.Option;
-const firstPage = 1;
+const firstPage = 0;
 
 class GovernmentInsight extends Component {
   state = {
@@ -75,7 +75,7 @@ class GovernmentInsight extends Component {
   render() {
     const {
       governmentPassageLoading,
-      governmentPassage: { totalPage = 1, currentPage = 1, data = [] },
+      governmentPassage: { totalPage = 1, currentPage = 0, data = [] },
       page
     } = this.state;
 
