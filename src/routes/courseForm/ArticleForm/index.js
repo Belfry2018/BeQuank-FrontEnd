@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Radio, Button, Input, Select } from "antd";
+import { Form, Radio, Button, Input } from "antd";
 import AvatarUploader from "../../../components/AvatarUploader";
 import {
   ADVANCED,

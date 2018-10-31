@@ -6,7 +6,6 @@ import Body from "./Body";
 import Profile from "./Profile";
 import LikeButton from "./LikeButton";
 import { likeTutorial } from "../../services/apiCourse";
-import { judgeLogin } from "../../utils/authorization";
 
 class Article extends PureComponent {
   likeArticleEvent = async () => {

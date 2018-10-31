@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import Styles from "./index.module.less";
 import Question from "./ArticleForm";
-import { makeAnswer } from "../../services/apiStrategy";
 import { withRouter } from "react-router-dom";
 import { Steps } from "antd";
 import SmallPoint from "../../components/SmallPoint";

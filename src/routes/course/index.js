@@ -37,8 +37,7 @@ class Course extends PureComponent {
   componentDidMount() {
     getUserAuth().then(auth => {
       this.setState({
-        coursesLock: !auth.ratioTrend,
-        trendChartOfPublicOpinionLock: !auth.trend
+        coursesLock: auth.courses
       });
       getRecommendationTutorials().then(recommendTutorials => {
         this.setState({ recommendTutorials });
@@ -116,8 +115,7 @@ class Course extends PureComponent {
       tutorialsLoading,
       tutorialType,
       recommendTutorials,
-      coursesLock,
-      dalaos
+      coursesLock
     } = this.state;
 
     return (

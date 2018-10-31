@@ -10,12 +10,12 @@ export default class Comment extends PureComponent {
   state = {
     isReply: false,
     commenter: {},
-    loading:false
+    loading: false
   };
 
-  replyEvent = (user,commentId )=> {
+  replyEvent = (user, commentId) => {
     this.setState({ isReply: true, commenter: user });
-    this.selectedCommentId=commentId;
+    this.selectedCommentId = commentId;
   };
 
   closeReply = () => {
@@ -25,7 +25,7 @@ export default class Comment extends PureComponent {
   makeComment = async content => {
     const { tutorialId } = this.props;
     const { isReply } = this.state;
-    this.setState({loading:true});
+    this.setState({ loading: true });
     if (isReply) {
       await replyComment({
         content,
@@ -40,13 +40,12 @@ export default class Comment extends PureComponent {
       });
     }
     await this.props.commentSuccessEvent();
-    this.setState({loading:false});
-    
+    this.setState({ loading: false });
   };
 
   render() {
-    const { isReply, commenter,loading } = this.state;
-    const { comments = [],onLikeCommentEvent } = this.props;
+    const { isReply, commenter, loading } = this.state;
+    const { comments = [], onLikeCommentEvent } = this.props;
     return (
       <div className={Styles.wholeComment}>
         <div className={Styles.title}>
@@ -60,7 +59,11 @@ export default class Comment extends PureComponent {
           loading={loading}
         />
 
-        <TopComment replyEvent={this.replyEvent} comments={comments} onLikeCommentEvent={onLikeCommentEvent} />
+        <TopComment
+          replyEvent={this.replyEvent}
+          comments={comments}
+          onLikeCommentEvent={onLikeCommentEvent}
+        />
       </div>
     );
   }

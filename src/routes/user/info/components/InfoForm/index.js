@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Input,
-  DatePicker,
-  Select,
-  Divider,
-  Button,
-  message
-} from "antd";
+import { Form, Input, DatePicker, Select, Button, message } from "antd";
 import styles from "../form.module.less";
 import moment from "moment";
 import { setUserProfile } from "../../../../../services/apiUser";
@@ -38,7 +30,6 @@ class InfoForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           if (e.name === 418) {
-            errorMessage = "xxx";
           }
         }
       }
