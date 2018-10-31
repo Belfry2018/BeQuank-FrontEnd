@@ -13,7 +13,7 @@ const firstPage = 0;
 
 class GovernmentInsight extends Component {
   state = {
-    startDate: "2018-09-01",
+    startDate: "2018-01-01",
     endDate: "2018-10-01",
     region: "china",
     currentType: "TZGG",
@@ -48,27 +48,27 @@ class GovernmentInsight extends Component {
   }
 
   onPaginationChange = async page => {
-    this.setState({ page: page });
+    await this.setState({ page: page });
     await this.onSearch();
   };
 
   setCurrentType = async type => {
-    this.setState({ currentType: type });
+    await this.setState({ currentType: type });
     await this.onSearch();
   };
 
   handleRegionChange = async value => {
-    this.setState({ region: value });
+    await this.setState({ region: value });
     await this.onSearch();
   };
 
   handleStartChange = async (date, dateString) => {
-    this.setState({ startDate: dateString });
+    await this.setState({ startDate: dateString });
     await this.onSearch();
   };
 
   handleEndChange = async (date, dateString) => {
-    this.setState({ endDate: dateString });
+    await this.setState({ endDate: dateString });
     await this.onSearch();
   };
 
