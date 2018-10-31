@@ -35,14 +35,13 @@ export default class AllStocks extends PureComponent {
       this.setState({
         pattern: value,
         page: 1,
-        stocks: undefined
+        stocks: undefined,
+        loading: true
       });
-      this.setState({ loading: true });
       const newStocks = await searchStocks({
-        pattern: this.state.pattern,
-        page: this.state.page
+        pattern: value,
+        page: 1
       });
-
       this.setState({
         loading: false,
         stocks: newStocks
@@ -69,9 +68,11 @@ export default class AllStocks extends PureComponent {
         </div>
         <div className={Styles.searchSection}>
           <Search
+            enterButton="Search"
+            size="large"
             placeholder="input search text"
             onSearch={value => this.onSearch(value)}
-            style={{ width: 350 }}
+            style={{ width: "100%" }}
           />
         </div>
         <div className={Styles.item}>
@@ -92,7 +93,16 @@ export default class AllStocks extends PureComponent {
                   </div>
                 </div>
               ) : (
-                <div>没有数据</div>
+                <div
+                  style={{
+                    padding: 20,
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    fontSize: 20
+                  }}
+                >
+                  没有数据
+                </div>
               )}
             </Skeleton>
           </div>

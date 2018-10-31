@@ -40,7 +40,7 @@ class DefaultHeader extends PureComponent {
   };
 
   onClickNotification = async ({ courseId, responseId }) => {
-    await readNotification(responseId);
+    readNotification(responseId);
     this.props.history.push({
       pathname: `/course/${courseId}`
     });

@@ -138,7 +138,7 @@ export const unlockInsight = type => {
  * @returns {Object}
  */
 export const unlockFeature = type => {
-  return request(`${version}/user/unlock/insight`, {
+  return request(`${version}/user/unlock`, {
     method: "POST",
     body: { type: type }
   });

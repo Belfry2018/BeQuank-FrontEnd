@@ -27,7 +27,7 @@ export default class SignCard extends Component {
     const profile = await getUserProfile();
     const auth = await getUserAuth();
     this.setState({
-        hasSigned: auth.hasSigned,
+      hasSigned: auth.hasSigned,
       exp: profile.exp,
       coins: profile.coins,
       courses: auth.courses

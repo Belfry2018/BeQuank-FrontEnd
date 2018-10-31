@@ -29,9 +29,9 @@ class PageLogin extends PureComponent {
   };
 
   componentDidMount() {
-      getRecommendByProfit().then(recommendStocks => {
-          this.setState({ recommendStocks });
-      });
+    getRecommendByProfit().then(recommendStocks => {
+      this.setState({ recommendStocks });
+    });
   }
 
   onSelectSort = async value => {

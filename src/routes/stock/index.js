@@ -13,8 +13,8 @@ export default class Stock extends PureComponent {
 
   componentDidMount() {
     const { stockId } = this.props.match.params;
-    stockTrend(stockId).then( stockData => {
-        this.setState({ stockData, stockDataLoading: false });
+    stockTrend(stockId).then(stockData => {
+      this.setState({ stockData, stockDataLoading: false });
     });
   }
 

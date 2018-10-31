@@ -30,8 +30,8 @@ class Course extends PureComponent {
     tutorialType: "",
     dalaos: [],
     coursesLock: ADVANCED,
-      dalaoModalVisible:false,
-      daolaoModalName:""
+    dalaoModalVisible: false,
+    daolaoModalName: ""
   };
 
   componentDidMount() {
@@ -95,20 +95,20 @@ class Course extends PureComponent {
     });
   };
 
-  handlePieceClick = (username) => {
+  handlePieceClick = username => {
     console.log(username);
     this.setState({
-        dalaoModalVisible:true,
-        daolaoModalName:"username"
-    })
-  }
+      dalaoModalVisible: true,
+      daolaoModalName: "username"
+    });
+  };
 
-    handleAskModalCancel = () => {
-        this.setState({
-            dalaoModalVisible:false,
-            daolaoModalName:""
-        })
-    }
+  handleAskModalCancel = () => {
+    this.setState({
+      dalaoModalVisible: false,
+      daolaoModalName: ""
+    });
+  };
 
   render() {
     const {
@@ -178,19 +178,25 @@ class Course extends PureComponent {
           visible={this.state.drawerVisible}
           width={400}
         >
-          <PayforQuestion params={this.state.dalaos} onPieceClick={this.handlePieceClick} />
+          <PayforQuestion
+            params={this.state.dalaos}
+            onPieceClick={this.handlePieceClick}
+          />
         </Drawer>
         <Modal
-            closable={false}
-            visible={this.state.dalaoModalVisible}
-            title="付费提问"
-            footer={[
-                <Button key="cancel" onClick={this.handleAskModalCancel}>
-                    取消
-                </Button>
-            ]}
-           >
-            <AskForm username={this.state.daolaoModalName} onClose={this.handleAskModalCancel}/>
+          closable={false}
+          visible={this.state.dalaoModalVisible}
+          title="付费提问"
+          footer={[
+            <Button key="cancel" onClick={this.handleAskModalCancel}>
+              取消
+            </Button>
+          ]}
+        >
+          <AskForm
+            username={this.state.daolaoModalName}
+            onClose={this.handleAskModalCancel}
+          />
         </Modal>
       </div>
     );

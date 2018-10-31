@@ -16,15 +16,15 @@ class GroupList extends React.Component {
 
   componentDidMount() {
     allRecords().then(records => {
-        this.setState({
-            allRecords: records,
-        })
+      this.setState({
+        allRecords: records
+      });
     });
     getUserProfile().then(pro => {
-        this.setState({
-            profile: pro
-        });
-    })
+      this.setState({
+        profile: pro
+      });
+    });
   }
 
   render() {

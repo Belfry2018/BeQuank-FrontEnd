@@ -4,9 +4,8 @@ import styles from "./index.module.less";
 import SmallPoint from "../SmallPoint";
 
 class PayforQuestion extends Component {
-
   render() {
-    const { params, onPieceClick=()=>{} } = this.props;
+    const { params, onPieceClick = () => {} } = this.props;
     return (
       <div className={styles.payforquestion}>
         <div className={styles.titleblock}>
@@ -16,13 +15,13 @@ class PayforQuestion extends Component {
           <div className={styles.title}>{"付费提问"}</div>
         </div>
         <div className={styles.pieceblock}>
-          {params.map((item,index) => {
+          {params.map((item, index) => {
             return (
               <Piece
                 avatar={item.avatar}
                 username={item.username}
                 bio={item.bio}
-                onClick={()=>onPieceClick(item.username)}
+                onClick={() => onPieceClick(item.username)}
                 key={`dalaoList${index}`}
               />
             );
