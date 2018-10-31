@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Carousel, Icon } from "antd";
+import { Icon } from "antd";
 import Styles from "./index.module.less";
 import { Link } from "react-router-dom";
 import Function1 from "./undraw_preferences_uuo2.svg";

@@ -4,12 +4,9 @@ import TypeBar from "./components/TypeBar/index";
 import NavBar from "../components/NavBar";
 import GovernmentPassage from "../../../components/GovernmentPassage";
 import { Pagination, Skeleton, Select, DatePicker, message } from "antd";
-import {
-  getGovernmentPassage,
-  getGovernmentWords
-} from "../../../services/apiNews";
+import { getGovernmentPassage } from "../../../services/apiNews";
 import moment from "moment";
-import NameCard from "../../../components/NameCard";
+
 const dateFormat = "YYYY-MM-DD";
 const Option = Select.Option;
 const firstPage = 1;

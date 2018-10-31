@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
 
 const FormItem = Form.Item;
 
@@ -17,7 +17,6 @@ class AskForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           if (e.name === 418) {
-            errorMessage = "xxx";
           }
         }
       }

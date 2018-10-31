@@ -25,24 +25,24 @@ class PopularPart extends Component {
     }
 
     let imgSrc = paramText[0].imgSrc;
-    var top0 = paramText[0].top;
-    var title0 = paramText[0].title;
-    var content0 = paramText[0].content;
+    const top0 = paramText[0].top;
+    const title0 = paramText[0].title;
+    const content0 = paramText[0].content;
     let id0 = paramText[0].ttId;
 
-    var top1 = paramText[1].top;
-    var title1 = paramText[1].title;
-    var content1 = paramText[1].content;
+    const top1 = paramText[1].top;
+    const title1 = paramText[1].title;
+    const content1 = paramText[1].content;
     let id1 = paramText[1].ttId;
 
-    var top2 = paramText[2].top;
-    var title2 = paramText[2].title;
-    var content2 = paramText[2].content;
+    const top2 = paramText[2].top;
+    const title2 = paramText[2].title;
+    const content2 = paramText[2].content;
     let id2 = paramText[2].ttId;
 
-    var top3 = paramText[3].top;
-    var title3 = paramText[3].title;
-    var content3 = paramText[3].content;
+    const top3 = paramText[3].top;
+    const title3 = paramText[3].title;
+    const content3 = paramText[3].content;
     let id3 = paramText[3].ttId;
 
     return (

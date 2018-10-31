@@ -4,9 +4,8 @@ import Question from "../../components/Question";
 import { makeAnswer } from "../../services/apiStrategy";
 import Part2 from "../../components/Question/Part2/index";
 import { withRouter } from "react-router-dom";
-import { message } from "antd/lib/index";
 import { setUserProfile } from "../../services/apiUser";
-import { Steps, Button } from "antd";
+import { Steps } from "antd";
 const Step = Steps.Step;
 
 const steps = [
@@ -39,7 +38,6 @@ class Strategy extends PureComponent {
     } catch (e) {
       let errorMessage = "";
       if (e.name === 418) {
-        errorMessage = "xxx";
       }
     }
     const current = this.state.current + 1;

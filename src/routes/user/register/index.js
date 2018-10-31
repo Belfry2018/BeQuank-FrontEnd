@@ -138,7 +138,7 @@ class Register extends Component {
     this.setState({ codeButtonLoading: true });
     try {
       await sendIdentifyCode(email);
-      this.setState({ showError: false,codeButtonLoading: false });
+      this.setState({ showError: false, codeButtonLoading: false });
       let leftTime = 30;
       this.setState({
         codeButtonDisabled: true,
@@ -150,14 +150,14 @@ class Register extends Component {
           codeButtonMessage: leftTime + codeButtonMessage.error
         });
         leftTime -= 1;
-      },1000);
+      }, 1000);
       setTimeout(() => {
         clearInterval(interval);
         this.setState({
           codeButtonDisabled: false,
           codeButtonMessage: codeButtonMessage.normal
         });
-      },30000);
+      }, 30000);
     } catch (e) {
       this.setState({
         showError: true,

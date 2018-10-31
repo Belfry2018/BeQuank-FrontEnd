@@ -28,7 +28,6 @@ class AccountForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           if (e.name === 418) {
-            errorMessage = "xxx";
           }
         }
       }
@@ -39,7 +38,7 @@ class AccountForm extends React.Component {
   handleChangePassword = e => {
     let tmp = this.state.changePassword;
     this.setState({
-      changePassword: tmp ? false : true
+      changePassword: !tmp
     });
   };
 
