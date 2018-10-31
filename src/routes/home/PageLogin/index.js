@@ -28,9 +28,10 @@ class PageLogin extends PureComponent {
     courses: "BEGINNER"
   };
 
-  async componentDidMount() {
-    const recommendStocks = await getRecommendByProfit();
-    this.setState({ recommendStocks });
+  componentDidMount() {
+    getRecommendByProfit().then(recommendStocks => {
+      this.setState({ recommendStocks });
+    });
   }
 
   onSelectSort = async value => {

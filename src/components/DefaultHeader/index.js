@@ -4,7 +4,7 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import Button from "../Button";
 import UserSection from "./UserSection";
 import Authorization from "../AuthorizationComponents/Authorization";
-import { judgeLogin } from "../../utils/authorization";
+import { judgeAdmin, judgeLogin } from "../../utils/authorization";
 import {
   getUserProfile,
   getNotification,
@@ -40,7 +40,7 @@ class DefaultHeader extends PureComponent {
   };
 
   onClickNotification = async ({ courseId, responseId }) => {
-    await readNotification(responseId);
+    readNotification(responseId);
     this.props.history.push({
       pathname: `/course/${courseId}`
     });
@@ -110,13 +110,23 @@ class DefaultHeader extends PureComponent {
               >
                 视角
               </NavLink>
-              <NavLink
-                className={styles["nav-item"]}
-                to={"/pricing"}
-                activeClassName={styles["nav-active"]}
-              >
-                价格
-              </NavLink>
+              {judgeAdmin() ? (
+                <NavLink
+                  className={styles["nav-item"]}
+                  to={"/courseForm"}
+                  activeClassName={styles["nav-active"]}
+                >
+                  创建文章
+                </NavLink>
+              ) : (
+                <NavLink
+                  className={styles["nav-item"]}
+                  to={"/pricing"}
+                  activeClassName={styles["nav-active"]}
+                >
+                  价格
+                </NavLink>
+              )}
             </nav>
           </div>
           <div className={styles.user}>

@@ -14,12 +14,16 @@ class GroupList extends React.Component {
     profile: {}
   };
 
-  async componentDidMount() {
-    const records = await allRecords();
-    const pro = await getUserProfile();
-    this.setState({
-      allRecords: records,
-      profile: pro
+  componentDidMount() {
+    allRecords().then(records => {
+      this.setState({
+        allRecords: records
+      });
+    });
+    getUserProfile().then(pro => {
+      this.setState({
+        profile: pro
+      });
     });
   }
 

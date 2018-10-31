@@ -28,6 +28,6 @@ const levelOfCourse = type => {
   }
 };
 
-export const shouldCourseLocked = (lockedType, courseType) => {
-  return levelOfCourse(lockedType) < levelOfCourse(courseType);
+export const shouldCourseLocked = (courseType, userType) => {
+  return levelOfCourse(userType) < levelOfCourse(courseType);
 };

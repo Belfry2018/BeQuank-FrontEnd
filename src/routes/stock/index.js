@@ -11,10 +11,11 @@ export default class Stock extends PureComponent {
     stockDataLoading: true
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { stockId } = this.props.match.params;
-    const stockData = await stockTrend(stockId);
-    this.setState({ stockData, stockDataLoading: false });
+    stockTrend(stockId).then(stockData => {
+      this.setState({ stockData, stockDataLoading: false });
+    });
   }
 
   render() {

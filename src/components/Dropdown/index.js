@@ -1,23 +1,6 @@
 import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
 import styles from "./index.module.less";
 import onClickOutside from "react-onclickoutside";
-
-const DropdownProps = {
-  /** Define placement of Dropdown */
-  placement: PropTypes.oneOf(["bottomLeft", "bottomCenter", "bottomRight"])
-    .isRequired,
-
-  /** Define overlay of Dropdown */
-  overlay: PropTypes.array,
-
-  /** Content of Dropdown */
-  children: PropTypes.element.isRequired
-};
-
-const DefaultDropdownProps = {
-  placement: "bottomLeft"
-};
 
 class Dropdown extends PureComponent {
   state = {
@@ -29,7 +12,7 @@ class Dropdown extends PureComponent {
   };
 
   handleClickOutside = () => {
-    if(this.state.expand===true){
+    if (this.state.expand === true) {
       this.changeExpandState();
     }
   };
@@ -41,7 +24,7 @@ class Dropdown extends PureComponent {
   };
 
   render() {
-    const { overlay,  children } = this.props;
+    const { overlay, children } = this.props;
     const { expand } = this.state;
     // return <div>{children}</div>;
     return (
@@ -57,9 +40,5 @@ class Dropdown extends PureComponent {
     );
   }
 }
-
-Dropdown.propTypes = DropdownProps;
-
-Dropdown.defaultProps = DefaultDropdownProps;
 
 export default onClickOutside(Dropdown);

@@ -1,16 +1,19 @@
 import React, { PureComponent } from "react";
 import PricingColumn from "./PricingColumn";
 import Style from "./index.module.less";
-import { Button, Col, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import Balloons from "./img/undraw_balloons_vxx5.svg";
 import Fly from "./img/undraw_instant_support_elxh.svg";
 import Space from "./img/undraw_maker_launch_crhe.svg";
 import { judgeLogin } from "../../utils/authorization";
+import { unlockFeature } from "../../services/apiUser";
 
 export default class Pricing extends PureComponent {
   state = {
     stockData: {},
-    stockDataLoading: true
+    stockDataLoading: true,
+    premiumLoading: false,
+    professionalLoading: false
   };
 
   onStarterClicked = () => {
@@ -21,12 +24,30 @@ export default class Pricing extends PureComponent {
 
   onPremiumClicked = () => {
     if (judgeLogin()) {
+      this.setState({ premiumLoading: true });
+      unlockFeature("Premium").then(() => {
+        this.setState({ premiumLoading: false });
+        message.success("解锁成功");
+      });
+    } else {
+      this.props.history.push("/register");
+    }
+  };
+
+  onProfessionalClicked = () => {
+    if (judgeLogin()) {
+      this.setState({ professionalLoading: true });
+      unlockFeature("Professional").then(() => {
+        this.setState({ professionalLoading: false });
+        message.success("解锁成功");
+      });
     } else {
       this.props.history.push("/register");
     }
   };
 
   render() {
+    const { professionalLoading, premiumLoading } = this.state;
     return (
       <div className={Style.mainSection}>
         <div className={Style.title}>
@@ -49,7 +70,11 @@ export default class Pricing extends PureComponent {
                   "热词搜索功能"
                 ]}
               >
-                <Button style={{ width: "100%" }} size={"large"}>
+                <Button
+                  onClick={this.onStarterClicked}
+                  style={{ width: "100%" }}
+                  size={"large"}
+                >
                   {judgeLogin() ? "已拥有" : "立即注册"}
                 </Button>
               </PricingColumn>
@@ -67,6 +92,8 @@ export default class Pricing extends PureComponent {
                 ]}
               >
                 <Button
+                  loading={premiumLoading}
+                  onClick={this.onPremiumClicked}
                   type="primary"
                   ghost
                   style={{ width: "100%" }}
@@ -89,7 +116,13 @@ export default class Pricing extends PureComponent {
                   "论坛自由发表课程帖"
                 ]}
               >
-                <Button type="primary" style={{ width: "100%" }} size={"large"}>
+                <Button
+                  loading={professionalLoading}
+                  onClick={this.onProfessionalClicked}
+                  type="primary"
+                  style={{ width: "100%" }}
+                  size={"large"}
+                >
                   免费试用
                 </Button>
               </PricingColumn>

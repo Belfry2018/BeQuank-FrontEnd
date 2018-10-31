@@ -34,10 +34,16 @@ export const getSentimentTrend = (word = "微博") => {
   });
 };
 
-export const getGovernmentPassage = (data = {}) => {
+export const getGovernmentPassage = ({ page, start, type, end, region }) => {
   return request(`${version}/gvn/passage`, {
     method: "POST",
-    body: {}
+    body: {
+      page: page || 1,
+      start: start || null,
+      type: type || null,
+      end: end || null,
+      region: region || null
+    }
   });
 };
 
