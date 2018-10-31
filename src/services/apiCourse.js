@@ -61,8 +61,7 @@ export const getTheTutorial = tutorialId => {
   return request(`${version}/tutorial?id=${tutorialId}`);
 };
 
-
-export const getRecommendationTutorials=()=>{
+export const getRecommendationTutorials = () => {
   return request(`${version}/tutorials/recommendation`);
 };
 

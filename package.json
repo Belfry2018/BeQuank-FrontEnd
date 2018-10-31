@@ -51,7 +51,7 @@
   },
   "proxy": {
     "/api/*": {
-      "target": " http://172.19.166.12:9001",
+      "target": "https://njuwc.cn:9000/",
       "changeOrigin": true
     }
   }

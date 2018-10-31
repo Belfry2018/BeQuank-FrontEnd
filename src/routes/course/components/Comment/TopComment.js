@@ -3,7 +3,7 @@ import Styles from "./TopComment.module.less";
 import { Icon } from "antd";
 import { judgeLogin } from "../../../../utils/authorization";
 import { likeComment } from "../../../../services/apiCourse";
-import {DEFAULT_AVATAR} from "../../../../themes/default";
+import { DEFAULT_AVATAR } from "../../../../themes/default";
 
 class User extends PureComponent {
   state = {
@@ -27,7 +27,7 @@ class User extends PureComponent {
       commentId,
       alreadyLike = false
     } = this.props;
-    const { nickname, avatar  } = author;
+    const { nickname, avatar } = author;
     const { likeLoading } = this.state;
     const likeIcon = likeLoading
       ? "loading"
@@ -37,7 +37,11 @@ class User extends PureComponent {
     const likeText = alreadyLike ? "已喜欢" : "喜欢";
     return (
       <div className={Styles.wholePart}>
-        <img className={Styles.avatar} src={avatar||DEFAULT_AVATAR} alt={""} />
+        <img
+          className={Styles.avatar}
+          src={avatar || DEFAULT_AVATAR}
+          alt={""}
+        />
         <div className={Styles.rightPart}>
           <div className={Styles.top}>
             <div className={Styles.topLeft}>
@@ -55,7 +59,7 @@ class User extends PureComponent {
                   {likeText}
                 </div>
                 <div
-                  onClick={() => replyEvent(author,commentId)}
+                  onClick={() => replyEvent(author, commentId)}
                   className={Styles.topRightItems}
                 >
                   <Icon className={Styles.commentIcon} type="form" />

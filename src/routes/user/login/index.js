@@ -44,7 +44,7 @@ class NormalLoginForm extends React.Component {
           }
           message.success("登陆成功");
         } catch (e) {
-          let errorMessage = "";
+          let errorMessage;
           // if (e.name === 421) {
           errorMessage = "用户名或密码错";
           // }

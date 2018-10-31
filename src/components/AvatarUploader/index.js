@@ -1,6 +1,6 @@
 // author @antd @kunduin
 
-import { Upload, Icon, message } from "antd";
+import { Upload, Icon } from "antd";
 import React from "react";
 import { version } from "../../services/apiOverview";
 import { getToken } from "../../utils/authorization";

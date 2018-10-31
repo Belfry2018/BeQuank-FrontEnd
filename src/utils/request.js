@@ -73,7 +73,8 @@ export default async function request(url, options) {
     checkStatus(response);
   } catch (e) {
     console.log(e);
-    if(e.response.status===401){
+    if(e.response.status===500){
+    }else if(e.response.status===401){
       const from=encodeURIComponent(window.location.pathname);
       window.location.href=`/login?from=${from}`;
     }else if(e.response.status===403&&judgeLogin()){

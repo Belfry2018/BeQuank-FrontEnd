@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styles from "./index.module.less";
 import { Menu } from "antd";
 
 class TypeBar extends Component {

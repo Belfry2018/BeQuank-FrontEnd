@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Input,
-  DatePicker,
-  Select,
-  Divider,
-  Button,
-  message,
-  Slider
-} from "antd";
+import { Form, Input, Divider, Button, message, Slider } from "antd";
 import styles from "../form.module.less";
 import { setUserProfile } from "../../../../../services/apiUser";
 import SmallPoint from "../../../../../components/SmallPoint";
@@ -38,7 +29,6 @@ class StockDataForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           if (e.name === 418) {
-            errorMessage = "xxx";
           }
         }
       }

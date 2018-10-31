@@ -26,13 +26,10 @@ export let getTime = () => {
     day = "0" + day;
   }
   if (hour >= 0 && hour <= 9) {
-    hour = "0" + hour;
   }
   if (minutes >= 0 && minutes <= 9) {
-    minutes = "0" + minutes;
   }
   if (seconds >= 0 && seconds <= 9) {
-    seconds = "0" + seconds;
   }
   return year + sign1 + month + sign1 + day;
   // return (
@@ -80,13 +77,10 @@ export const tutorialTime = () => {
     day = "0" + day;
   }
   if (hour >= 0 && hour <= 9) {
-    hour = "0" + hour;
   }
   if (minutes >= 0 && minutes <= 9) {
-    minutes = "0" + minutes;
   }
   if (seconds >= 0 && seconds <= 9) {
-    seconds = "0" + seconds;
   }
   return `${year}年${month}月${day}日`;
 };

@@ -27,7 +27,6 @@ class PasswordForm extends React.Component {
         } catch (e) {
           let errorMessage = "";
           if (e.name === 418) {
-            errorMessage = "xxx";
           }
         }
       }
