@@ -25,13 +25,12 @@ export default class Pricing extends PureComponent {
   onPremiumClicked = () => {
     if (judgeLogin()) {
       this.setState({ premiumLoading: true });
-      unlockFeature("Premium").then((e) => {
+      unlockFeature("Premium").then(e => {
         this.setState({ premiumLoading: false });
-        if(e.success){
-            message.success("解锁成功");
-        }
-        else{
-            message.info("金币不足无法解锁");
+        if (e.success) {
+          message.success("解锁成功");
+        } else {
+          message.info("金币不足无法解锁");
         }
       });
     } else {
@@ -42,14 +41,13 @@ export default class Pricing extends PureComponent {
   onProfessionalClicked = () => {
     if (judgeLogin()) {
       this.setState({ professionalLoading: true });
-      unlockFeature("Professional").then((e) => {
+      unlockFeature("Professional").then(e => {
         this.setState({ professionalLoading: false });
-          if(e.success){
-              message.success("解锁成功");
-          }
-          else{
-              message.info("金币不足无法解锁");
-          }
+        if (e.success) {
+          message.success("解锁成功");
+        } else {
+          message.info("金币不足无法解锁");
+        }
       });
     } else {
       this.props.history.push("/register");
@@ -61,7 +59,7 @@ export default class Pricing extends PureComponent {
     return (
       <div className={Style.mainSection}>
         <div className={Style.title}>
-          <span className={Style.logo}>BeQuank</span> for everyone
+          follow the movement with <span className={Style.logo}>BeQuank</span>
         </div>
         <div className={Style.body}>
           <Row gutter={40}>
@@ -93,7 +91,7 @@ export default class Pricing extends PureComponent {
               <PricingColumn
                 type={"Premium"}
                 description={"添加进阶功能"}
-                pricing={"$49/month"}
+                pricing={"￥49/month"}
                 image={Fly}
                 features={[
                   "选股策略因子权重自主调整",
@@ -109,7 +107,7 @@ export default class Pricing extends PureComponent {
                   style={{ width: "100%" }}
                   size={"large"}
                 >
-                    立刻获得
+                  立刻获得
                 </Button>
               </PricingColumn>
             </Col>
@@ -117,7 +115,7 @@ export default class Pricing extends PureComponent {
               <PricingColumn
                 type={"Professional"}
                 description={"全部功能"}
-                pricing={"$99/month"}
+                pricing={"￥99/month"}
                 image={Space}
                 features={[
                   "自选因子功能",

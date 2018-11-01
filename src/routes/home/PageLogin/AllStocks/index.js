@@ -12,7 +12,7 @@ export default class AllStocks extends PureComponent {
     pattern: "1",
     stocks: undefined,
     loading: false,
-      page: initPage
+    page: initPage
   };
   page = initPage;
 
