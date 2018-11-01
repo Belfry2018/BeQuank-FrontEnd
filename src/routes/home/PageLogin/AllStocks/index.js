@@ -5,13 +5,14 @@ import StockList from "../../../../components/StockList/index";
 import Styles from "./index.module.less";
 import { Skeleton, Input, message } from "antd";
 const Search = Input.Search;
-const initPage = 1;
+const initPage = 0;
 
 export default class AllStocks extends PureComponent {
   state = {
     pattern: "1",
     stocks: undefined,
-    loading: false
+    loading: false,
+      page: initPage
   };
   page = initPage;
 
@@ -34,13 +35,13 @@ export default class AllStocks extends PureComponent {
     if (reg.test(value)) {
       this.setState({
         pattern: value,
-        page: 1,
+        page: 0,
         stocks: undefined,
         loading: true
       });
       const newStocks = await searchStocks({
         pattern: value,
-        page: 1
+        page: 0
       });
       this.setState({
         loading: false,

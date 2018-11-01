@@ -18,7 +18,7 @@ export default class SignCard extends Component {
 
   onSignIn = async () => {
     await dailySignIn();
-    message.success("签到成功 经验+5");
+    message.success("签到成功 经验+2");
     this.setState({ signed: true });
     await this.fetchData();
   };
