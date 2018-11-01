@@ -69,11 +69,13 @@ class GroupList extends React.Component {
               <div>
                 <Row>
                   <Item
-                    data={todayBenefit?(todayBenefit * 100).toFixed(2):"-----"}
+                    data={
+                      todayBenefit ? (todayBenefit * 100).toFixed(2) : "-----"
+                    }
                     comment={"当月收益"}
                   />
                   <Item
-                    data={risk?(risk * 100).toFixed(2):"-----"}
+                    data={risk ? (risk * 100).toFixed(2) : "-----"}
                     comment={"风险指标"}
                   />
                 </Row>

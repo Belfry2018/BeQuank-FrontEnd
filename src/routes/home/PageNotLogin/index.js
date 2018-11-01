@@ -19,7 +19,7 @@ export default class PageNotLogin extends PureComponent {
               </div>
               <div className={Styles.divider} />
               <div className={Styles.content}>
-                一个专业面向资金较少、投资经验较不充足的股票散户的智能多因子选股策略平台
+                BeQuank是基于用户养成概念，专业面向空白经验散户的股票投资养成系社区平台
               </div>
               <Link className={Styles.mainLink} to={"/register"}>
                 立即加入
@@ -33,18 +33,16 @@ export default class PageNotLogin extends PureComponent {
         <div className={Styles.secondSection}>
           <div className={Styles.secondText}>
             <div className={Styles.secondTitle}>关于本项目</div>
-            <div className={Styles.secondDivider} />
             <div className={Styles.secondContent}>
-              产品结合中国股票市场运行特点，以多因子选股的散户个人定制优化设计为核心功能，以消费者教育和信息交流发布为重点功能，建立金融创新服务型WEB平台
-            </div>
-            <div className={Styles.secondContent}>
-              产品主要分为三个板块：多因子选股策略板块、消费者教育板块、舆情分析板块，分别对应解决个体投资者投资策略决策和风险问题、消费者投资教育、投资信息不对称的现存问题。{" "}
+              BeQuank是基于用户养成概念，专业面向空白经验散户的股票投资养成系社区平台。我们为用户开发了多因子选股策略板块、消费者教育板块和舆情汇总更新板块，分别提供个性化的策略并进行优化，帮助用户学习金融数理知识形成投资观念，了解政策舆论内容。我们希望，通过初级到高级的进阶养成，使用户逐渐成长为经验丰富、能力突出的个人投资者。{" "}
             </div>
           </div>
         </div>
-        <div className={Styles.secondThirdTitle}>三大功能</div>
-        <div className={Styles.secondThirdDivider} />
+        <div className={Styles.mainDivider} />
+
         <div className={Styles.thirdSection}>
+          <div className={Styles.secondThirdTitle}>三大功能</div>
+          <div className={Styles.secondThirdDivider} />
           <div className={Styles.thirdSectionMainPart}>
             <img className={Styles.image} src={Function1} alt={""} />
             <div className={Styles.text}>

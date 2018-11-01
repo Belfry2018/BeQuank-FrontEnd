@@ -74,13 +74,13 @@ export const getRecommendByRisk = () => {
  ]
  */
 export const searchStocks = ({ pattern = "", page = 1 }) => {
-    return request(`${version}/stocks`, {
-        method: "POST",
-        body: {
-            pattern:pattern,
-            page:page
-        }
-    });
+  return request(`${version}/stocks`, {
+    method: "POST",
+    body: {
+      pattern: pattern,
+      page: page
+    }
+  });
 };
 
 /**

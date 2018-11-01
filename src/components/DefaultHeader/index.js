@@ -124,7 +124,7 @@ class DefaultHeader extends PureComponent {
                   to={"/pricing"}
                   activeClassName={styles["nav-active"]}
                 >
-                  价格
+                  商城
                 </NavLink>
               )}
             </nav>
