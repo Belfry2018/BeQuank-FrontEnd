@@ -7,6 +7,7 @@ import Fly from "./img/undraw_instant_support_elxh.svg";
 import Space from "./img/undraw_maker_launch_crhe.svg";
 import { judgeLogin } from "../../utils/authorization";
 import { unlockFeature } from "../../services/apiUser";
+import Slogan from "../../components/Slogan";
 
 export default class Pricing extends PureComponent {
   state = {
@@ -58,9 +59,7 @@ export default class Pricing extends PureComponent {
     const { professionalLoading, premiumLoading } = this.state;
     return (
       <div className={Style.mainSection}>
-        <div className={Style.title}>
-          follow the movement with <span className={Style.logo}>BeQuank</span>
-        </div>
+        <Slogan />
         <div className={Style.body}>
           <Row gutter={40}>
             <Col md={8}>
