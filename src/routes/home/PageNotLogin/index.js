@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Function1 from "./undraw_preferences_uuo2.svg";
 import Function2 from "./undraw_blogging_vpvv.svg";
 import Function3 from "./undraw_pie_chart_6efe.svg";
+import Slogan from "../../../components/Slogan";
+import Button from "../../../components/Button";
 
 export default class PageNotLogin extends PureComponent {
   render() {
@@ -84,6 +86,12 @@ export default class PageNotLogin extends PureComponent {
               </div>
             </div>
           </div>
+        </div>
+        <div className={Styles.fifthSection}>
+          <Slogan />
+          <Link className={Styles.mainLink} to={"/register"}>
+            <Button type={"primary"}>立即加入</Button>
+          </Link>
         </div>
 
         {/*<Carousel className={Styles.carousel} effect="fade" autoplay>*/}
