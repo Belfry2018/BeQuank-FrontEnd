@@ -33,16 +33,17 @@ export default class PageNotLogin extends PureComponent {
         <div className={Styles.secondSection}>
           <div className={Styles.secondText}>
             <div className={Styles.secondTitle}>关于本项目</div>
+            <div className={Styles.secondDivider} />
             <div className={Styles.secondContent}>
               BeQuank是基于用户养成概念，专业面向空白经验散户的股票投资养成系社区平台。我们为用户开发了多因子选股策略板块、消费者教育板块和舆情汇总更新板块，分别提供个性化的策略并进行优化，帮助用户学习金融数理知识形成投资观念，了解政策舆论内容。我们希望，通过初级到高级的进阶养成，使用户逐渐成长为经验丰富、能力突出的个人投资者。{" "}
             </div>
           </div>
         </div>
-        <div className={Styles.mainDivider} />
 
         <div className={Styles.thirdSection}>
-          <div className={Styles.secondThirdTitle}>三大功能</div>
-          <div className={Styles.secondThirdDivider} />
+          <div className={Styles.secondThirdTitle}>
+            三大功能 <div className={Styles.secondThirdDivider} />
+          </div>
           <div className={Styles.thirdSectionMainPart}>
             <img className={Styles.image} src={Function1} alt={""} />
             <div className={Styles.text}>
