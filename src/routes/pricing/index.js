@@ -25,9 +25,14 @@ export default class Pricing extends PureComponent {
   onPremiumClicked = () => {
     if (judgeLogin()) {
       this.setState({ premiumLoading: true });
-      unlockFeature("Premium").then(() => {
+      unlockFeature("Premium").then((success) => {
         this.setState({ premiumLoading: false });
-        message.success("解锁成功");
+        if(success){
+            message.success("解锁成功");
+        }
+        else{
+            message.success("金币不足无法解锁");
+        }
       });
     } else {
       this.props.history.push("/register");
@@ -37,9 +42,14 @@ export default class Pricing extends PureComponent {
   onProfessionalClicked = () => {
     if (judgeLogin()) {
       this.setState({ professionalLoading: true });
-      unlockFeature("Professional").then(() => {
+      unlockFeature("Professional").then((success) => {
         this.setState({ professionalLoading: false });
-        message.success("解锁成功");
+          if(success){
+              message.success("解锁成功");
+          }
+          else{
+              message.success("金币不足无法解锁");
+          }
       });
     } else {
       this.props.history.push("/register");
